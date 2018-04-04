@@ -28,7 +28,8 @@ namespace CarDealer.Model.Models
         [Column(TypeName = "varchar")]
         public string Image { set; get; }
 
-        public XElement MoreImages { set; get; }
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
 
         public bool CarStatus { set; get; }
 
@@ -85,7 +86,7 @@ namespace CarDealer.Model.Models
 
         [ForeignKey("TransmissionTypeID")]
         public virtual TransmissionType TransmissionType { set; get; }
-        
+
         public virtual IEnumerable<OrderDetail> OderDetails { set; get; }
 
         public virtual IEnumerable<CarTag> CarTags { set; get; }

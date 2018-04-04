@@ -7,10 +7,13 @@ namespace CarDealer.Model.Models
     public class CarTag
     {
         [Key]
+        [Column(Order=1)]
         public int CarID { set; get; }
 
         [Key]
-        public int TagID { set; get; }
+        [Column(Order = 2)]
+        [MaxLength(50)]
+        public string TagID { set; get; }
 
         [ForeignKey("CarID")]
         public virtual Car Cars { set; get; }

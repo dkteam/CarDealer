@@ -9,6 +9,7 @@ namespace CarDealer.Model.Models
     {
         [Key]
         [MaxLength(50)]
+        [Column(TypeName = "varchar")]
         public string ID { set; get; }
 
         [Required]
