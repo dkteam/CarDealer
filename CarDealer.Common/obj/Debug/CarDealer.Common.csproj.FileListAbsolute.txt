@@ -2,4 +2,3 @@ D:\16. WEB\CarDealer\CarDealer.Common\bin\Debug\CarDealer.Common.dll
 D:\16. WEB\CarDealer\CarDealer.Common\bin\Debug\CarDealer.Common.pdb
 D:\16. WEB\CarDealer\CarDealer.Common\obj\Debug\CarDealer.Common.dll
 D:\16. WEB\CarDealer\CarDealer.Common\obj\Debug\CarDealer.Common.pdb
-D:\16. WEB\CarDealer\CarDealer.Common\obj\Debug\CarDealer.Common.csprojResolveAssemblyReference.cache

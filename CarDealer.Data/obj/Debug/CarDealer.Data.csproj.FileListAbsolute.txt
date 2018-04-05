@@ -14,3 +14,4 @@ D:\16. WEB\CarDealer\CarDealer.Data\bin\Debug\CarDealer.Model.dll
 D:\16. WEB\CarDealer\CarDealer.Data\bin\Debug\CarDealer.Model.pdb
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.InitialDb.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.csproj.GenerateResource.Cache
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.AddErrorTable.resources

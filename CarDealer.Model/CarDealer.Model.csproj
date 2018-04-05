@@ -54,6 +54,7 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarTag.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Fuel.cs" />
     <Compile Include="Models\InstallmentPaymentMethod.cs" />
