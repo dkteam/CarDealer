@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace CarDealer.Data.Repositories
 {
-    public interface IBrandRepo
+    public interface IBrandRepository
     {
         IEnumerable<Brand> GetByAlias(string alias);
     }
 
-    public class BrandRepo : RepositoryBase<Brand>, IBrandRepo
+    public class BrandRepository : RepositoryBase<Brand>, IBrandRepository
     {
-        public BrandRepo(IDbFactory dbFactory)
+        public BrandRepository(IDbFactory dbFactory)
             : base(dbFactory)
         {
         }
