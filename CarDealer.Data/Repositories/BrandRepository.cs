@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CarDealer.Data.Repositories
 {
-    public interface IBrandRepository
+    public interface IBrandRepository : IRepository<Brand>
     {
         IEnumerable<Brand> GetByAlias(string alias);
     }
