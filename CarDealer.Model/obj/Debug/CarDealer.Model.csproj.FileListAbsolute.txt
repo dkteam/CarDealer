@@ -1,0 +1,12 @@
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\CarDealer.Model.dll
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\CarDealer.Model.pdb
+D:\16. WEB\CarDealer\CarDealer.Model\obj\Debug\CarDealer.Model.csprojResolveAssemblyReference.cache
+D:\16. WEB\CarDealer\CarDealer.Model\obj\Debug\CarDealer.Model.dll
+D:\16. WEB\CarDealer\CarDealer.Model\obj\Debug\CarDealer.Model.pdb
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\CarDealer.Model.dll.config
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\CarDealer.Common.dll
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\EntityFramework.dll
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\CarDealer.Common.pdb
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\EntityFramework.xml
+D:\16. WEB\CarDealer\CarDealer.Model\bin\Debug\EntityFramework.SqlServer.xml
