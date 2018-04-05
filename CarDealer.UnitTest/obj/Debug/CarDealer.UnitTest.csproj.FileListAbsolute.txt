@@ -50,3 +50,15 @@ D:\16. WEB\CarDealer\CarDealer.UnitTest\obj\Debug\CarDealer.UnitTest.dll
 D:\16. WEB\CarDealer\CarDealer.UnitTest\obj\Debug\CarDealer.UnitTest.pdb
 D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\EntityFramework.dll
 D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\EntityFramework.xml
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\CarDealer.UnitTest.dll.config
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\Castle.Core.dll
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\EntityFramework.SqlServer.dll
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\Moq.dll
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\System.ValueTuple.dll
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\Castle.Core.xml
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\EntityFramework.SqlServer.xml
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\Moq.pdb
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\Moq.xml
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\16. WEB\CarDealer\CarDealer.UnitTest\bin\Debug\System.ValueTuple.xml
