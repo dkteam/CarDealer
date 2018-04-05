@@ -1,4 +1,5 @@
-﻿using CarDealer.Data.Repositories;
+﻿using CarDealer.Data.Infrastructure;
+using CarDealer.Data.Repositories;
 using CarDealer.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -11,62 +12,63 @@ namespace CarDealer.Service
     public interface IBrandService
     {
         void Add(Brand brand);
-
         void Update(Brand brand);
-
-        void Delte(int id);
-
+        void Delete(int id);
         IEnumerable<Brand> GetAll();
-
         IEnumerable<Brand> GetAllPaging(int page, int pageSize, out int totalRow);
-
-        Post GetById(int id);
-
+        Brand GetById(int id);
         IEnumerable<Brand> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
-
         void SaveChange();
     }
     public class BrandService : IBrandService
     {
-        IPostRepository _postRepository;
+        IBrandRepository _brandRepository;
+        IUnitOfWork _unitOfWork;
+
+        public BrandService(IBrandRepository brandRepository, IUnitOfWork unitOfWork)
+        {
+            this._brandRepository = brandRepository;
+            this._unitOfWork = unitOfWork;
+        }
         public void Add(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandRepository.Add(brand);
         }
 
-        public void Delte(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _brandRepository.Delete(id);
         }
 
         public IEnumerable<Brand> GetAll()
         {
-            throw new NotImplementedException();
+            return _brandRepository.GetAll();
         }
 
         public IEnumerable<Brand> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            throw new NotImplementedException();
+            //TODO: Select all post by tag
+            return _brandRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         }
 
         public IEnumerable<Brand> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            throw new NotImplementedException();
+            return _brandRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         }
 
-        public Post GetById(int id)
+        public Brand GetById(int id)
         {
-            throw new NotImplementedException();
+            return _brandRepository.GetSingleById(id);
         }
 
         public void SaveChange()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
         public void Update(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandRepository.Update(brand);
         }
     }
 }
