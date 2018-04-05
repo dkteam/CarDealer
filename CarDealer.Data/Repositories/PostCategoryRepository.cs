@@ -3,7 +3,7 @@ using CarDealer.Model.Models;
 
 namespace CarDealer.Data.Repositories
 {
-    public interface IPostCategoryRepository
+    public interface IPostCategoryRepository : IRepository<PostCategory>
     {
     }
 
