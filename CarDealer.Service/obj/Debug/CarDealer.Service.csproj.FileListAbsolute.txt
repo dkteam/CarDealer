@@ -11,3 +11,7 @@ D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\CarDealer.Data.pdb
 D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\CarDealer.Model.pdb
 D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\EntityFramework.dll
 D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\EntityFramework.xml
+D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\16. WEB\CarDealer\CarDealer.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml

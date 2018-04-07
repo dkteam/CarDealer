@@ -1,4 +1,5 @@
 ﻿using CarDealer.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarDealer.Data
 {
-    public class CarDealerDbContext : DbContext
+    public class CarDealerDbContext : IdentityDbContext<ApplicationUser>
     {
         public CarDealerDbContext() : base("CarDealerConnection")
         {
@@ -41,9 +42,16 @@ namespace CarDealer.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static CarDealerDbContext Create()
+        {
+            return new CarDealerDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId , i.RoleId});
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }

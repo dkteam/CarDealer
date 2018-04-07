@@ -1,10 +1,13 @@
-﻿using CarDealer.Model.Models;
+﻿using AutoMapper;
+using CarDealer.Model.Models;
 using CarDealer.Service;
 using CarDealer.Web.Infrastucture.Core;
+using CarDealer.Web.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CarDealer.Web.Infrastucture.Extensions;
 
 namespace CarDealer.Web.Api
 {
@@ -24,23 +27,18 @@ namespace CarDealer.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
+                var listCategory = _postCategoryService.GetAll();
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
 
-                }
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -52,7 +50,10 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+
+                    var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.SaveChange();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -62,7 +63,8 @@ namespace CarDealer.Web.Api
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -74,7 +76,10 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Add(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+
+                    _postCategoryService.Add(postCategoryDb);
                     _postCategoryService.SaveChange();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
