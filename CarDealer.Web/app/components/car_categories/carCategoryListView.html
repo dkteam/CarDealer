@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
-                            <input type="text" class="form-control" ng-model="keyWord" ng-change="search()" placeholder="Gõ từ khóa cần tìm...">
+                            <input type="text" class="form-control" ng-model="keyWord" placeholder="Gõ từ khóa cần tìm...">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
                             </span>
@@ -58,7 +58,7 @@
                             </tr>
                             <tfoot>
                                 <tr>
-                                    <td colspan="7">Có <span style="color:#dd4b39">{{totalCount}}</span> kết quả được tìm thấy.</td>
+                                    <td colspan="7"><span class="pull-right">Có <span style="color:#dd4b39">{{totalCount}}</span> kết quả được tìm thấy.</span></td>
                                 </tr>
                             </tfoot>
                         </table>

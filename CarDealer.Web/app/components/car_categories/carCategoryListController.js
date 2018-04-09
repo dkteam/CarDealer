@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('carCategoryListController', carCategoryListController);
 
-    carCategoryListController.$inject = ['$scope', 'apiService'];
+    carCategoryListController.$inject = ['$scope', 'apiService', 'notificationService'];
 
-    function carCategoryListController($scope, apiService) {
+    function carCategoryListController($scope, apiService, notificationService) {
         $scope.carCategories = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
@@ -27,6 +27,11 @@
             }
 
             apiService.get('/api/carcategory/getall', config, function (result) {
+                if (result.data.TotalCount == 0) {
+                    notificationService.displayWarning('Không có kết quả nào được tìm thấy.')
+                } else {
+                    notificationService.displaySuccess('Có ' + result.data.TotalCount + ' kết quả được tìm thấy.')
+                }
                 $scope.carCategories = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
