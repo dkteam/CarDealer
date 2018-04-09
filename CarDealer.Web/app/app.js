@@ -1,7 +1,11 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 
 (function () {
-    angular.module('cardealer', ['cardealer.cars', 'cardealer.common']).config(config);
+    angular.module('cardealer',
+        ['cardealer.cars',
+         'cardealer.car_categories',
+         'cardealer.common'])
+         .config(config);
 
     config.$inject=['$stateProvider','$urlRouterProvider']
 

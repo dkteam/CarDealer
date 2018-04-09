@@ -18,6 +18,7 @@ namespace CarDealer.Web.Mappings
                 cfg.CreateMap<Post, PostViewModel>().MaxDepth(2);
                 cfg.CreateMap<Tag, TagViewModel>().MaxDepth(2);
                 cfg.CreateMap<Brand, BrandViewModel>().MaxDepth(2);
+                cfg.CreateMap<CarCategory, CarCategoryViewModel>().MaxDepth(2);
                 cfg.CreateMap<CarTag, CarTagViewModel>().MaxDepth(2);
                 cfg.CreateMap<Car, CarViewModel>().MaxDepth(2);
                 cfg.CreateMap<Fuel, FuelViewModel>().MaxDepth(2);

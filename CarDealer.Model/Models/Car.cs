@@ -23,6 +23,8 @@ namespace CarDealer.Model.Models
 
         public int BrandID { set; get; }
 
+        public int CategoryID { set; get; }
+
         [Required]
         [MaxLength(256)]
         [Column(TypeName = "varchar")]
@@ -71,6 +73,9 @@ namespace CarDealer.Model.Models
         public bool? BestPrice { set; get; }
 
         public int? ViewCount { set; get; }
+
+        [ForeignKey("CategoryID")]
+        public virtual CarCategory CarCategory { set; get; }
 
         [ForeignKey("BrandID")]
         public virtual Brand Brand { set; get; }

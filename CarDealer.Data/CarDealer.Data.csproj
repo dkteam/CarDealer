@@ -81,9 +81,22 @@
     <Compile Include="Migrations\201804070802100_ChangeKey.Designer.cs">
       <DependentUpon>201804070802100_ChangeKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804080146252_addCarCategoryTable.cs" />
+    <Compile Include="Migrations\201804080146252_addCarCategoryTable.Designer.cs">
+      <DependentUpon>201804080146252_addCarCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804080213299_editCarCategory.cs" />
+    <Compile Include="Migrations\201804080213299_editCarCategory.Designer.cs">
+      <DependentUpon>201804080213299_editCarCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804080242080_editDbContext.cs" />
+    <Compile Include="Migrations\201804080242080_editDbContext.Designer.cs">
+      <DependentUpon>201804080242080_editDbContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
+    <Compile Include="Repositories\CarCategoryRepository.cs" />
     <Compile Include="Repositories\CarRepository.cs" />
     <Compile Include="Repositories\CarTagRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -135,6 +148,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804070802100_ChangeKey.resx">
       <DependentUpon>201804070802100_ChangeKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804080146252_addCarCategoryTable.resx">
+      <DependentUpon>201804080146252_addCarCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804080213299_editCarCategory.resx">
+      <DependentUpon>201804080213299_editCarCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804080242080_editDbContext.resx">
+      <DependentUpon>201804080242080_editDbContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

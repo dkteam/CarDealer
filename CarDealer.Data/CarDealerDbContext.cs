@@ -41,6 +41,7 @@ namespace CarDealer.Data
         public DbSet<TransmissionType> TransmissionTypes { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
+        public DbSet<CarCategory> CarCategories { set; get; }
 
         public static CarDealerDbContext Create()
         {

@@ -48,7 +48,7 @@ namespace CarDealer.Web.App_Start
             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // Repositories
-            builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CarCategoryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 

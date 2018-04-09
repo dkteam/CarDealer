@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\CarCategoryController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -206,9 +207,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastucture\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastucture\Core\PaginationSet.cs" />
     <Compile Include="Infrastucture\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\BrandViewModel.cs" />
+    <Compile Include="Models\CarCategoryViewModel.cs" />
     <Compile Include="Models\CarTagViewModel.cs" />
     <Compile Include="Models\CarViewModel.cs" />
     <Compile Include="Models\FuelViewModel.cs" />
@@ -228,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\components\car_categories\carCategories.module.js" />
+    <Content Include="app\components\car_categories\carCategoryListController.js" />
+    <Content Include="app\components\car_categories\carCategoryListView.html" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
     <Content Include="app\components\cars\cars.module.js" />
@@ -237,7 +243,11 @@
     <Content Include="app\components\cars\carListController.js" />
     <Content Include="app\components\cars\carListView.html" />
     <Content Include="app\components\cars\carAddView.html" />
+    <Content Include="app\shared\directives\pagerDirective.html" />
+    <Content Include="app\shared\directives\pagerDirective.js" />
+    <Content Include="app\shared\filters\statusFilter.js" />
     <Content Include="app\shared\modules\cardealer.common.js" />
+    <Content Include="app\shared\services\apiService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -2011,7 +2021,6 @@
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\footer\" />
     <Folder Include="app\shared\navigation\" />
-    <Folder Include="app\shared\services\" />
     <Folder Include="Assets\client\" />
   </ItemGroup>
   <ItemGroup>
@@ -2403,7 +2412,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>41975</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

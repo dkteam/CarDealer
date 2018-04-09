@@ -21,3 +21,6 @@ D:\16. WEB\CarDealer\CarDealer.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\16. WEB\CarDealer\CarDealer.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.IntegrateASPnetIdentity.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.ChangeKey.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.addCarCategoryTable.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editCarCategory.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editDbContext.resources

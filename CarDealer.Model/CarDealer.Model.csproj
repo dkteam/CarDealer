@@ -90,6 +90,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\CarCategory.cs" />
     <Compile Include="Models\CarTag.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Footer.cs" />
