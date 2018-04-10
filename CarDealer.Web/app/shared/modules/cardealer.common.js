@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('cardealer.common', ['ui.router'])
+    angular.module('cardealer.common', ['ui.router', 'ngBootbox'])
 })();

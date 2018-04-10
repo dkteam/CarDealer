@@ -1,0 +1,103 @@
+﻿<section class="content-header">
+    <h1>
+        Cập nhật danh mục: <span style="font-weight:bold ">{{carCategory.Name}}</span>
+        <small>Chỉnh sửa thông tin dòng xe <span style="font-weight:bold ">{{carCategory.Name}}</span></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Xe</a></li>
+        <li><a ui-sref="car_categories">Danh mục</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><span style="font-weight:bold ">{{carCategory.Name}}</span></h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmUpdateProductCategory" role="form" ng-submit="UpdateCarCategory()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên danh mục</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tên dòng xe" name="name" ng-change="GetSeoTitle()" ng-model="carCategory.Name" required ng-maxlength="256">
+                            <span ng-show="frmUpdateProductCategory.name.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmUpdateProductCategory.name.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tiêu đề SEO</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tiêu đề SEO" name="alias" ng-model="carCategory.Alias" required ng-maxlength="256">
+                            <span ng-show="frmUpdateProductCategory.alias.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmAddCarCategoryfrmUpdateProductCategory.alias.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Mô tả ngắn</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="carCategory.Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Danh mục cha</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="parentID" ng-model="carCategory.ParentID" ng-options="option.ID as option.Name for option in parentCateogries">
+                                <option value="">--- chọn danh mục cha ---</option>
+                            </select>
+                            <input type="hidden" name="parentID" ng-model="carCategory.ParentID" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Thứ tự hiển thị</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Thứ tự hiển thị" name="displayOrder" ng-model="carCateogry.DisplayOrder">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Hình đại diện</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Hình đại diện" name="image" ng-model="carCategory.Image">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">MetaKeyword</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="MetaKeyword" name="metaKeyword" ng-model="carCategory.MetaKeyWord">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">MetaDescription</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="MetaDescription" name="metaDescription" ng-model="carCategory.MetaDescription"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="carCategory.Status" ng-checked="carCategory.Status"> Kích hoạt
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="homeflag" ng-model="carCategory.HomeFlag" ng-checked="carCategory.HomeFlag"> Hiển thị trang chủ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default" ui-sref="car_categories"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit"ng-disabled="frmUpdateProductCategory.$invalid" class="btn btn-success pull-right"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

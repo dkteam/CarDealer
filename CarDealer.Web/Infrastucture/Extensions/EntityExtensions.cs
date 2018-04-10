@@ -51,6 +51,24 @@ namespace CarDealer.Web.Infrastucture.Extensions
             post.Status = postVm.Status;
         }
 
+        public static void UpdateCarCategory(this CarCategory carCategory, CarCategoryViewModel carCategoryVm)
+        {
+            carCategory.ID = carCategoryVm.ID;
+            carCategory.Name = carCategoryVm.Name;
+            carCategory.Alias = carCategoryVm.Alias;
+            carCategory.Description = carCategoryVm.Description;
+            carCategory.ParentID = carCategoryVm.ParentID;
+            carCategory.DisplayOrder = carCategoryVm.DisplayOrder;
+            carCategory.Image = carCategoryVm.Image;
+            carCategory.HomeFlag = carCategoryVm.HomeFlag;
 
+            carCategory.CreatedDate = carCategoryVm.CreatedDate;
+            carCategory.CreatedBy = carCategoryVm.CreatedBy;
+            carCategory.UpdatedDate = carCategoryVm.UpdatedDate;
+            carCategory.UpdatedBy = carCategoryVm.UpdatedBy;
+            carCategory.MetaKeyword = carCategoryVm.MetaKeyword;
+            carCategory.MetaDescription = carCategoryVm.MetaDescription;
+            carCategory.Status = carCategoryVm.Status;
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace CarDealer.Web.Infrastucture.Core
         protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
             HttpResponseMessage response = null;
-            response = function.Invoke();
 
             try
             {
@@ -53,7 +52,7 @@ namespace CarDealer.Web.Infrastucture.Core
             }
             return response;
         }
-
+        
         private void LogError(Exception ex)
         {
             try

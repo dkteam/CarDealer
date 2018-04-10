@@ -10,6 +10,14 @@
             url: "/car_categories",
             templateUrl: "/app/components/car_categories/carCategoryListView.html",
             controller: "carCategoryListController"
+        }).state('add_car_category', {
+            url: "/add_car_category",
+            templateUrl: "/app/components/car_categories/carCategoryAddView.html",
+            controller: "carCategoryAddController"
+        }).state('edit_car_category', {
+            url: "/edit_car_category/:id",
+            templateUrl: "/app/components/car_categories/carCategoryEditView.html",
+            controller: "carCategoryEditController"
         });
     }
 })();
