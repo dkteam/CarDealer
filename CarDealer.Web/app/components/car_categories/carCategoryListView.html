@@ -19,20 +19,27 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Danh mục dòng xe</h3>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 pull-right">
                         <div class="input-group">
                             <input type="text" class="form-control" ng-model="keyWord" placeholder="Gõ từ khóa cần tìm...">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i></button>
+                                <button class="btn btn-default" type="button" ng-click="search()"><i class="fa fa-search"></i> Tìm kiếm</button>
                             </span>
                         </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
+                    <div class="col-md-4">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button" ng-click="deleteMultiple()" id="btnDelete" disabled><i class="fa fa-trash-o"></i> Xóa</button>
+                            <button class="btn btn-primary" type="button" ui-sref="add_car_category"><i class="fa fa-plus"></i> Thêm mới</button>                            
+                        </span>
+                    </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table class="table table-responsive">
                             <tr>
-                                <th style="width: 5%">Thứ tự</th>
-                                <th style="width: 15%">Tên danh mục</th>
+                                <th style="width:3%"><input name="all" type="checkbox" ng-click="selectAll()"/></th>                                
+                                <th style="width: 12%">Tên danh mục</th>
+                                <th style="width: 10%">Thứ tự hiển thị</th>
                                 <th>Mô tả ngắn</th>
                                 <th style="width: 10%">Tạo bởi</th>
                                 <th style="width: 15%">Ngày tạo</th>
@@ -40,8 +47,9 @@
                                 <th style="width: 10%">Thao tác</th>
                             </tr>
                             <tr ng-repeat="item in carCategories">
-                                <td>{{item.DisplayOrder}}</td>
+                                <td><input type="checkbox" ng-model="item.checked" name="all"/></td>                                
                                 <td>{{item.Name}}</td>
+                                <td>{{item.DisplayOrder}}</td>
                                 <td>{{item.Description}}</td>
                                 <td>{{item.CreatedBy}}</td>
                                 <td>{{item.CreatedDate|date:'dd/MM/yyyy hh:mm:ss'}}</td>
@@ -52,8 +60,8 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+                                    <button class="btn btn-sm btn-primary" ui-sref="edit_car_category({id:item.ID})"><i class="fa fa-pencil-square-o"></i></button>
+                                    <button class="btn btn-sm btn-danger" ng-click="deleteCarCategory(item.ID)"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                             <tfoot>
