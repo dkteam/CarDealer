@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201804080242080_editDbContext.Designer.cs">
       <DependentUpon>201804080242080_editDbContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804120437036_postDbViewCount.cs" />
+    <Compile Include="Migrations\201804120437036_postDbViewCount.Designer.cs">
+      <DependentUpon>201804120437036_postDbViewCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804080242080_editDbContext.resx">
       <DependentUpon>201804080242080_editDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120437036_postDbViewCount.resx">
+      <DependentUpon>201804120437036_postDbViewCount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

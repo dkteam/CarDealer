@@ -194,6 +194,7 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\CarCategoryController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\PostController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -247,6 +248,13 @@
     <Content Include="app\components\cars\carListController.js" />
     <Content Include="app\components\cars\carListView.html" />
     <Content Include="app\components\cars\carAddView.html" />
+    <Content Include="app\components\posts\postAddController.js" />
+    <Content Include="app\components\posts\postAddView.html" />
+    <Content Include="app\components\posts\postEditController.js" />
+    <Content Include="app\components\posts\postEditView.html" />
+    <Content Include="app\components\posts\postListController.js" />
+    <Content Include="app\components\posts\postListView.html" />
+    <Content Include="app\components\posts\posts.module.js" />
     <Content Include="app\shared\directives\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />
