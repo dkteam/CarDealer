@@ -26,7 +26,7 @@ namespace CarDealer.Web.Models
 
         public bool? HotFlag { set; get; }
 
-        public int ViewCount { set; get; }
+        public int? ViewCount { set; get; }
 
         public DateTime? CreatedDate { set; get; }
 

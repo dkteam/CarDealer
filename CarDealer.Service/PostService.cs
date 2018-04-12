@@ -15,6 +15,7 @@ namespace CarDealer.Service
         void Update(Post post);
         void Delete(int id);
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAll(string keyWord);
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
         IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
         Post GetById(int id);
@@ -46,6 +47,14 @@ namespace CarDealer.Service
         public IEnumerable<Post> GetAll()
         {
             return _postRepository.GetAll(new string[] { "PostCategory" });
+        }
+
+        public IEnumerable<Post> GetAll(string keyWord)
+        {
+            if (!string.IsNullOrEmpty(keyWord))
+                return _postRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
+            else
+                return _postRepository.GetAll();
         }
 
         public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)

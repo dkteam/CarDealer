@@ -24,3 +24,4 @@ D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.ChangeKe
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.addCarCategoryTable.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editCarCategory.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editDbContext.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.postDbViewCount.resources
