@@ -22,9 +22,9 @@ namespace CarDealer.Model.Models
         public string TagID { set; get; }
 
         [ForeignKey("PostID")]
-        public virtual Post Posts { set; get; }
+        public virtual Post Post { set; get; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tags { set; get; }
+        public virtual Tag Tag { set; get; }
     }
 }

@@ -19,12 +19,12 @@ namespace CarDealer.Model.Models
         public int InstallmentPeriodID { set; get; }        
 
         [ForeignKey("OrderID")]
-        public virtual Order Orders { set; get; }
+        public virtual Order Order { set; get; }
 
         [ForeignKey("CarID")]
-        public virtual Car Cars { set; get; }
+        public virtual Car Car { set; get; }
 
         [ForeignKey("InstallmentPeriodID")]
-        public virtual InstallmentPeriod InstallmentPeriods { set; get; }
+        public virtual InstallmentPeriod InstallmentPeriod { set; get; }
     }
 }

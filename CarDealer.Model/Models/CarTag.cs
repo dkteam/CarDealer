@@ -16,9 +16,9 @@ namespace CarDealer.Model.Models
         public string TagID { set; get; }
 
         [ForeignKey("CarID")]
-        public virtual Car Cars { set; get; }
+        public virtual Car Car { set; get; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tags { set; get; }
+        public virtual Tag Tag { set; get; }
     }
 }

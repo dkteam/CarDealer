@@ -74,6 +74,8 @@ namespace CarDealer.Model.Models
 
         public int? ViewCount { set; get; }
 
+        public string Tags { set; get; }
+
         [ForeignKey("CategoryID")]
         public virtual CarCategory CarCategory { set; get; }
 

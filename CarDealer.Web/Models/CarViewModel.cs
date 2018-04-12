@@ -54,7 +54,9 @@ namespace CarDealer.Web.Models
         public bool? BestPrice { set; get; }
 
         public int? ViewCount { set; get; }
-        
+
+        public string Tags { set; get; }
+
         public virtual BrandViewModel Brand { set; get; }
         
         public virtual FuelViewModel Fuel { set; get; }

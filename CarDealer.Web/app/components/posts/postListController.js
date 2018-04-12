@@ -10,7 +10,7 @@
         $scope.getPosts = getPosts;
         $scope.keyWord = '';
         $scope.search = search;
-        $scope.deleteCarCategory = deleteCarCategory;
+        $scope.deletePost = deletePost;
         $scope.selectAll = selectAll;
 
         $scope.deleteMultiple = deleteMultiple;
@@ -59,7 +59,7 @@
             }
         }, true);
 
-        function deleteCarCategory(id) {
+        function deletePost(id) {
             $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
                 var config = {
                     params: {

@@ -11,8 +11,8 @@ namespace CarDealer.Web.Models
         
         public string TagID { set; get; }
         
-        public virtual CarViewModel Cars { set; get; }
+        public virtual CarViewModel Car { set; get; }
         
-        public virtual TagViewModel Tags { set; get; }
+        public virtual TagViewModel Tag { set; get; }
     }
 }

@@ -20,6 +20,6 @@ namespace CarDealer.Model.Models
         public virtual Period Periods { set; get; }
 
         [ForeignKey("InstallmentPaymentMethodID")]
-        public virtual InstallmentPaymentMethod InstallmentPaymentMethods { set; get; }
+        public virtual InstallmentPaymentMethod InstallmentPaymentMethod { set; get; }
     }
 }

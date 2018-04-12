@@ -16,20 +16,22 @@
         $scope.deleteMultiple = deleteMultiple;
 
         function deleteMultiple() {
-            var listId = [];
-            $.each($scope.selected, function (i, item) {
-                listId.push(item.ID);
-            });
-            var config = {
-                params: {
-                    checkedCarCategories: JSON.stringify(listId)
+            $ngBootbox.confirm('Việc xóa danh mục, sẽ xóa tất cả dòng xe thuộc danh mục đó. Bạn có chắc muốn xóa?').then(function () {
+                var listId = [];
+                $.each($scope.selected, function (i, item) {
+                    listId.push(item.ID);
+                });
+                var config = {
+                    params: {
+                        checkedCarCategories: JSON.stringify(listId)
+                    }
                 }
-            }
-            apiService.del('api/carcategory/deletemulti', config, function (result) {
-                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                search();
-            }, function (error) {
-                notificationService.displayError('Xóa không thành công');
+                apiService.del('api/carcategory/deletemulti', config, function (result) {
+                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    search();
+                }, function (error) {
+                    notificationService.displayError('Xóa không thành công');
+                });
             });
         }
 
@@ -60,7 +62,7 @@
         }, true);
 
         function deleteCarCategory(id) {
-            $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
+            $ngBootbox.confirm('Việc xóa danh mục, sẽ xóa tất cả dòng xe thuộc danh mục đó. Bạn có chắc muốn xóa?').then(function () {
                 var config = {
                     params: {
                         id: id

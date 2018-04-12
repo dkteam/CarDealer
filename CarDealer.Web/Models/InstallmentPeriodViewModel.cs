@@ -17,6 +17,6 @@ namespace CarDealer.Web.Models
         
         public virtual PeriodViewModel Periods { set; get; }
         
-        public virtual InstallmentPaymentMethodViewModel InstallmentPaymentMethods { set; get; }
+        public virtual InstallmentPaymentMethodViewModel InstallmentPaymentMethod { set; get; }
     }
 }

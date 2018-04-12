@@ -15,10 +15,10 @@ namespace CarDealer.Web.Models
 
         public int InstallmentPeriodID { set; get; }
         
-        public virtual OrderViewModel Orders { set; get; }
+        public virtual OrderViewModel Order { set; get; }
         
-        public virtual CarViewModel Cars { set; get; }
+        public virtual CarViewModel Car { set; get; }
         
-        public virtual InstallmentPeriodViewModel InstallmentPeriods { set; get; }
+        public virtual InstallmentPeriodViewModel InstallmentPeriod { set; get; }
     }
 }
