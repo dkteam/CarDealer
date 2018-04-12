@@ -82,9 +82,9 @@ namespace CarDealer.Web.Api
 
                 var listCategoryNonPaging = _carCategoryService.GetById(id);
 
-                var listPostCategoryVm = Mapper.Map<CarCategory, CarCategoryViewModel>(listCategoryNonPaging);
+                var listCarCategoryVm = Mapper.Map<CarCategory, CarCategoryViewModel>(listCategoryNonPaging);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCarCategoryVm);
 
                 return response;
             });

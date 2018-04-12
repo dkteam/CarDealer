@@ -231,31 +231,27 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>Xe</span>
+                            <span> Xe</span>
                             <span class="pull-right-container">
                                 <span class="label label-primary pull-right" ui-sref="car_add"> Thêm</span>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="car_categories"><i class="fa fa-circle-o"></i> Danh mục dòng xe</a></li>
-                            <li><a ui-sref="cars"><i class="fa fa-circle-o"></i> Danh sách xe</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                        <ul class="treeview-menu">                            
+                            <li><a ui-sref="cars"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                            <li><a ui-sref="car_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>Bài viết</span>
+                            <span> Bài viết</span>
                             <span class="pull-right-container">
                                 <span class="label label-primary pull-right" ui-sref="post_add"> Thêm</span>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a ui-sref="post_categories"><i class="fa fa-circle-o"></i> Danh mục bài viết</a></li>
-                            <li><a ui-sref="posts"><i class="fa fa-circle-o"></i> Danh sách bài viết</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                        <ul class="treeview-menu">                            
+                            <li><a ui-sref="posts"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                            <li><a ui-sref="post_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
                         </ul>
                     </li>
                     <li>
@@ -616,7 +612,11 @@
     <script src="~/app/components/cars/cars.module.js"></script>
     <script src="~/app/components/car_categories/carCategories.module.js"></script>
     <script src="~/app/components/posts/posts.module.js"></script>
+    <script src="~/app/components/post_categories/postCategories.module.js"></script>
     <script src="~/app/app.js"></script>
+    <script src="~/app/components/post_categories/postCategoryAddController.js"></script>
+    <script src="~/app/components/post_categories/postCategoryEditController.js"></script>
+    <script src="~/app/components/post_categories/postCategoryListController.js"></script>
     <script src="~/app/components/posts/postEditController.js"></script>
     <script src="~/app/components/posts/postAddController.js"></script>
     <script src="~/app/components/posts/postListController.js"></script>

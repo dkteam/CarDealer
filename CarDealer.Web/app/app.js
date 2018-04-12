@@ -4,6 +4,7 @@
     angular.module('cardealer',
         ['cardealer.cars',
          'cardealer.car_categories',
+         'cardealer.post_categories',
          'cardealer.posts',
          'cardealer.common'])
          .config(config);

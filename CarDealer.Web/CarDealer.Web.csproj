@@ -255,6 +255,13 @@
     <Content Include="app\components\posts\postListController.js" />
     <Content Include="app\components\posts\postListView.html" />
     <Content Include="app\components\posts\posts.module.js" />
+    <Content Include="app\components\post_categories\postCategories.module.js" />
+    <Content Include="app\components\post_categories\postCategoryAddController.js" />
+    <Content Include="app\components\post_categories\postCategoryAddView.html" />
+    <Content Include="app\components\post_categories\postCategoryEditController.js" />
+    <Content Include="app\components\post_categories\postCategoryEditView.html" />
+    <Content Include="app\components\post_categories\postCategoryListController.js" />
+    <Content Include="app\components\post_categories\postCategoryListView.html" />
     <Content Include="app\shared\directives\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />

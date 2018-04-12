@@ -15,6 +15,7 @@ namespace CarDealer.Service
         void Update(PostCategory postCategory);
         PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
+        IEnumerable<PostCategory> GetAll(string keyWord);
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
         PostCategory GetById(int id);
         void SaveChange();
@@ -42,6 +43,14 @@ namespace CarDealer.Service
         public IEnumerable<PostCategory> GetAll()
         {
             return _postCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<PostCategory> GetAll(string keyWord)
+        {
+            if (!string.IsNullOrEmpty(keyWord))
+                return _postCategoryRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
+            else
+                return _postCategoryRepository.GetAll();
         }
 
         public IEnumerable<PostCategory> GetAllByParentId(int parentId)
