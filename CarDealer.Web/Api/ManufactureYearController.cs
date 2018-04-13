@@ -7,45 +7,43 @@ using System.Net.Http;
 using System.Web.Http;
 using CarDealer.Service;
 using CarDealer.Model.Models;
-using CarDealer.Web.Models;
 using AutoMapper;
+using CarDealer.Web.Models;
 using CarDealer.Web.Infrastucture.Extensions;
 using System.Web.Script.Serialization;
 
 namespace CarDealer.Web.Api
 {
-    [RoutePrefix("api/post")]
-    public class PostController : ApiControllerBase
+    [RoutePrefix("api/manufactureyear")]
+    public class ManufactureYearController : ApiControllerBase
     {
         #region Initialize
-        IPostService _postService;
-
-        public PostController(IErrorService errorService, IPostService postService)
+        IManufactureYearService _manufactureYearService;
+        public ManufactureYearController(IErrorService errorService, IManufactureYearService manufactureYearService)
             : base(errorService)
         {
-            this._postService = postService;
+            this._manufactureYearService = manufactureYearService;
         }
         #endregion
 
         [Route("getall")]
         [HttpGet]
-        [AllowAnonymous]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
                 int totalRow = 0;
 
-                var listPostNonPaging = _postService.GetAll(keyWord);
+                var listNonPaging = _manufactureYearService.GetAll(keyWord);
 
-                totalRow = listPostNonPaging.Count();
-                var query = listPostNonPaging.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize).ToList();
+                totalRow = listNonPaging.Count();
+                var query = listNonPaging.OrderByDescending(x => x.Name).Skip(page * pageSize).Take(pageSize);
 
-                var listPostVm = Mapper.Map<List<Post>, List<PostViewModel>>(query);
+                var listVm = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(query);
 
-                var paginationSet = new PaginationSet<PostViewModel>()
+                var paginationSet = new PaginationSet<ManufactureYearViewModel>()
                 {
-                    Items = listPostVm,
+                    Items = listVm,
                     Page = page,
                     TotalCount = totalRow,
                     TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
@@ -57,11 +55,27 @@ namespace CarDealer.Web.Api
             });
         }
 
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listNonPaging = _manufactureYearService.GetById(id);
+
+                var listVm = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(listNonPaging);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
+                return response;
+            });
+        }
 
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, PostViewModel postVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -73,17 +87,16 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var newPost = new Post();
+                    var newManufactureYear = new ManufactureYear();
 
-                    newPost.UpdatePost(postVm);
+                    newManufactureYear.UpdateManufactureYear(manufactureYearVm);
 
-                    newPost.CreatedDate = DateTime.Now;
-                    //newPost.ViewCount = 1;
+                    newManufactureYear.CreatedDate = DateTime.Now;
 
-                    _postService.Add(newPost);
-                    _postService.SaveChanges();
+                    _manufactureYearService.Add(newManufactureYear);
+                    _manufactureYearService.SaveChanges();
 
-                    var responseData = Mapper.Map<Post, PostViewModel>(newPost);
+                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(newManufactureYear);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -91,10 +104,11 @@ namespace CarDealer.Web.Api
             });
         }
 
+
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, PostViewModel postVm)
+        public HttpResponseMessage Update(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -106,16 +120,16 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var postDb = _postService.GetById(postVm.ID);
+                    var manufactureYearDb = _manufactureYearService.GetById(manufactureYearVm.ID);
 
-                    postDb.UpdatePost(postVm);
+                    manufactureYearDb.UpdateManufactureYear(manufactureYearVm);
 
-                    postDb.UpdatedDate = DateTime.Now;
+                    manufactureYearDb.UpdatedDate = DateTime.Now;
 
-                    _postService.Update(postDb);
-                    _postService.SaveChanges();
+                    _manufactureYearService.Update(manufactureYearDb);
+                    _manufactureYearService.SaveChanges();
 
-                    var responseData = Mapper.Map<Post, PostViewModel>(postDb);
+                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(manufactureYearDb);
                     response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 }
 
@@ -138,10 +152,10 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var oldCarCategory = _postService.Delete(id);
-                    _postService.SaveChanges();
+                    var oldManufactureYear = _manufactureYearService.Delete(id);
+                    _manufactureYearService.SaveChanges();
 
-                    var responseData = Mapper.Map<Post, PostViewModel>(oldCarCategory);
+                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(oldManufactureYear);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -152,7 +166,7 @@ namespace CarDealer.Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedPosts)
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedManufactureYears)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -164,38 +178,15 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var listId = new JavaScriptSerializer().Deserialize<List<int>>(checkedPosts);
+                    var listId = new JavaScriptSerializer().Deserialize<List<int>>(checkedManufactureYears);
                     foreach (var item in listId)
                     {
-                        _postService.Delete(item);
+                        _manufactureYearService.Delete(item);
                     }
-                    _postService.SaveChanges();
-
-                    //var responseData = Mapper.Map<CarCategory, CarCategoryViewModel>(oldCarCategory);
+                    _manufactureYearService.SaveChanges();
+                    
                     response = request.CreateResponse(HttpStatusCode.OK, listId.Count);
-                    //response = request.CreateResponse(HttpStatusCode.OK);
                 }
-
-                return response;
-            });
-        }
-
-        [Route("getbyid/{id:int}")]
-        [HttpGet]
-        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-
-                var postDb = _postService.GetById(id);
-
-                postDb.ViewCount++;
-                _postService.Update(postDb);
-                _postService.SaveChanges();
-
-                var postVm = Mapper.Map<Post, PostViewModel>(postDb);
-
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, postVm);
 
                 return response;
             });

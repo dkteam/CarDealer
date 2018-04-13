@@ -71,5 +71,21 @@ namespace CarDealer.Web.Infrastucture.Extensions
             carCategory.MetaDescription = carCategoryVm.MetaDescription;
             carCategory.Status = carCategoryVm.Status;
         }
+
+        public static void UpdateManufactureYear(this ManufactureYear manufactureYear, ManufactureYearViewModel manufactureYearVm)
+        {
+            manufactureYear.ID = manufactureYearVm.ID;
+            manufactureYear.Name = manufactureYearVm.Name;
+            manufactureYear.Alias = manufactureYearVm.Alias;
+            manufactureYear.Description = manufactureYearVm.Description;
+
+            manufactureYear.CreatedDate = manufactureYearVm.CreatedDate;
+            manufactureYear.CreatedBy = manufactureYearVm.CreatedBy;
+            manufactureYear.UpdatedDate = manufactureYearVm.UpdatedDate;
+            manufactureYear.UpdatedBy = manufactureYearVm.UpdatedBy;
+            manufactureYear.MetaKeyword = manufactureYearVm.MetaKeyword;
+            manufactureYear.MetaDescription = manufactureYearVm.MetaDescription;
+            manufactureYear.Status = manufactureYearVm.Status;
+        }
     }
 }

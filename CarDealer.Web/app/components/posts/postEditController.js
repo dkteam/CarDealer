@@ -5,7 +5,7 @@
 
     function postEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.postDetail = {
-            CreatedDate: new Date(),
+            UpdatedDate: new Date(),
             Status: true
         };
 

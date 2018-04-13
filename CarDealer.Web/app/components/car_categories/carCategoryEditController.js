@@ -5,7 +5,7 @@
 
     function carCategoryEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.carCategory = {
-            CreatedDate: new Date(),
+            UpdatedDate: new Date(),
             Status: true
         };
 

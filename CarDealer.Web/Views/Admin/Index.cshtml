@@ -254,6 +254,20 @@
                             <li><a ui-sref="post_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
                         </ul>
                     </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i>
+                            <span> Đặc điểm xe</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a ui-sref="manufacture_years"><i class="fa fa-circle-o"></i> Năm sản xuất</a></li>
+                            <li><a ui-sref="transmission_types"><i class="fa fa-circle-o"></i> Hệ thống sang số</a></li>
+                            <li><a ui-sref="fuels"><i class="fa fa-circle-o"></i> Loại nhiên liệu</a></li>
+                            <li><a ui-sref="styles"><i class="fa fa-circle-o"></i> Kiểu dáng</a></li>
+                        </ul>
+                    </li>
+                    
                     <li>
                         <a href="#">
                             <i class="fa fa-th"></i> <span>Widgets</span>
@@ -616,7 +630,11 @@
     <script src="~/app/components/car_categories/carCategories.module.js"></script>
     <script src="~/app/components/posts/posts.module.js"></script>
     <script src="~/app/components/post_categories/postCategories.module.js"></script>
+    <script src="~/app/components/manufacture_years/manufactureYears.module.js"></script>
     <script src="~/app/app.js"></script>
+    <script src="~/app/components/manufacture_years/manufactureYearAddController.js"></script>
+    <script src="~/app/components/manufacture_years/manufactureYearEditController.js"></script>
+    <script src="~/app/components/manufacture_years/manufactureYearListController.js"></script>
     <script src="~/app/components/post_categories/postCategoryAddController.js"></script>
     <script src="~/app/components/post_categories/postCategoryEditController.js"></script>
     <script src="~/app/components/post_categories/postCategoryListController.js"></script>

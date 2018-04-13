@@ -170,12 +170,10 @@ namespace CarDealer.Web.Api
                 else
                 {
                     var oldCarCategory = _carCategoryService.Delete(id);
-                    //_carCategoryService.Delete(id);
                     _carCategoryService.SaveChange();
 
                     var responseData = Mapper.Map<CarCategory, CarCategoryViewModel>(oldCarCategory);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
-                    //response = request.CreateResponse(HttpStatusCode.OK);
                 }
 
                 return response;
@@ -203,10 +201,8 @@ namespace CarDealer.Web.Api
                         _carCategoryService.Delete(item);
                     }
                     _carCategoryService.SaveChange();
-
-                    //var responseData = Mapper.Map<CarCategory, CarCategoryViewModel>(oldCarCategory);
+                    
                     response = request.CreateResponse(HttpStatusCode.OK, listId.Count);
-                    //response = request.CreateResponse(HttpStatusCode.OK);
                 }
 
                 return response;

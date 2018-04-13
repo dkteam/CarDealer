@@ -197,6 +197,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\CarCategoryController.cs" />
+    <Compile Include="Api\ManufactureYearController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -252,6 +253,13 @@
     <Content Include="app\components\cars\carListController.js" />
     <Content Include="app\components\cars\carListView.html" />
     <Content Include="app\components\cars\carAddView.html" />
+    <Content Include="app\components\manufacture_years\manufactureYearAddController.js" />
+    <Content Include="app\components\manufacture_years\manufactureYearAddView.html" />
+    <Content Include="app\components\manufacture_years\manufactureYearEditController.js" />
+    <Content Include="app\components\manufacture_years\manufactureYearEditView.html" />
+    <Content Include="app\components\manufacture_years\manufactureYearListController.js" />
+    <Content Include="app\components\manufacture_years\manufactureYearListView.html" />
+    <Content Include="app\components\manufacture_years\manufactureYears.module.js" />
     <Content Include="app\components\posts\postAddController.js" />
     <Content Include="app\components\posts\postAddView.html" />
     <Content Include="app\components\posts\postEditController.js" />

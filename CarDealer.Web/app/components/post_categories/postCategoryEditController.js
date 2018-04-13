@@ -5,7 +5,7 @@
 
     function postCategoryEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.postCategory = {
-            CreatedDate: new Date(),
+            UpdatedDate: new Date(),
             Status: true
         };
 
