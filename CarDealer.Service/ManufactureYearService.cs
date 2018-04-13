@@ -1,11 +1,7 @@
 ﻿using CarDealer.Data.Infrastructure;
 using CarDealer.Data.Repositories;
 using CarDealer.Model.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarDealer.Service
 {
@@ -21,12 +17,11 @@ namespace CarDealer.Service
 
         IEnumerable<ManufactureYear> GetAll(string keyWord);
 
-        //IEnumerable<ManufactureYear> GetAllByParentId(int parentId);
-
         ManufactureYear GetById(int id);
 
         void SaveChanges();
     }
+
     public class ManufactureYearService : IManufactureYearService
     {
         private IManufactureYearRepository _manufactureYear;
@@ -60,11 +55,6 @@ namespace CarDealer.Service
             else
                 return _manufactureYear.GetAll();
         }
-
-        //public IEnumerable<ManufactureYear> GetAllByParentId(int parentId)
-        //{
-        //    return _manufactureYear.GetMulti(x => x.Status && x.ParentID == parentId);
-        //}
 
         public ManufactureYear GetById(int id)
         {

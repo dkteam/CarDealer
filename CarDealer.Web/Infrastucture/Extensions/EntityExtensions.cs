@@ -87,5 +87,13 @@ namespace CarDealer.Web.Infrastucture.Extensions
             manufactureYear.MetaDescription = manufactureYearVm.MetaDescription;
             manufactureYear.Status = manufactureYearVm.Status;
         }
+
+        public static void UpdateFuel(this Fuel fuel, FuelViewModel fuelVm)
+        {
+            fuel.ID = fuelVm.ID;
+            fuel.Name = fuelVm.Name;
+            fuel.Alias = fuelVm.Alias;
+            fuel.Description = fuelVm.Description;
+        }
     }
 }

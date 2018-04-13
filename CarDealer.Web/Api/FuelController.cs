@@ -6,23 +6,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using CarDealer.Service;
-using CarDealer.Model.Models;
 using AutoMapper;
+using CarDealer.Model.Models;
 using CarDealer.Web.Models;
 using CarDealer.Web.Infrastucture.Extensions;
 using System.Web.Script.Serialization;
 
 namespace CarDealer.Web.Api
 {
-    [RoutePrefix("api/manufactureyear")]
-    public class ManufactureYearController : ApiControllerBase
+    [RoutePrefix("api/fuel")]
+    public class FuelController : ApiControllerBase
     {
         #region Initialize
-        IManufactureYearService _manufactureYearService;
-        public ManufactureYearController(IErrorService errorService, IManufactureYearService manufactureYearService)
+        IFuelService _fuelService;
+        public FuelController(IErrorService errorService, IFuelService fuelService)
             : base(errorService)
         {
-            this._manufactureYearService = manufactureYearService;
+            this._fuelService = fuelService;
         }
         #endregion
 
@@ -34,14 +34,14 @@ namespace CarDealer.Web.Api
             {
                 int totalRow = 0;
 
-                var listNonPaging = _manufactureYearService.GetAll(keyWord);
+                var listNonPaging = _fuelService.GetAll(keyWord);
 
                 totalRow = listNonPaging.Count();
                 var query = listNonPaging.OrderByDescending(x => x.Name).Skip(page * pageSize).Take(pageSize);
 
-                var listVm = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(query);
+                var listVm = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(query);
 
-                var paginationSet = new PaginationSet<ManufactureYearViewModel>()
+                var paginationSet = new PaginationSet<FuelViewModel>()
                 {
                     Items = listVm,
                     Page = page,
@@ -62,9 +62,9 @@ namespace CarDealer.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var db = _manufactureYearService.GetById(id);
+                var db = _fuelService.GetById(id);
 
-                var vm = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(db);
+                var vm = Mapper.Map<Fuel, FuelViewModel>(db);
 
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, vm);
 
@@ -75,7 +75,7 @@ namespace CarDealer.Web.Api
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]
-        public HttpResponseMessage Create(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
+        public HttpResponseMessage Create(HttpRequestMessage request, FuelViewModel fuelVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -87,16 +87,14 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var newManufactureYear = new ManufactureYear();
+                    var newFuel = new Fuel();
 
-                    newManufactureYear.UpdateManufactureYear(manufactureYearVm);
+                    newFuel.UpdateFuel(fuelVm);                    
 
-                    newManufactureYear.CreatedDate = DateTime.Now;
+                    _fuelService.Add(newFuel);
+                    _fuelService.SaveChanges();
 
-                    _manufactureYearService.Add(newManufactureYear);
-                    _manufactureYearService.SaveChanges();
-
-                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(newManufactureYear);
+                    var responseData = Mapper.Map<Fuel, FuelViewModel>(newFuel);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -108,7 +106,7 @@ namespace CarDealer.Web.Api
         [Route("update")]
         [HttpPut]
         [AllowAnonymous]
-        public HttpResponseMessage Update(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
+        public HttpResponseMessage Update(HttpRequestMessage request, FuelViewModel fuelVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -120,22 +118,21 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var manufactureYearDb = _manufactureYearService.GetById(manufactureYearVm.ID);
+                    var fuelDb = _fuelService.GetById(fuelVm.ID);
 
-                    manufactureYearDb.UpdateManufactureYear(manufactureYearVm);
+                    fuelDb.UpdateFuel(fuelVm);
 
-                    manufactureYearDb.UpdatedDate = DateTime.Now;
+                    _fuelService.Update(fuelDb);
+                    _fuelService.SaveChanges();
 
-                    _manufactureYearService.Update(manufactureYearDb);
-                    _manufactureYearService.SaveChanges();
-
-                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(manufactureYearDb);
+                    var responseData = Mapper.Map<Fuel, FuelViewModel>(fuelDb);
                     response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 }
 
                 return response;
             });
         }
+
 
         [Route("delete")]
         [HttpDelete]
@@ -152,10 +149,10 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var oldManufactureYear = _manufactureYearService.Delete(id);
-                    _manufactureYearService.SaveChanges();
+                    var oldfuel = _fuelService.Delete(id);
+                    _fuelService.SaveChanges();
 
-                    var responseData = Mapper.Map<ManufactureYear, ManufactureYearViewModel>(oldManufactureYear);
+                    var responseData = Mapper.Map<Fuel, FuelViewModel>(oldfuel);
                     response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
 
@@ -166,7 +163,7 @@ namespace CarDealer.Web.Api
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]
-        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedManufactureYears)
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedFuels)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -178,13 +175,13 @@ namespace CarDealer.Web.Api
                 }
                 else
                 {
-                    var listId = new JavaScriptSerializer().Deserialize<List<int>>(checkedManufactureYears);
+                    var listId = new JavaScriptSerializer().Deserialize<List<int>>(checkedFuels);
                     foreach (var item in listId)
                     {
-                        _manufactureYearService.Delete(item);
+                        _fuelService.Delete(item);
                     }
-                    _manufactureYearService.SaveChanges();
-                    
+                    _fuelService.SaveChanges();
+
                     response = request.CreateResponse(HttpStatusCode.OK, listId.Count);
                 }
 

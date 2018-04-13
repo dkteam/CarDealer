@@ -25,7 +25,7 @@
             $scope.manufactureYear.Alias = commonService.getSeoTitle($scope.manufactureYear.Name);
         }
 
-        function loadCarCategoryDetail() {
+        function loadmanufactureYearDetail() {
             apiService.get('api/manufactureyear/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.manufactureYear = result.data;
             }, function (error) {
@@ -33,6 +33,6 @@
             });
         }
 
-        loadCarCategoryDetail();
+        loadmanufactureYearDetail();
     }
 })(angular.module('cardealer.manufacture_years'));
