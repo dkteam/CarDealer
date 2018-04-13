@@ -1,12 +1,11 @@
 ﻿<section class="content-header">
     <h1>
-        Thêm năm sản xuất
-        <small>Thêm năm sản xuất mới</small>
+        Thêm kiểu dáng xe
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a ui-sref="cars">Xe</a></li>
-        <li><a ui-sref="manufacture_years">Năm sản xuất</a></li>
+        <li><a ui-sref="styles">Kiểu dáng</a></li>
         <li class="active">Thêm mới</li>
     </ol>
 </section>
@@ -18,28 +17,28 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" novalidate name="frmAddCarCategory" role="form" ng-submit="AddManufactureYear()">
+            <form class="form-horizontal" novalidate name="frmAddStyle" role="form" ng-submit="AddStyle()">
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Năm sản xuất</label>
+                        <label class="col-sm-2 control-label">Tên kiểu dáng</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Năm sản xuất" name="name" ng-model="manufactureYear.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
-                            <span ng-show="frmAddCarCategory.name.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmAddCarCategory.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <input type="text" class="form-control" placeholder="Tên kiểu dáng" name="name" ng-model="styles.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span ng-show="frmAddStyle.name.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmAddStyle.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Tiêu đề SEO</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Tiêu đề SEO" name="alias" ng-model="manufactureYear.Alias" required>
-                            <span ng-show="frmAddCarCategory.alias.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmAddCarCategory.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <input type="text" class="form-control" placeholder="Tiêu đề SEO" name="alias" ng-model="styles.Alias" required>
+                            <span ng-show="frmAddStyle.alias.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmAddStyle.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Mô tả ngắn</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="manufactureYear.Description" ng-maxlength="256"></textarea>
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="styles.Description" ng-maxlength="256"></textarea>
                             <span ng-show="frmAddStyle.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
@@ -47,7 +46,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="status" ng-model="manufactureYear.Status" ng-checked="manufactureYear.Status"> Kích hoạt
+                                    <input type="checkbox" name="status" ng-model="styles.Status" ng-checked="styles.Status"> Kích hoạt
                                 </label>
                             </div>
                         </div>
@@ -55,8 +54,8 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-default" ui-sref="car_categories"><i class="fa fa-undo"></i> Hủy</button>
-                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmAddCarCategory.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="submit" class="btn btn-default" ui-sref="styles"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmAddStyle.$invalid"><i class="fa fa-save"></i> Lưu</button>
                 </div>
                 <!-- /.box-footer -->
             </form>

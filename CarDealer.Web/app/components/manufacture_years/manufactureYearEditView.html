@@ -1,7 +1,6 @@
 ﻿<section class="content-header">
     <h1>
-        Chỉnh năm sản xuất
-        <small>Sửa năm sản xuất</small>
+        Chỉnh sửa năm sản xuất: <span style="color:red">{{manufactureYear.Name}}</span>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -39,7 +38,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Mô tả ngắn</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="manufactureYear.Description"></textarea>
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="manufactureYear.Description" ng-maxlength="256"></textarea>
+                            <span ng-show="frmAddStyle.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">

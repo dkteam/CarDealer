@@ -39,9 +39,9 @@
                         <!-- textarea -->
                         <div class="form-group">
                             <label>Mô tả ngắn</label>
-                            <textarea class="form-control" rows="3" placeholder="Nhập vào mô tả ngắn ..." name="description" ng-model="postDetail.Description" required></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Nhập vào mô tả ngắn ..." name="description" ng-maxlength="256" ng-model="postDetail.Description" required></textarea>
                             <span class="help-block"><span ng-show="fromAddPost.description.$invalid" class="has-error">(Bắt buộc)</span> Xuất hiện ở các trang danh sách bài viết</span>
-                            
+                            <span ng-show="fromAddPost.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>                            
                         </div>
                         <!-- textarea -->
                         <div class="form-group">
@@ -66,14 +66,16 @@
                     <!-- textarea -->
                         <div class="form-group">
                             <label>MetaDescription</label>
-                            <textarea class="form-control" rows="3" placeholder="..."></textarea>
+                            <textarea class="form-control" rows="3" placeholder="..." ng-maxlength="256" name="metaDescription" ng-model="postDetail.MetaDescription"></textarea>
                             <span class="help-block">Mô tả cho MetaDescription, xuất hiện trên Search Engine</span>
+                            <span ng-show="fromAddPost.metaDescription.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>                
                         </div>
                         <!-- text input -->
                         <div class="form-group">
                             <label>MetaKeywords</label>
-                            <input type="text" class="form-control" placeholder="...">
+                            <input type="text" class="form-control" placeholder="..." ng-maxlength="256" name="metaKeyword" ng-model="postDetail.MetaKeyword">
                             <span class="help-block">Từ khóa cho thẻ MetaKeyword, thường không được ứng dụng</span>
+                            <span ng-show="fromAddPost.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                         <!-- text input -->
                         <div class="form-group">

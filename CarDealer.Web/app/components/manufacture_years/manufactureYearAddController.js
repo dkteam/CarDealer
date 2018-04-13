@@ -5,7 +5,7 @@
 
     function manufactureYearAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.manufactureYear = {
-            UpdatedDate: new Date(),
+            CreatedDate: new Date(),
             Status: true
         };
 

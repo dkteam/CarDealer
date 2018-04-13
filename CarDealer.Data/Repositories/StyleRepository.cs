@@ -3,11 +3,11 @@ using CarDealer.Model.Models;
 
 namespace CarDealer.Data.Repositories
 {
-    public interface IStyle : IRepository<Style>
+    public interface IStyleRepository : IRepository<Style>
     {
     }
 
-    public class StyleRepository : RepositoryBase<Style>, IStyle
+    public class StyleRepository : RepositoryBase<Style>, IStyleRepository
     {
         public StyleRepository(IDbFactory dbFactory) : base(dbFactory)
         {

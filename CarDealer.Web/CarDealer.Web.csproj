@@ -201,6 +201,7 @@
     <Compile Include="Api\ManufactureYearController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
+    <Compile Include="Api\StyleController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -282,6 +283,13 @@
     <Content Include="app\components\post_categories\postCategoryEditView.html" />
     <Content Include="app\components\post_categories\postCategoryListController.js" />
     <Content Include="app\components\post_categories\postCategoryListView.html" />
+    <Content Include="app\components\styles\styleAddController.js" />
+    <Content Include="app\components\styles\styleAddView.html" />
+    <Content Include="app\components\styles\styleEditController.js" />
+    <Content Include="app\components\styles\styleEditView.html" />
+    <Content Include="app\components\styles\styleListController.js" />
+    <Content Include="app\components\styles\styleListView.html" />
+    <Content Include="app\components\styles\styles.module.js" />
     <Content Include="app\shared\directives\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />

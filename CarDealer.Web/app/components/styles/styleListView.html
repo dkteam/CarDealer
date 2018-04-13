@@ -1,12 +1,12 @@
 ﻿<section class="content-header">
     <h1>
-        Năm sản xuất
-        <small>Năm ra đời của xe</small>
+        Kiểu dáng xe
+        <small>Ngoại hình xe</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a ui-sref="cars">Xe</a></li>
-        <li class="active">Năm sản xuất</li>
+        <li class="active">Kiểu dáng</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -20,7 +20,7 @@
                     <div class="box-title">
                         <span class="input-group-btn">
                             <button class="btn btn-danger" type="button" ng-click="deleteMultiple()" id="btnDelete" disabled><i class="fa fa-trash-o"></i> Xóa</button>
-                            <button class="btn btn-primary" type="button" ui-sref="manufacture_year_add"><i class="fa fa-plus"></i> Thêm mới</button>
+                            <button class="btn btn-primary" type="button" ui-sref="style_add"><i class="fa fa-plus"></i> Thêm mới</button>
                         </span>
                     </div>
                     <div class="box-tools" style="width:30%">
@@ -38,14 +38,14 @@
                         <table class="table table-hover table-responsive">
                             <tr>
                                 <th style="width:5%"><input name="all" type="checkbox" ng-click="selectAll()" /></th>
-                                <th>Năm sản xuất</th>
+                                <th>Kiểu dáng</th>
                                 <th>Mô tả ngắn</th>
                                 <th style="width: 10%">Tạo bởi</th>
                                 <th style="width: 15%">Ngày tạo</th>
                                 <th style="width: 10%">Trạng thái</th>
                                 <th style="width: 10%">Thao tác</th>
                             </tr>
-                            <tr ng-repeat="item in manufactureYear">
+                            <tr ng-repeat="item in styles">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
                                 <td>{{item.Name}}</td>
                                 <td>{{item.Description}}</td>
@@ -58,8 +58,8 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary" ui-sref="manufacture_year_edit({id:item.ID})"><i class="fa fa-pencil-square-o"></i></button>
-                                    <button class="btn btn-sm btn-danger" ng-click="deleteManufactureYear(item.ID)"><i class="fa fa-trash-o"></i></button>
+                                    <button class="btn btn-sm btn-primary" ui-sref="style_edit({id:item.ID})"><i class="fa fa-pencil-square-o"></i></button>
+                                    <button class="btn btn-sm btn-danger" ng-click="deleteStyle(item.ID)"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                         </table>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-12">
-                        <div class="col-md-6 pull-left"><pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getManufactureYears(page)"></pager-directive></div>
+                        <div class="col-md-6 pull-left"><pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getStyles(page)"></pager-directive></div>
                         <div class="col-md-6 pull-right"><span class="pull-right">Có <span style="color:#dd4b39">{{totalCount}}</span> kết quả được tìm thấy.</span></div>
                     </div>
                 </div>

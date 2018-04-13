@@ -8,6 +8,7 @@
          'cardealer.posts',
          'cardealer.manufacture_years',
          'cardealer.fuels',
+         'cardealer.styles',
          'cardealer.common'])
          .config(config);
 

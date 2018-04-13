@@ -95,5 +95,21 @@ namespace CarDealer.Web.Infrastucture.Extensions
             fuel.Alias = fuelVm.Alias;
             fuel.Description = fuelVm.Description;
         }
+
+        public static void UpdateStyle(this Style style, StyleViewModel styleVm)
+        {
+            style.ID = styleVm.ID;
+            style.Name = styleVm.Name;
+            style.Alias = styleVm.Alias;
+            style.Description = styleVm.Description;
+
+            style.CreatedDate = styleVm.CreatedDate;
+            style.CreatedBy = styleVm.CreatedBy;
+            style.UpdatedDate = styleVm.UpdatedDate;
+            style.UpdatedBy = styleVm.UpdatedBy;
+            style.MetaKeyword = styleVm.MetaKeyword;
+            style.MetaDescription = styleVm.MetaDescription;
+            style.Status = styleVm.Status;
+        }
     }
 }

@@ -18,28 +18,29 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" novalidate name="frmUpdateProductCategory" role="form" ng-submit="UpdateCarCategory()">
+            <form class="form-horizontal" novalidate name="frmEditCarCategory" role="form" ng-submit="UpdateCarCategory()">
                 <div class="box-body">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Tên danh mục</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Tên dòng xe" name="name" ng-change="GetSeoTitle()" ng-model="carCategory.Name" required ng-maxlength="256">
-                            <span ng-show="frmUpdateProductCategory.name.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmUpdateProductCategory.name.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
+                            <span ng-show="frmEditCarCategory.name.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmEditCarCategory.name.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Tiêu đề SEO</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Tiêu đề SEO" name="alias" ng-model="carCategory.Alias" required ng-maxlength="256">
-                            <span ng-show="frmUpdateProductCategory.alias.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmAddCarCategoryfrmUpdateProductCategory.alias.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
+                            <span ng-show="frmEditCarCategory.alias.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmEditCarCategory.alias.$error.maxlength" class="has-error">và tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Mô tả ngắn</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="carCategory.Description"></textarea>
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="carCategory.Description" ng-maxlength="256"></textarea>
+                            <span ng-show="frmEditCarCategory.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -66,13 +67,15 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">MetaKeyword</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="MetaKeyword" name="metaKeyword" ng-model="carCategory.MetaKeyWord">
+                            <input type="text" class="form-control" placeholder="MetaKeyword" name="metaKeyword" ng-maxlength="256" ng-model="carCategory.MetaKeyWord">
+                            <span ng-show="frmEditCarCategory.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">MetaDescription</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="MetaDescription" name="metaDescription" ng-model="carCategory.MetaDescription"></textarea>
+                            <textarea class="form-control" placeholder="MetaDescription" name="metaDescription" ng-maxlength="256" ng-model="carCategory.MetaDescription"></textarea>
+                            <span ng-show="frmEditCarCategory.metaDescription.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -93,7 +96,7 @@
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <button type="submit" class="btn btn-default" ui-sref="car_categories"><i class="fa fa-undo"></i> Hủy</button>
-                    <button type="submit"ng-disabled="frmUpdateProductCategory.$invalid" class="btn btn-success pull-right"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="submit"ng-disabled="frmEditCarCategory.$invalid" class="btn btn-success pull-right"><i class="fa fa-save"></i> Lưu</button>
                 </div>
                 <!-- /.box-footer -->
             </form>
