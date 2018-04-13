@@ -1,0 +1,65 @@
+﻿<section class="content-header">
+    <h1>
+        Chỉnh sửa hệ thống sang số: <span style="color:red">{{transmissionTypes.Name}}</span> 
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="cars">Xe</a></li>
+        <li><a ui-sref="transmission_types">Hệ thống sang số</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Điền thông tin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmEditTransmissionType" role="form" ng-submit="UpdateTransmissionType()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên hệ thống sang số</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tên hệ thống sang số" name="name" ng-model="transmissionTypes.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span ng-show="frmEditTransmissionType.name.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmEditTransmissionType.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tiêu đề SEO</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tiêu đề SEO" name="alias" ng-model="transmissionTypes.Alias" required>
+                            <span ng-show="frmEditTransmissionType.alias.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmEditTransmissionType.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Mô tả ngắn</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="transmissionTypes.Description" ng-maxlength="256"></textarea>
+                            <span ng-show="frmEditTransmissionType.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="transmissionTypes.Status" ng-checked="transmissionTypes.Status"> Kích hoạt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default" ui-sref="transmission_types"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmEditTransmissionType.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

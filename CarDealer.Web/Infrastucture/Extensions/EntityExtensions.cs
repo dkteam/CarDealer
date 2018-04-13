@@ -111,5 +111,22 @@ namespace CarDealer.Web.Infrastucture.Extensions
             style.MetaDescription = styleVm.MetaDescription;
             style.Status = styleVm.Status;
         }
+
+
+        public static void UpdateTransmissionType(this TransmissionType transmissionType, TransmissionTypeViewModel transmissionTypeVm)
+        {
+            transmissionType.ID = transmissionTypeVm.ID;
+            transmissionType.Name = transmissionTypeVm.Name;
+            transmissionType.Alias = transmissionTypeVm.Alias;
+            transmissionType.Description = transmissionTypeVm.Description;
+
+            transmissionType.CreatedDate = transmissionTypeVm.CreatedDate;
+            transmissionType.CreatedBy = transmissionTypeVm.CreatedBy;
+            transmissionType.UpdatedDate = transmissionTypeVm.UpdatedDate;
+            transmissionType.UpdatedBy = transmissionTypeVm.UpdatedBy;
+            transmissionType.MetaKeyword = transmissionTypeVm.MetaKeyword;
+            transmissionType.MetaDescription = transmissionTypeVm.MetaDescription;
+            transmissionType.Status = transmissionTypeVm.Status;
+        }
     }
 }

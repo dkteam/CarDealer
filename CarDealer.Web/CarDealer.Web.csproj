@@ -202,6 +202,7 @@
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
     <Compile Include="Api\StyleController.cs" />
+    <Compile Include="Api\TransmissionTypeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -290,6 +291,13 @@
     <Content Include="app\components\styles\styleListController.js" />
     <Content Include="app\components\styles\styleListView.html" />
     <Content Include="app\components\styles\styles.module.js" />
+    <Content Include="app\components\transmission_types\transmissionTypeAddController.js" />
+    <Content Include="app\components\transmission_types\transmissionTypeAddView.html" />
+    <Content Include="app\components\transmission_types\transmissionTypeEditController.js" />
+    <Content Include="app\components\transmission_types\transmissionTypeEditView.html" />
+    <Content Include="app\components\transmission_types\transmissionTypeListController.js" />
+    <Content Include="app\components\transmission_types\transmissionTypeListView.html" />
+    <Content Include="app\components\transmission_types\transmissionTypes.module.js" />
     <Content Include="app\shared\directives\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />

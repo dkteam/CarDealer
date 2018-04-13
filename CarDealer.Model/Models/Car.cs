@@ -35,7 +35,7 @@ namespace CarDealer.Model.Models
 
         public bool CarStatus { set; get; }
 
-        public int Odo { set; get; }
+        public int? Odo { set; get; }
 
         public int? FuelID { set; get; }
 

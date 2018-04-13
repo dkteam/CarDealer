@@ -27,6 +27,8 @@ D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editName
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.delCarTagsInPostModel.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editPostNullable.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editNullable.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editCarNullable.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editSlide.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.csproj.GenerateResource.Cache
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.dll
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.pdb

@@ -9,6 +9,7 @@
          'cardealer.manufacture_years',
          'cardealer.fuels',
          'cardealer.styles',
+         'cardealer.transmission_types',
          'cardealer.common'])
          .config(config);
 

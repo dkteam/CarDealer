@@ -16,6 +16,7 @@ namespace CarDealer.Model.Models
         [MaxLength(256)]
         public string Description { set; get; }
 
+        [Required]
         [MaxLength(256)]
         public string Image { set; get; }
 
