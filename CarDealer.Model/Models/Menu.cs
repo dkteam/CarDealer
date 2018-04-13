@@ -25,7 +25,7 @@ namespace CarDealer.Model.Models
 
         public int? DisplayOrder { set; get; }
 
-        public int GroupID { set; get; }
+        public int? GroupID { set; get; }
 
         [MaxLength(10)]
         public string Target { set; get; }

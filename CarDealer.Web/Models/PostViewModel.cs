@@ -14,7 +14,7 @@ namespace CarDealer.Web.Models
         public string Alias { set; get; }
 
 
-        public int CategoryID { set; get; }
+        public int? CategoryID { set; get; }
         
         public string Image { set; get; }
         
@@ -44,10 +44,8 @@ namespace CarDealer.Web.Models
 
         public bool Status { set; get; }
 
-        public virtual PostCategoryViewModel PostCategories { set; get; }
+        public PostCategoryViewModel PostCategory { set; get; }
 
-        public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
-
-        public virtual IEnumerable<CarTagViewModel> CarTags { set; get; }
+        public List<PostTagViewModel> PostTags { set; get; }
     }
 }

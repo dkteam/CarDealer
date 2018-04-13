@@ -22,7 +22,7 @@ namespace CarDealer.Model.Models
         [MaxLength(500)]
         public string URL { set; get; }
 
-        public int DisplayOrder { set; get; }
+        public int? DisplayOrder { set; get; }
 
         public bool Status { set; get; }
     }

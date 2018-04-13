@@ -91,7 +91,7 @@
                 }
             }
 
-            apiService.get('/api/postcategory/getall', config, function (result) {
+            apiService.get('api/postcategory/getall', config, function (result) {
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có kết quả nào được tìm thấy.')
                 }

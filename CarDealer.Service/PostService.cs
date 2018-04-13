@@ -13,7 +13,7 @@ namespace CarDealer.Service
     {
         void Add(Post post);
         void Update(Post post);
-        void Delete(int id);
+        Post Delete(int id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetAll(string keyWord);
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
@@ -39,9 +39,9 @@ namespace CarDealer.Service
             _postRepository.Add(post);
         }
 
-        public void Delete(int id)
+        public Post Delete(int id)
         {
-            _postRepository.Delete(id);
+            return _postRepository.Delete(id);
         }
 
         public IEnumerable<Post> GetAll()

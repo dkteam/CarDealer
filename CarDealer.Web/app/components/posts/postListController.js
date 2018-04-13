@@ -16,20 +16,22 @@
         $scope.deleteMultiple = deleteMultiple;
 
         function deleteMultiple() {
-            var listId = [];
-            $.each($scope.selected, function (i, item) {
-                listId.push(item.ID);
-            });
-            var config = {
-                params: {
-                    checkedCarCategories: JSON.stringify(listId)
+            $ngBootbox.confirm('Bạn có chắc chắn muốn xóa?').then(function () {
+                var listId = [];
+                $.each($scope.selected, function (i, item) {
+                    listId.push(item.ID);
+                });
+                var config = {
+                    params: {
+                        checkedPosts: JSON.stringify(listId)
+                    }
                 }
-            }
-            apiService.del('api/post/deletemulti', config, function (result) {
-                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                search();
-            }, function (error) {
-                notificationService.displayError('Xóa không thành công');
+                apiService.del('api/post/deletemulti', config, function (result) {
+                    notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                    search();
+                }, function (error) {
+                    notificationService.displayError('Xóa không thành công');
+                });
             });
         }
 
@@ -60,13 +62,13 @@
         }, true);
 
         function deletePost(id) {
-            $ngBootbox.confirm('Bạn có chắc muốn xóa?').then(function () {
+            $ngBootbox.confirm('Bạn có chắc chắn muốn xóa?').then(function () {
                 var config = {
                     params: {
                         id: id
                     }
                 }
-                apiService.del('api/carcategory/delete', config, function () {
+                apiService.del('api/post/delete', config, function () {
                     notificationService.displaySuccess('Xóa thành công');
                     search();
                 }, function () {
@@ -89,7 +91,7 @@
                 }
             }
 
-            apiService.get('/api/post/getall', config, function (result) {
+            apiService.get('api/post/getall', config, function (result) {
                 if (result.data.TotalCount == 0) {
                     notificationService.displayWarning('Không có kết quả nào được tìm thấy.')
                 }

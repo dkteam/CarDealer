@@ -23,16 +23,13 @@ namespace CarDealer.Model.Models
         [Required]
         [Column(TypeName ="varchar")]
         public string Alias { set; get; }
-
-        [Required]
+        
         [MaxLength(50)]
         public string Country { set; get; }
-
-        [Required]
+        
         [MaxLength(256)]
         public string Logo { set; get; }
-
-        [Required]
+        
         [MaxLength(50)]
         public string Website { set; get; }
 

@@ -13,8 +13,10 @@ namespace CarDealer.Web.Models
         
         public string Alias { set; get; }
 
-        public int BrandID { set; get; }
-        
+        public int? BrandID { set; get; }
+                
+        public int? CategoryID { set; get; }
+
         public string Image { set; get; }
         
         public string MoreImages { set; get; }
@@ -23,13 +25,13 @@ namespace CarDealer.Web.Models
 
         public int Odo { set; get; }
 
-        public int FuelID { set; get; }
+        public int? FuelID { set; get; }
 
-        public int StyleID { set; get; }
+        public int? StyleID { set; get; }
 
-        public int ManufactureYearID { set; get; }
+        public int? ManufactureYearID { set; get; }
 
-        public int TransmissionTypeID { set; get; }
+        public int? TransmissionTypeID { set; get; }
         
         public string Engine { set; get; }
         

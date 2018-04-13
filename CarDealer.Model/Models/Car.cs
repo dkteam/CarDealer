@@ -21,9 +21,9 @@ namespace CarDealer.Model.Models
         [Column(TypeName = "varchar")]
         public string Alias { set; get; }
 
-        public int BrandID { set; get; }
+        public int? BrandID { set; get; }
 
-        public int CategoryID { set; get; }
+        public int? CategoryID { set; get; }
 
         [Required]
         [MaxLength(256)]
@@ -37,13 +37,13 @@ namespace CarDealer.Model.Models
 
         public int Odo { set; get; }
 
-        public int FuelID { set; get; }
+        public int? FuelID { set; get; }
 
-        public int StyleID { set; get; }
+        public int? StyleID { set; get; }
 
-        public int ManufactureYearID { set; get; }
+        public int? ManufactureYearID { set; get; }
 
-        public int TransmissionTypeID { set; get; }
+        public int? TransmissionTypeID { set; get; }
 
         [MaxLength(256)]
         public string Engine { set; get; }

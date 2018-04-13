@@ -1,11 +1,7 @@
 ﻿using CarDealer.Model.Abstract;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarDealer.Model.Models
 {
@@ -25,18 +21,15 @@ namespace CarDealer.Model.Models
         [Column(TypeName = "varchar")]
         public string Alias { set; get; }
 
-
-        public int CategoryID { set; get; }
+        public int? CategoryID { set; get; }
 
         [Required]
         [MaxLength(256)]
         public string Image { set; get; }
-
-        [Required]
+        
         [MaxLength(256)]
         public string Description { set; get; }
-
-        [Required]
+        
         public string Content { set; get; }
 
         public bool? HomeFlag { set; get; }
@@ -48,10 +41,8 @@ namespace CarDealer.Model.Models
         public string Tags { set; get; }
 
         [ForeignKey("CategoryID")]
-        public virtual PostCategory PostCategories { set; get; }
+        public virtual PostCategory PostCategory { set; get; }
 
         public virtual IEnumerable<PostTag> PostTags { set; get; }
-
-        public virtual IEnumerable<CarTag> CarTags { set; get; }
     }
 }

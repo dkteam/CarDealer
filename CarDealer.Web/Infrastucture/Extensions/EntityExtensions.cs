@@ -41,6 +41,7 @@ namespace CarDealer.Web.Infrastucture.Extensions
             post.HomeFlag = postVm.HomeFlag;
             post.HotFlag = postVm.HotFlag;
             post.ViewCount = postVm.ViewCount;
+            post.Tags = postVm.Tags;
 
             post.CreatedDate = postVm.CreatedDate;
             post.CreatedBy = postVm.CreatedBy;

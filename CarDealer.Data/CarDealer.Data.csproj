@@ -101,6 +101,22 @@
     <Compile Include="Migrations\201804120755082_updateDb.Designer.cs">
       <DependentUpon>201804120755082_updateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121016111_editNameField.cs" />
+    <Compile Include="Migrations\201804121016111_editNameField.Designer.cs">
+      <DependentUpon>201804121016111_editNameField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121022024_delCarTagsInPostModel.cs" />
+    <Compile Include="Migrations\201804121022024_delCarTagsInPostModel.Designer.cs">
+      <DependentUpon>201804121022024_delCarTagsInPostModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804130458067_editPostNullable.cs" />
+    <Compile Include="Migrations\201804130458067_editPostNullable.Designer.cs">
+      <DependentUpon>201804130458067_editPostNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804130517356_editNullable.cs" />
+    <Compile Include="Migrations\201804130517356_editNullable.Designer.cs">
+      <DependentUpon>201804130517356_editNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -171,6 +187,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804120755082_updateDb.resx">
       <DependentUpon>201804120755082_updateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121016111_editNameField.resx">
+      <DependentUpon>201804121016111_editNameField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121022024_delCarTagsInPostModel.resx">
+      <DependentUpon>201804121022024_delCarTagsInPostModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804130458067_editPostNullable.resx">
+      <DependentUpon>201804130458067_editPostNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804130517356_editNullable.resx">
+      <DependentUpon>201804130517356_editNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

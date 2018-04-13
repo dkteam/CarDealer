@@ -13,55 +13,57 @@
 <!-- Main content -->
 <section class="content">
     <div class="row">
-        <!-- left column -->
-        <div class="col-md-8">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <form role="form" novalidate name="frmAddPost1">
-                        <!-- text input -->
+        <form role="form" novalidate name="fromAddPost">
+            <!-- left column -->
+            <div class="col-md-8">
+                <!-- general form elements disabled -->
+                <div class="box box-warning">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!--<form role="form" novalidate name="frmAddPost1">
+                    <!-- text input -->
                         <div class="form-group">
                             <label>Tiêu đề</label>
-                            <input type="text" class="form-control" placeholder="Nhập vào tên bài viết ..." name="name" ng-model="postDisplay.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
-                            <span class="help-block">Tên bài viết hiển thị trên trang nội dung</span>
-                            <span ng-show="frmAddCarCategory.name.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmAddCarCategory.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <input type="text" class="form-control" placeholder="Nhập vào tên bài viết ..." name="name" ng-model="postDetail.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span class="help-block"><span ng-show="fromAddPost.name.$invalid" class="has-error">(Bắt buộc)</span> Tên bài viết hiển thị trên trang nội dung</span>
+                            
+                            <span ng-show="fromAddPost.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                         <div class="form-group">
                             <label>SEO link</label>
-                            <input type="text" class="form-control" placeholder="Tiêu đề SEO ..." name="alias" ng-model="postDisplay.Alias" required>
-                            <span class="help-block">SEO link - hiển thị link thân thiệt với search engine</span>
-                            <span ng-show="frmAddCarCategory.alias.$invalid" class="has-error">*Bắt buộc</span>
-                            <span ng-show="frmAddCarCategory.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <input type="text" class="form-control" placeholder="Tiêu đề SEO ..." name="alias" ng-model="postDetail.Alias" required>
+                            <span class="help-block"><span ng-show="fromAddPost.alias.$invalid" class="has-error">(Bắt buộc)</span> SEO link - hiển thị link thân thiệt với search engine</span>
+                            
+                            <span ng-show="fromAddPost.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
                         <!-- textarea -->
                         <div class="form-group">
                             <label>Mô tả ngắn</label>
-                            <textarea class="form-control" rows="3" placeholder="Nhập vào mô tả ngắn ..." name="description" ng-model="postDisplay.Description" required></textarea>
-                            <span class="help-block">Xuất hiện ở các trang danh sách bài viết</span>
-                            <span ng-show="frmAddCarCategory.description.$invalid" class="has-error">*Bắt buộc</span>
+                            <textarea class="form-control" rows="3" placeholder="Nhập vào mô tả ngắn ..." name="description" ng-model="postDetail.Description" required></textarea>
+                            <span class="help-block"><span ng-show="fromAddPost.description.$invalid" class="has-error">(Bắt buộc)</span> Xuất hiện ở các trang danh sách bài viết</span>
+                            
                         </div>
                         <!-- textarea -->
                         <div class="form-group">
                             <label>Nội dung chi tiết</label>
-                            <textarea class="form-control" rows="3" placeholder="Nội dung chi tiết ..." name="content" ckeditor="ckeditorOptions" ng-model="postDisplay.Content"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Nội dung chi tiết ..." name="content" ckeditor="ckeditorOptions()" id="txtDetail" ng-model="postDetail.Content"></textarea>
+                            <span class="help-block"> Nội dung chi tiết của bài viết</span>
                         </div>
-                    </form>
+
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
-        </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <div class="col-md-4">
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <form role="form" novalidate name="fromAddPost2">
-                        <!-- textarea -->
+            <!--/.col (left) -->
+            <!-- right column -->
+            <div class="col-md-4">
+                <!-- general form elements disabled -->
+                <div class="box box-warning">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!--<form role="form" novalidate name="fromAddPost2">
+                    <!-- textarea -->
                         <div class="form-group">
                             <label>MetaDescription</label>
                             <textarea class="form-control" rows="3" placeholder="..."></textarea>
@@ -76,24 +78,24 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Tags</label>
-                            <input type="text" class="form-control" name="tags" ng-model="postDisplay.Tags" placeholder="Nhập các tags cần thiết....">
+                            <input type="text" class="form-control" name="tags" ng-model="postDetail.Tags" placeholder="Nhập các tags cần thiết....">
                             <span class="help-block">Tags cho bài viết, lợi cho SEO, mỗi tag cách nhau bằng dấu phẩy</span>
                         </div>
                         <!-- select -->
                         <div class="form-group">
                             <label>Danh mục cha</label>
-                            <select class="form-control" name="categoryId" ng-model="postDisplay.CategoryID" ng-options="option.ID as option.Name for option in categories">
+                            <select class="form-control" name="categoryId" ng-model="postDetail.CategoryID" ng-options="option.ID as option.Name for option in categories">
                                 <option value="">--- chọn danh mục cha ---</option>
                             </select>
-                            <input type="hidden" name="categoryId" ng-model="postDisplay.CategoryID" />
-                            <span class="help-block">Bài viết thuộc danh mục nào?</span>
-                            <span ng-show="fromAddPost2.categoryId.$invalid" class="has-error">*Bắt buộc</span>
+                            <input type="hidden" name="categoryId" ng-model="postDetail.CategoryID" />
+                            <span class="help-block"> Bài viết thuộc danh mục nào?</span>
+                            
                         </div>
                         <!-- checkbox -->
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" ng-model="postDisplay.Status" ng-checked="postDisplay.Status">
+                                    <input type="checkbox" ng-model="postDetail.Status" ng-checked="postDetail.Status">
                                     Kích hoạt
                                 </label>
                             </div>
@@ -113,25 +115,32 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Hình đại diện</label>
-                            <input type="text" class="form-control" placeholder="Hình đại diện ..." required name="image" ng-model="postDisplay.Image">
+                            <input type="text" class="form-control" placeholder="Hình đại diện ..." required name="image" ng-model="postDetail.Image">
                             <button class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
-                            <span class="help-block">Avatar của bài viết, xuất hiện trên các trang danh sách bài viết</span>
-                            <span ng-show="frmAddCarCategory.image.$invalid" class="has-error">*Bắt buộc</span>
+                            <span class="help-block"><span ng-show="fromAddPost.image.$invalid" class="has-error">(Bắt buộc)</span> Avatar của bài viết, xuất hiện trên các trang danh sách bài viết</span>
+                            
                         </div>
-                    </form>
+
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            <form class="form-horizontal">
+                <!-- /.box -->
+                <div class="box-title">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary pull-right" type="button" ng-disabled="fromAddPost.$invalid" ng-click="AddPost()"><i class="fa fa-save"></i> Lưu</button>
+                        <button class="btn btn-default pull-right" type="button" ui-sref="posts"><i class="fa fa-trash-o"></i> Hủy</button>
+                    </span>
+                </div>
+
+                <!--<form class="form-horizontal">
                 <div class="box-footer">
                     <button type="submit" class="btn btn-default" ui-sref="posts"><i class="fa fa-undo"></i> Hủy</button>
-                    <button type="button" class="btn btn-primary pull-right" ng-disabled="frmAddPost1.$invalid && frmAddPost2.$invalid" ng-click="AddPost()"><i class="fa fa-save"></i> Lưu</button>
+                    <button type="button" class="btn btn-primary" ng-disabled="fromAddPost.$invalid" ng-click="AddPost()"><i class="fa fa-save"></i> Lưu</button>
                 </div>
-                <!-- /.box-footer -->
-            </form>
-        </div>
-        <!--/.col (right) -->
+            </form>-->
+            </div>
+            <!--/.col (right) -->
+        </form>
     </div>
     <!-- /.row -->
 </section>

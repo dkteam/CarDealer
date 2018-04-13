@@ -4,25 +4,34 @@
     postAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
 
     function postAddController(apiService, $scope, notificationService, $state, commonService) {
-        $scope.postDisplay = {
+        $scope.postDetail = {
             CreatedDate: new Date(),
             Status: true
         };
 
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
-            $scope.postDisplay.Alias = commonService.getSeoTitle($scope.postDisplay.Name);
+            $scope.postDetail.Alias = commonService.getSeoTitle($scope.postDetail.Name);
         }
 
         $scope.ckeditorOptions = {
             language: 'vi',
-            height: '300px'
+            height: '300px',
+            $invalid: false
 
         }
-        $scope.AddPost = AddPost;
 
+        //$scope.displayCKEditor = displayCKEditor;
+        //function displayCKEditor() {
+        //    var editor = CKEDITOR.replace('txtDetail', {
+        //        customconfig: '/Assets/admin/libs/ckeditor/article.js'
+
+        //    })
+        //}
+
+        $scope.AddPost = AddPost;
         function AddPost() {
-            apiService.post('api/post/create', $scope.postDisplay,
+            apiService.post('api/post/create', $scope.postDetail,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm vào cơ sở dữ liệu');
                     $state.go('posts');
@@ -31,8 +40,8 @@
                 });
         };
 
-        function loadParentCategory() {
-            apiService.get('api/post/getcategories', null, function (result) {
+        function loadCategory() {
+            apiService.get('api/postcategory/getallparents', null, function (result) {
                 $scope.categories = result.data;
             }, function () {
                 console.log('cannot get list parent')
@@ -43,13 +52,13 @@
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
                 $scope.$apply(function () {
-                    $scope.postDisplay.Image = fileUrl;
+                    $scope.postDetail.Image = fileUrl;
                 })
             }
             finder.popup();
         }
 
-
-        loadParentCategory();
+        //displayCKEditor();
+        loadCategory();
     }
 })(angular.module('cardealer.posts'));

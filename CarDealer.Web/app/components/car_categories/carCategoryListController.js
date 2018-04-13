@@ -61,7 +61,7 @@
             }
         }, true);
 
-        function deleteCarCategory(id) {
+        function deletePost(id) {
             $ngBootbox.confirm('Việc xóa danh mục, sẽ xóa tất cả dòng xe thuộc danh mục đó. Bạn có chắc muốn xóa?').then(function () {
                 var config = {
                     params: {
