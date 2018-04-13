@@ -10,6 +10,7 @@
          'cardealer.fuels',
          'cardealer.styles',
          'cardealer.transmission_types',
+         'cardealer.slides',
          'cardealer.common'])
          .config(config);
 

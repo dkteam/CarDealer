@@ -230,7 +230,7 @@
                     </li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-files-o"></i>
+                            <i class="fa fa-car"></i>
                             <span> Xe</span>
                             <span class="pull-right-container">
                                 <span class="label label-primary pull-right" ui-sref="car_add"> Thêm</span>
@@ -243,7 +243,7 @@
                     </li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-files-o"></i>
+                            <i class="fa  fa-file-word-o"></i>
                             <span> Bài viết</span>
                             <span class="pull-right-container">
                                 <span class="label label-primary pull-right" ui-sref="post_add"> Thêm</span>
@@ -257,8 +257,11 @@
 
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-files-o"></i>
+                            <i class="fa  fa-check-square-o"></i>
                             <span> Đặc điểm xe</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a ui-sref="manufacture_years"><i class="fa fa-circle-o"></i> Năm sản xuất</a></li>
@@ -267,13 +270,29 @@
                             <li><a ui-sref="styles"><i class="fa fa-circle-o"></i> Kiểu dáng</a></li>
                         </ul>
                     </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gavel"></i>
+                            <span> Common</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a ui-sref="slides"><i class="fa fa-circle-o"></i> Slides</a></li>
+                            <li><a ui-sref="menus"><i class="fa fa-circle-o"></i> Menus</a></li>
+                            <li><a ui-sref="footers"><i class="fa fa-circle-o"></i> Footers</a></li>
+                            <li><a ui-sref="support_onlines"><i class="fa fa-circle-o"></i> Thông tin liên hệ</a></li>
+                        </ul>
+                    </li>
                     
                     <li>
-                        <a href="#">
-                            <i class="fa fa-th"></i> <span>Widgets</span>
-                            <span class="pull-right-container">
+                        <a href="">
+                            <i class="fa fa-picture-o"></i> <span id="upImgToServer">Upload hình lên Server</span>
+                            @*<span class="pull-right-container">
                                 <small class="label pull-right bg-green">Hot</small>
-                            </span>
+                            </span>*@
                         </a>
                     </li>
                     <li class="treeview">
@@ -634,7 +653,11 @@
     <script src="~/app/components/fuels/fuels.module.js"></script>
     <script src="~/app/components/styles/styles.module.js"></script>
     <script src="~/app/components/transmission_types/transmissionTypes.module.js"></script>
+    <script src="~/app/components/slides/slides.module.js"></script>
     <script src="~/app/app.js"></script>
+    <script src="~/app/components/slides/slideAddController.js"></script>
+    <script src="~/app/components/slides/slideEditController.js"></script>
+    <script src="~/app/components/slides/slideListController.js"></script>
     <script src="~/app/components/transmission_types/transmissionTypeListController.js"></script>
     <script src="~/app/components/transmission_types/transmissionTypeEditController.js"></script>
     <script src="~/app/components/transmission_types/transmissionTypeAddController.js"></script>
@@ -664,6 +687,16 @@
         $(document).ready(function () {
             $('.sidebar-menu').tree()
         })
+    </script>
+    <script type="text/javascript">
+        $('#upImgToServer').click(function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            //finder.selectActionFunction = function (url) {
+            //    $('#txtImages').val(url);
+            //};
+            finder.popup();
+        });
     </script>
 </body>
 </html>

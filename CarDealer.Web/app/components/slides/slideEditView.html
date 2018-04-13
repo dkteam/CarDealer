@@ -1,0 +1,79 @@
+﻿<section class="content-header">
+    <h1>
+        Chỉnh sửa Slide
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="slides">Slides</a></li>
+        <li class="active">Chỉnh sửa</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sửa thông tin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmEditSlide" role="form" ng-submit="UpdateSlide()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Chọn hình cho slide</label>
+                        <div class="col-sm-10">
+                            <img src="{{slides.Image}}" style="width: 30%" />
+                            <input type="text" class="form-control" placeholder="Chọn hình cho slide" name="image" ng-model="slides.Image" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <button type="button" class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
+                            <span ng-show="frmEditSlide.image.$invalid" class="has-error">*Bắt buộc</span>
+                            <span ng-show="frmEditSlide.image.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên slide</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tên slide" name="name" ng-model="slides.Name" ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span ng-show="frmEditSlide.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Thứ tự hiển thị</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" placeholder="Thứ tự hiển thị" name="displayorder" ng-model="slides.DisplayOrder">
+                            <span ng-show="frmEditSlide.displayorder.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">URL</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="URL" name="url" ng-model="slides.URL">
+                            <span ng-show="frmEditSlide.url.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Mô tả ngắn</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="Mô tả ngắn" name="description" ng-model="slides.Description" ng-maxlength="256"></textarea>
+                            <span ng-show="frmEditSlide.description.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="slides.Status" ng-checked="slides.Status"> Kích hoạt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default" ui-sref="slides"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmEditSlide.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

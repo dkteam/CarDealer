@@ -21,6 +21,10 @@ namespace CarDealer.Model.Models
         [MaxLength(50)]
         public string Mobile { set; get; }
 
+        [Required]
+        [MaxLength(256)]
+        public string Address { set; get; }
+
         [MaxLength(50)]
         public string Email { set; get; }
 

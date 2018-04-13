@@ -116,7 +116,8 @@
                         </div>
                         <!-- text input -->
                         <div class="form-group">
-                            <label>Hình đại diện</label>
+                            <label style="width: 100%">Hình đại diện</label>
+                            <img src="{{postDetail.Image}}" style="width: 50%" />
                             <input type="text" class="form-control" placeholder="Hình đại diện ..." required name="image" ng-model="postDetail.Image">
                             <button class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
                             <span class="help-block"><span ng-show="fromAddPost.image.$invalid" class="has-error">(Bắt buộc)</span> Avatar của bài viết, xuất hiện trên các trang danh sách bài viết</span>

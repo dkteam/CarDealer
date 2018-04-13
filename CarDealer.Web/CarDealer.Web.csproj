@@ -201,6 +201,7 @@
     <Compile Include="Api\ManufactureYearController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
+    <Compile Include="Api\SlideController.cs" />
     <Compile Include="Api\StyleController.cs" />
     <Compile Include="Api\TransmissionTypeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -233,7 +234,9 @@
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\StyleViewModel.cs" />
+    <Compile Include="Models\SupportOnlineViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Models\TransmissionTypeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +257,7 @@
     <Content Include="app\components\fuels\fuelListController.js" />
     <Content Include="app\components\fuels\fuelListView.html" />
     <Content Include="app\components\fuels\fuels.module.js" />
+    <Content Include="app\components\home\adminController.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
     <Content Include="app\components\cars\cars.module.js" />
@@ -284,6 +288,13 @@
     <Content Include="app\components\post_categories\postCategoryEditView.html" />
     <Content Include="app\components\post_categories\postCategoryListController.js" />
     <Content Include="app\components\post_categories\postCategoryListView.html" />
+    <Content Include="app\components\slides\slideAddController.js" />
+    <Content Include="app\components\slides\slideAddView.html" />
+    <Content Include="app\components\slides\slideEditController.js" />
+    <Content Include="app\components\slides\slideEditView.html" />
+    <Content Include="app\components\slides\slideListController.js" />
+    <Content Include="app\components\slides\slideListView.html" />
+    <Content Include="app\components\slides\slides.module.js" />
     <Content Include="app\components\styles\styleAddController.js" />
     <Content Include="app\components\styles\styleAddView.html" />
     <Content Include="app\components\styles\styleEditController.js" />

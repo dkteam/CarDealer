@@ -125,6 +125,10 @@
     <Compile Include="Migrations\201804131538109_editSlide.Designer.cs">
       <DependentUpon>201804131538109_editSlide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804131627558_editSupportOnline.cs" />
+    <Compile Include="Migrations\201804131627558_editSupportOnline.Designer.cs">
+      <DependentUpon>201804131627558_editSupportOnline.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -213,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804131538109_editSlide.resx">
       <DependentUpon>201804131538109_editSlide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804131627558_editSupportOnline.resx">
+      <DependentUpon>201804131627558_editSupportOnline.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
