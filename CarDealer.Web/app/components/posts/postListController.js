@@ -104,6 +104,15 @@
             });
         }
 
+        function loadCategories() {
+            apiService.get('api/postcategory/getallparents', null, function (result) {
+                $scope.categories = result.data;
+            }, function () {
+                console.log('cannot get list parent')
+            });
+        }
+
+        loadCategories()
         $scope.getPosts();
     }
 })(angular.module('cardealer.posts'));

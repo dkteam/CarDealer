@@ -1,4 +1,4 @@
-namespace CarDealer.Data.Migrations
+﻿namespace CarDealer.Data.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -19,6 +19,7 @@ namespace CarDealer.Data.Migrations
         protected override void Seed(CarDealer.Data.CarDealerDbContext context)
         {
             CreateCarCategorySample(context);
+            CreateMenuGroupSample(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -72,22 +73,21 @@ namespace CarDealer.Data.Migrations
             }
         }
 
-        //private void CreateCarSample(CarDealer.Data.CarDealerDbContext context)
-        //{
-        //    if (context.Cars.Count() == 0)
-        //    {
-        //        List<CarCategory> listCar = new List<CarCategory>()
-        //        {
-        //            new CarCategory() {Name = "A - Class", Alias="a-class", Status=true },
-        //            new CarCategory() {Name = "CLA", Alias="cla", Status=true },
-        //            new CarCategory() {Name = "GLA", Alias="gla", Status=true },
-        //            new CarCategory() {Name = "GLC", Alias="glc", Status=true },
-        //            new CarCategory() {Name = "GLE", Alias="gle", Status=true }
-        //        };
+        private void CreateMenuGroupSample(CarDealer.Data.CarDealerDbContext context)
+        {
+            if (context.MenuGroups.Count() == 0)
+            {
+                List<MenuGroup> listMenuGroup = new List<MenuGroup>()
+                {
+                    new MenuGroup() {Name = "Top(Đỉnh)"},
+                    new MenuGroup() {Name = "Header(Đầu)"},
+                    new MenuGroup() {Name = "Sidebar(Cạnh bên)"},
+                    new MenuGroup() {Name = "bottom(Đáy)"}
+                };
 
-        //        context.Cars.AddRange(listCar);
-        //        context.SaveChanges();
-        //    }
-        //}
+                context.MenuGroups.AddRange(listMenuGroup);
+                context.SaveChanges();
+            }
+        }
     }
 }

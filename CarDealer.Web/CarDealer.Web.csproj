@@ -199,6 +199,8 @@
     <Compile Include="Api\CarCategoryController.cs" />
     <Compile Include="Api\FuelController.cs" />
     <Compile Include="Api\ManufactureYearController.cs" />
+    <Compile Include="Api\MenuController.cs" />
+    <Compile Include="Api\MenuGroupController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
     <Compile Include="Api\SlideController.cs" />
@@ -228,6 +230,8 @@
     <Compile Include="Models\InstallmentPaymentMethodViewModel.cs" />
     <Compile Include="Models\InstallmentPeriodViewModel.cs" />
     <Compile Include="Models\ManufactureYearViewModel.cs" />
+    <Compile Include="Models\MenuGroupViewModel.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PeriodViewModel.cs" />
@@ -274,6 +278,13 @@
     <Content Include="app\components\manufacture_years\manufactureYearListController.js" />
     <Content Include="app\components\manufacture_years\manufactureYearListView.html" />
     <Content Include="app\components\manufacture_years\manufactureYears.module.js" />
+    <Content Include="app\components\menus\menuAddController.js" />
+    <Content Include="app\components\menus\menuAddView.html" />
+    <Content Include="app\components\menus\menuEditController.js" />
+    <Content Include="app\components\menus\menuEditView.html" />
+    <Content Include="app\components\menus\menuListController.js" />
+    <Content Include="app\components\menus\menuListView.html" />
+    <Content Include="app\components\menus\menus.module.js" />
     <Content Include="app\components\posts\postAddController.js" />
     <Content Include="app\components\posts\postAddView.html" />
     <Content Include="app\components\posts\postEditController.js" />

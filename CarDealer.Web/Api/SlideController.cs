@@ -61,9 +61,7 @@ namespace CarDealer.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-
                 var db = _slideService.GetById(id);
-
                 var vm = Mapper.Map<Slide, SlideViewModel>(db);
 
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, vm);

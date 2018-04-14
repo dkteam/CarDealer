@@ -139,5 +139,16 @@ namespace CarDealer.Web.Infrastucture.Extensions
             slide.DisplayOrder = slideVm.DisplayOrder;
             slide.Status = slideVm.Status;
         }
+
+        public static void UpdateMenu(this Menu menu, MenuViewModel menuVm)
+        {
+            menu.ID = menuVm.ID;
+            menu.Name = menuVm.Name;
+            menu.URL = menuVm.URL;
+            menu.DisplayOrder = menuVm.DisplayOrder;
+            menu.GroupID = menuVm.GroupID;
+            menu.Target = menuVm.Target;            
+            menu.Status = menuVm.Status;
+        }
     }
 }

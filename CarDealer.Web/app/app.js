@@ -11,6 +11,7 @@
          'cardealer.styles',
          'cardealer.transmission_types',
          'cardealer.slides',
+         'cardealer.menus',
          'cardealer.common'])
          .config(config);
 

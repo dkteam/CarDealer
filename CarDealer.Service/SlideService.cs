@@ -28,41 +28,41 @@ namespace CarDealer.Service
 
     public class SlideService : ISlideService
     {
-        private ISlideRepository _slide;
+        private ISlideRepository _slideRepository;
         private IUnitOfWork _unitOfWork;
 
-        public SlideService(ISlideRepository slide, IUnitOfWork unitOfWork)
+        public SlideService(ISlideRepository slideRepository, IUnitOfWork unitOfWork)
         {
-            this._slide = slide;
+            this._slideRepository = slideRepository;
             this._unitOfWork = unitOfWork;
         }
 
         public Slide Add(Slide style)
         {
-            return _slide.Add(style);
+            return _slideRepository.Add(style);
         }
 
         public Slide Delete(int id)
         {
-            return _slide.Delete(id);
+            return _slideRepository.Delete(id);
         }
 
         public IEnumerable<Slide> GetAll()
         {
-            return _slide.GetAll();
+            return _slideRepository.GetAll();
         }
 
         public IEnumerable<Slide> GetAll(string keyWord)
         {
             if (!string.IsNullOrEmpty(keyWord))
-                return _slide.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
+                return _slideRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
             else
-                return _slide.GetAll();
+                return _slideRepository.GetAll();
         }
 
         public Slide GetById(int id)
         {
-            return _slide.GetSingleById(id);
+            return _slideRepository.GetSingleById(id);
         }
 
         public void SaveChanges()
@@ -72,7 +72,7 @@ namespace CarDealer.Service
 
         public void Update(Slide style)
         {
-            _slide.Update(style);
+            _slideRepository.Update(style);
         }
     }
 }
