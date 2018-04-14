@@ -11,8 +11,6 @@ namespace CarDealer.Web.Models
         
         public string Name { set; get; }
         
-        public string Alias { set; get; }
-        
         public string Type { set; get; }
 
         public virtual IEnumerable<CarTagViewModel> CarTags { set; get; }

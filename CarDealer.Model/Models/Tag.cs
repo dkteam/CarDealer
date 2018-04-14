@@ -14,12 +14,7 @@ namespace CarDealer.Model.Models
 
         [Required]
         [MaxLength(50)]
-        public string Name { set; get; }
-
-        [Required]
-        [MaxLength(50)]
-        [Column(TypeName = "varchar")]
-        public string Alias { set; get; }
+        public string Name { set; get; }                
 
         [Required]
         [MaxLength(50)]

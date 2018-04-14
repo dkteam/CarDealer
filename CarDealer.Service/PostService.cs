@@ -1,4 +1,5 @@
-﻿using CarDealer.Data.Infrastructure;
+﻿using CarDealer.Common;
+using CarDealer.Data.Infrastructure;
 using CarDealer.Data.Repositories;
 using CarDealer.Model.Models;
 using System;
@@ -11,7 +12,7 @@ namespace CarDealer.Service
 {
     public interface IPostService
     {
-        void Add(Post post);
+        Post Add(Post post);
         void Update(Post post);
         Post Delete(int id);
         IEnumerable<Post> GetAll();
@@ -25,18 +26,49 @@ namespace CarDealer.Service
 
     public class PostService : IPostService
     {
-        IPostRepository _postRepository;
-        IUnitOfWork _unitOfWork;
+        private IPostRepository _postRepository;
+        private ITagRepository _tagRepository;
+        private IPostTagRepository _postTagRepository;
+        private IUnitOfWork _unitOfWork;
 
-        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
+        public PostService(IPostRepository postRepository,
+                            ITagRepository tagRepository,
+                            IPostTagRepository postTagRepository,
+                            IUnitOfWork unitOfWork)
         {
             this._postRepository = postRepository;
+            this._tagRepository = tagRepository;
+            this._postTagRepository = postTagRepository;
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(Post post)
+        public Post Add(Post post)
         {
-            _postRepository.Add(post);
+            var newPost = _postRepository.Add(post);
+            _unitOfWork.Commit();
+            if (!string.IsNullOrEmpty(post.Tags))
+            {
+                string[] tags = post.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonConstants.PostTag;
+
+                        _tagRepository.Add(tag);
+                    }
+                    PostTag postTag = new PostTag();
+                    postTag.PostID = post.ID;
+                    postTag.TagID = tagId;
+
+                    _postTagRepository.Add(postTag);
+                }
+            }
+            return newPost;
         }
 
         public Post Delete(int id)
@@ -87,6 +119,30 @@ namespace CarDealer.Service
         public void Update(Post post)
         {
             _postRepository.Update(post);
+            if (!string.IsNullOrEmpty(post.Tags))
+            {
+                string[] tags = post.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonConstants.PostTag;
+
+                        _tagRepository.Add(tag);
+                    }
+                    _postTagRepository.DeleteMulti(x => x.PostID == post.ID);
+                    PostTag postTag = new PostTag();
+                    postTag.PostID = post.ID;
+                    postTag.TagID = tagId;
+
+                    _postTagRepository.Add(postTag);
+                }
+
+            }
         }
     }
 }

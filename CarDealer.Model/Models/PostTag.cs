@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CarDealer.Model.Models
 {
     [Table("PostTags")]
-    public class PostTag : Auditable
+    public class PostTag
     {
         [Key]
         [Column(Order = 1)]

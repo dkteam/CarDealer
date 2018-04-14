@@ -129,6 +129,22 @@
     <Compile Include="Migrations\201804131627558_editSupportOnline.Designer.cs">
       <DependentUpon>201804131627558_editSupportOnline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804141100278_editPostTag.cs" />
+    <Compile Include="Migrations\201804141100278_editPostTag.Designer.cs">
+      <DependentUpon>201804141100278_editPostTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804141336178_editTag.cs" />
+    <Compile Include="Migrations\201804141336178_editTag.Designer.cs">
+      <DependentUpon>201804141336178_editTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804141400330_editTagAgain.cs" />
+    <Compile Include="Migrations\201804141400330_editTagAgain.Designer.cs">
+      <DependentUpon>201804141400330_editTagAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804141402268_editTag1.cs" />
+    <Compile Include="Migrations\201804141402268_editTag1.Designer.cs">
+      <DependentUpon>201804141402268_editTag1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -220,6 +236,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804131627558_editSupportOnline.resx">
       <DependentUpon>201804131627558_editSupportOnline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141100278_editPostTag.resx">
+      <DependentUpon>201804141100278_editPostTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141336178_editTag.resx">
+      <DependentUpon>201804141336178_editTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141400330_editTagAgain.resx">
+      <DependentUpon>201804141400330_editTagAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141402268_editTag1.resx">
+      <DependentUpon>201804141402268_editTag1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
