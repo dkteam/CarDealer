@@ -52,6 +52,44 @@ namespace CarDealer.Web.Infrastucture.Extensions
             post.Status = postVm.Status;
         }
 
+        public static void UpdateCar(this Car car, CarViewModel carVm)
+        {
+            car.ID = carVm.ID;
+            car.Name = carVm.Name;
+            car.Alias = carVm.Alias;
+            car.BrandID = carVm.BrandID;
+            car.Image = carVm.Image;
+            car.MoreImages = carVm.MoreImages;
+            car.CarStatus = carVm.CarStatus;
+            car.Odo = carVm.Odo;
+            car.FuelID = carVm.FuelID;
+            car.StyleID = carVm.StyleID;
+            car.ManufactureYearID = carVm.ManufactureYearID;
+            car.TransmissionTypeID = carVm.TransmissionTypeID;
+            car.Engine = carVm.Engine;
+            car.FuelConsumption = carVm.FuelConsumption;
+            car.WheelDrive = carVm.WheelDrive;
+            car.Price = carVm.Price;
+            car.PromotionPrice = carVm.PromotionPrice;
+            car.Warranty = carVm.Warranty;
+            car.Description = carVm.Description;
+            car.Content = carVm.Content;
+            car.Bestseller = carVm.Bestseller;
+            car.HotFlag = carVm.HotFlag;
+            car.BestPrice = carVm.BestPrice;
+            car.ViewCount = carVm.ViewCount;
+            car.CategoryID = carVm.CategoryID;
+            car.Tags = carVm.Tags;
+
+            car.CreatedDate = carVm.CreatedDate;
+            car.CreatedBy = carVm.CreatedBy;
+            car.UpdatedDate = carVm.UpdatedDate;
+            car.UpdatedBy = carVm.UpdatedBy;
+            car.MetaKeyword = carVm.MetaKeyword;
+            car.MetaDescription = carVm.MetaDescription;
+            car.Status = carVm.Status;
+        }
+
         public static void UpdateCarCategory(this CarCategory carCategory, CarCategoryViewModel carCategoryVm)
         {
             carCategory.ID = carCategoryVm.ID;

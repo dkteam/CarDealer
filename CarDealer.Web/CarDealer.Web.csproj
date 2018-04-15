@@ -197,6 +197,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\CarCategoryController.cs" />
+    <Compile Include="Api\CarController.cs" />
     <Compile Include="Api\FuelController.cs" />
     <Compile Include="Api\ManufactureYearController.cs" />
     <Compile Include="Api\MenuController.cs" />
@@ -323,6 +324,7 @@
     <Content Include="app\shared\directives\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />
+    <Content Include="app\shared\filters\if_elseFilter.js" />
     <Content Include="app\shared\filters\statusFilter.js" />
     <Content Include="app\shared\modules\cardealer.common.js" />
     <Content Include="app\shared\services\apiService.js" />

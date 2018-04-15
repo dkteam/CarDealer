@@ -13,7 +13,7 @@ namespace CarDealer.Model.Models
         [MaxLength(100)]
         public string Name { set; get; }
 
-        [MaxLength(256)]
+        [MaxLength(500)]
         public string Description { set; get; }
 
         [Required]

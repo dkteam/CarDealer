@@ -14,6 +14,10 @@
             url: "/car_add",
             templateUrl: "/app/components/cars/carAddView.html",
             controller: "carAddController"
-        });;
+        }).state('car_edit', {
+            url: "/car_edit/:id",
+            templateUrl: "/app/components/cars/carEditView.html",
+            controller: "carEditController"
+        });
     }
 })();

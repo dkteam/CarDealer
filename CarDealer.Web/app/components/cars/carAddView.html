@@ -1,1 +1,252 @@
-﻿<h1>Add new car!</h1>
+﻿<section class="content-header">
+    <h1>
+        Thêm mới xe
+        <small>Thêm một xe mới</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="posts">Bài viết</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <form role="form" novalidate name="frmAddCar">
+            <!-- left column -->
+            <div class="col-md-4">
+                <!-- general form elements disabled -->
+                <div class="box box-success">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!--<form role="form" novalidate name="frmAddPost1">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Tên xe<span class="has-error">(*)</span></label>
+                            <input type="text" class="form-control" placeholder="Nhập vào tên xe ..." name="name" ng-model="carDetail.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span class="help-block">Tên bài viết hiển thị trên trang nội dung</span>
+                            <span ng-show="frmAddCar.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <div class="form-group">
+                            <label>SEO link<span class="has-error">(*)</span></label>
+                            <input type="text" class="form-control" placeholder="Tiêu đề SEO ..." name="alias" ng-model="carDetail.Alias" required>
+                            <span class="help-block">SEO link - hiển thị link thân thiệt với search engine</span>
+                            <span ng-show="frmAddCar.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- select -->
+                        <div class="form-group">
+                            <label>Dòng xe<span class="has-error">(*)</span></label>
+                            <select class="form-control" name="categoryid" required ng-model="carDetail.CategoryID" ng-options="option.ID as option.Name for option in categories">
+                                <option value="">--- chọn dòng xe ---</option>
+                            </select>
+                            <input type="hidden" name="categoryid" ng-model="carDetail.CategoryID" />
+                            <span class="help-block"> Xe này thuộc dòng xe nào?</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Kiểu dáng<span class="has-error">(*)</span></label>
+                            <select class="form-control" name="style" ng-model="carDetail.StyleID" required ng-options="option.ID as option.Name for option in styles">
+                                <option value="">--- chọn kiểu dáng ---</option>
+                            </select>
+                            <input type="hidden" name="style" ng-model="carDetail.StyleID" />
+                            <span class="help-block"> Kiểu dáng xe?</span>
+
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Odo</label>
+                            <input type="text" class="form-control" placeholder="Số km đã chạy" name="odo" ng-model="carDetail.Odo">
+                            <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Động cơ</label>
+                            <input type="text" class="form-control" placeholder="..." ng-maxlength="256" name="engine" ng-model="carDetail.Engine">
+                            <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
+                            <span ng-show="frmAddCar.engine.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Mức tiêu thụ nhiên liệu</label>
+                            <input type="text" class="form-control" placeholder="..." ng-maxlength="256" name="fuelconsumption" ng-model="carDetail.FuelConsumption">
+                            <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
+                            <span ng-show="frmAddCar.fuelconsumption.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Dẫn động</label>
+                            <input type="text" class="form-control" placeholder="..." ng-maxlength="256" name="wheeldrive" ng-model="carDetail.WheelDrive">
+                            <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
+                            <span ng-show="frmAddCar.wheeldrive.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Năm sản xuất</label>
+                            <select class="form-control" name="manufactureyear" ng-model="carDetail.ManufactureYearID" ng-options="option.ID as option.Name for option in manufactureyears">
+                                <option value="">--- chọn năm ---</option>
+                            </select>
+                            <input type="hidden" name="manufactureyear" ng-model="carDetail.ManufactureYearID" />
+                            <span class="help-block">Dùng trong trường hợp xe cũ</span>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (left) -->
+            <div class="col-md-4">
+                <!-- general form elements disabled -->
+                <div class="box box-success">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Hệ thống sang số<span class="has-error">(*)</span></label>
+                            <select class="form-control" name="transmissiontype" ng-model="carDetail.TransmissionTypeID" ng-options="option.ID as option.Name for option in transmissiontypes">
+                                <option value="">--- chọn ---</option>
+                            </select>
+                            <input type="hidden" name="transmissiontype" ng-model="carDetail.TransmissionTypeID" />
+                            <span class="help-block">Loại hộp số?</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Loại nhiên liệu<span class="has-error">(*)</span></label>
+                            <select class="form-control" name="fuel" ng-model="carDetail.FuelID" ng-options="option.ID as option.Name for option in fuels">
+                                <option value="">--- chọn ---</option>
+                            </select>
+                            <input type="hidden" name="fuel" ng-model="carDetail.FuelID" />
+                            <span class="help-block">Nhiên liệu cho động cơ</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Giá cũ</label>
+                            <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.Price">
+                            <span class="help-block">Giá cũ hay giá chưa giảm</span>
+                            <span ng-show="frmAddCar.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Giá mới</label>
+                            <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.PromotionPrice">
+                            <span class="help-block">Giá mới - giá bán hiện tại</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Bảo hành</label>
+                            <input type="text" class="form-control" placeholder="Hình thức bảo hành" ng-maxlength="256" name="warranty" ng-model="carDetail.Warranty">
+                            <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
+                            <span ng-show="frmAddCar.warranty.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>MetaDescription</label>
+                            <textarea class="form-control" rows="3" placeholder="..." ng-maxlength="256" name="metaDescription" ng-model="carDetail.MetaDescription"></textarea>
+                            <span class="help-block">Mô tả cho MetaDescription, xuất hiện trên Search Engine</span>
+                            <span ng-show="frmAddCar.metaDescription.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>MetaKeywords</label>
+                            <input type="text" class="form-control" placeholder="..." ng-maxlength="256" name="metaKeyword" ng-model="carDetail.MetaKeyword">
+                            <span class="help-block">Từ khóa cho thẻ MetaKeyword, thường không được ứng dụng</span>
+                            <span ng-show="frmAddCar.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-md-4">
+                <!-- general form elements disabled -->
+                <div class="box box-success">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <input type="text" class="form-control" name="tags" ng-model="carDetail.Tags" placeholder="Mỗi tag cách nhau bởi dấu phẩy.">
+                            <span class="help-block">Tags cho bài viết, lợi cho SEO, mỗi tag cách nhau bằng dấu phẩy</span>
+                        </div>
+
+                        <!-- checkbox -->
+                        <label>Tùy chọn</label>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="carDetail.BestPrice" ng-checked="carDetail.BestPrice">
+                                        Giá ưu đãi nhất
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="carDetail.Bestseller" ng-checked="carDetail.Bestseller">
+                                        Bán chạy nhất
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="carDetail.HotFlag" ng-checked="carDetail.HotFlag">
+                                        Đang hót
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="carDetail.CarStatus" ng-checked="carDetail.CarStatus">
+                                        Xe mới
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="carDetail.Status" ng-checked="carDetail.Status">
+                                        Kích hoạt
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label style="width: 100%">Hình đại diện<span class="has-error">(*)</span></label>
+                            <img src="{{carDetail.Image}}" style="width: 50%" />
+                            <input type="text" class="form-control" placeholder="Hình đại diện ..." required name="image" ng-model="carDetail.Image">
+                            <button class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
+                            <span class="help-block">Avatar của bài viết, xuất hiện trên các trang danh sách bài viết</span>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!--/.col (right) -->
+
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Mô tả ngắn</label>
+                            <textarea class="form-control" rows="3" placeholder="Nhập vào mô tả ngắn ..." name="description" ng-maxlength="500" ng-model="carDetail.Description"></textarea>
+                            <span class="help-block">Xuất hiện ở các trang danh sách bài viết</span>
+                            <span ng-show="frmAddCar.description.$error.maxlength" class="has-error">Tối đa 500 ký tự</span>
+                        </div>
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Nội dung chi tiết</label>
+                            <textarea class="form-control" rows="3" placeholder="Nhập nội dung chi tiết ..." name="content" ckeditor="ckeditorOptions()" id="txtDetail" ng-model="carDetail.Content"></textarea>
+                            <span class="help-block"> Nội dung chi tiết của bài viết</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+                <div class="box-title">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary pull-right" type="button" ng-disabled="frmAddCar.$invalid" ng-click="AddCar()"><i class="fa fa-save"></i> Lưu</button>
+                        <button class="btn btn-default pull-right" type="button" ui-sref="posts"><i class="fa fa-trash-o"></i> Hủy</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- /.row -->
+</section>

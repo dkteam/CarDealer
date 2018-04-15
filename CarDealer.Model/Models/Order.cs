@@ -28,7 +28,7 @@ namespace CarDealer.Model.Models
         [MaxLength(20)]
         public string CustomerMobile { set; get; }
 
-        [MaxLength(256)]
+        [MaxLength(1000)]
         public string CustomerMessage { set; get; }
 
         public DateTime CreatedDate { set; get; }

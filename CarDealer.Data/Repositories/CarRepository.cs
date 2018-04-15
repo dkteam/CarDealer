@@ -7,9 +7,10 @@ namespace CarDealer.Data.Repositories
     {
     }
 
-    public class CarRepo : RepositoryBase<Car>, ICarRepository
+    public class CarRepository : RepositoryBase<Car>, ICarRepository
     {
-        public CarRepo(IDbFactory dbFactory) : base(dbFactory)
+        public CarRepository(IDbFactory dbFactory) 
+            : base(dbFactory)
         {
         }
     }

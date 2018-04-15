@@ -33,7 +33,7 @@ namespace CarDealer.Model.Models
         [MaxLength(50)]
         public string Website { set; get; }
 
-        [MaxLength(256)]
+        [MaxLength(500)]
         public string Description { set; get; }
 
         public int? DisplayOrder { set; get; } 

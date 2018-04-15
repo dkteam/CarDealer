@@ -46,6 +46,7 @@ namespace CarDealer.Service
         {
             var newPost = _postRepository.Add(post);
             _unitOfWork.Commit();
+
             if (!string.IsNullOrEmpty(post.Tags))
             {
                 string[] tags = post.Tags.Split(',');
@@ -84,7 +85,7 @@ namespace CarDealer.Service
         public IEnumerable<Post> GetAll(string keyWord)
         {
             if (!string.IsNullOrEmpty(keyWord))
-                return _postRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord));
+                return _postRepository.GetMulti(x => x.Name.Contains(keyWord) || x.Description.Contains(keyWord) || x.PostCategory.Name.Contains(keyWord));
             else
                 return _postRepository.GetAll();
         }

@@ -55,6 +55,23 @@ namespace CarDealer.Web.Api
             });
         }
 
+        [Route("getallnonpaging")]
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listDb = _manufactureYearService.GetAll();
+
+                var listVm = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(listDb);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
+                return response;
+            });
+        }
+
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)

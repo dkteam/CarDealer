@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace CarDealer.Web.Models
 {
     public class CarViewModel
     {
         public int ID { set; get; }
-                
+
         public string Name { set; get; }
-        
+
         public string Alias { set; get; }
 
         public int? BrandID { set; get; }
-                
+
         public int? CategoryID { set; get; }
 
         public string Image { set; get; }
-        
+
         public string MoreImages { set; get; }
 
         public bool CarStatus { set; get; }
@@ -32,19 +30,19 @@ namespace CarDealer.Web.Models
         public int? ManufactureYearID { set; get; }
 
         public int? TransmissionTypeID { set; get; }
-        
+
         public string Engine { set; get; }
-        
+
         public string FuelConsumption { set; get; }
-        
+
         public string WheelDrive { set; get; }
 
         public decimal? Price { set; get; }
 
         public decimal? PromotionPrice { set; get; }
-        
+
         public string Warranty { set; get; }
-        
+
         public string Description { set; get; }
 
         public string Content { set; get; }
@@ -60,13 +58,13 @@ namespace CarDealer.Web.Models
         public string Tags { set; get; }
 
         public virtual BrandViewModel Brand { set; get; }
-        
+
         public virtual FuelViewModel Fuel { set; get; }
-        
+
         public virtual StyleViewModel Style { set; get; }
-        
+
         public virtual ManufactureYearViewModel ManufactureYear { set; get; }
-        
+
         public virtual TransmissionTypeViewModel TransmissionType { set; get; }
 
         public DateTime? CreatedDate { set; get; }
@@ -83,8 +81,8 @@ namespace CarDealer.Web.Models
 
         public bool Status { set; get; }
 
-        public virtual IEnumerable<OrderDetailViewModel> OderDetails { set; get; }
+        public virtual List<OrderDetailViewModel> OrderDetails { set; get; }
 
-        public virtual IEnumerable<CarTagViewModel> CarTags { set; get; }
+        public virtual List<CarTagViewModel> CarTags { set; get; }
     }
 }

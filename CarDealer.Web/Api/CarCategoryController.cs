@@ -63,11 +63,11 @@ namespace CarDealer.Web.Api
             return CreateHttpResponse(request, () =>
             {
 
-                var listCategoryNonPaging = _carCategoryService.GetAll();
+                var listDb = _carCategoryService.GetAll();
                 
-                var listPostCategoryVm = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(listCategoryNonPaging);               
+                var listVm = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(listDb);               
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
 
                 return response;
             });

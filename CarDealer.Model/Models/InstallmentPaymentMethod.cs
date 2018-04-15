@@ -22,7 +22,7 @@ namespace CarDealer.Model.Models
         public string Alias { set; get; }
 
         [Required]
-        [MaxLength(256)]
+        [MaxLength(500)]
         public string Description { set; get; }
 
         public virtual IEnumerable<InstallmentPeriod> InstallmentPeriods { set; get; }

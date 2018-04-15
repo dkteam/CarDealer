@@ -24,10 +24,10 @@ namespace CarDealer.Model.Models
         public int? CategoryID { set; get; }
 
         [Required]
-        [MaxLength(256)]
+        [MaxLength(1000)]
         public string Image { set; get; }
         
-        [MaxLength(256)]
+        [MaxLength(500)]
         public string Description { set; get; }
         
         public string Content { set; get; }

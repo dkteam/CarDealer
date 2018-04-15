@@ -72,6 +72,23 @@ namespace CarDealer.Web.Api
             });
         }
 
+        [Route("getallnonpaging")]
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listDb = _styleService.GetAll();
+
+                var listVm = Mapper.Map<IEnumerable<Style>, IEnumerable<StyleViewModel>>(listDb);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
+                return response;
+            });
+        }
+
         [Route("create")]
         [HttpPost]
         [AllowAnonymous]

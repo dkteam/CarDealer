@@ -55,6 +55,23 @@ namespace CarDealer.Web.Api
             });
         }
 
+        [Route("getallnonpaging")]
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listDb = _fuelService.GetAll();
+
+                var listVm = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(listDb);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
+                return response;
+            });
+        }
+
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)

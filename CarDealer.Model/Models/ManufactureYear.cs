@@ -21,6 +21,7 @@ namespace CarDealer.Model.Models
         [Column(TypeName = "varchar")]
         public string Alias { set; get; }
 
+        [MaxLength(500)]
         public string Description { set; get; }
 
         public virtual IEnumerable<Car> Cars { set; get; }
