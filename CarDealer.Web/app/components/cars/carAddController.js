@@ -23,9 +23,11 @@
             $invalid: false
 
         }
-        
+
         $scope.AddCar = AddCar;
         function AddCar() {
+            $scope.carDetail.MoreImages = JSON.stringify($scope.moreImages); //chuyển sang dạng chuỗi truyền vào database
+
             apiService.post('api/car/create', $scope.carDetail,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm vào cơ sở dữ liệu');
@@ -83,6 +85,21 @@
                 })
             }
             finder.popup();
+        }
+
+        $scope.moreImages = [];
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                });
+            }
+            finder.popup();
+        }
+
+        $scope.removeImage = function (index) {
+            $scope.moreImages.splice(index, 1);
         }
 
         //displayCKEditor();

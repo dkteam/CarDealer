@@ -206,13 +206,22 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label style="width: 100%">Hình đại diện<span class="has-error">(*)</span></label>
-                            <img src="{{carDetail.Image}}" style="width: 50%" />
+                            <img src="{{carDetail.Image}}" style="width: 100%" />
                             <input type="text" class="form-control" placeholder="Hình đại diện ..." required name="image" ng-model="carDetail.Image">
                             <button class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
-                            <span class="help-block">Avatar của bài viết, xuất hiện trên các trang danh sách bài viết</span>
+                            <span class="help-block">Avatar - hình chính của sản phẩm, xuất hiện trên các trang danh sách bài viết</span>
 
                         </div>
-
+                        <div class="form-group">
+                            <label style="width: 100%">Hình chi tiết</label>
+                                <ul class="list-inline">
+                                    <li ng-repeat="img in moreImages track by $index">
+                                        <img ng-src="{{img}}" width="130" /><a ng-click="removeImage($index)"><i class="fa fa-times"></i></a>
+                                    </li>
+                                </ul>                          
+                            <button type="button" class="btn btn-default" ng-click="ChooseMoreImage()">Chọn thêm ảnh</button>
+                            <span class="help-block">Ảnh chi tiết cho sản phẩm, xuất hiện ở trang chi tiết xe.</span>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

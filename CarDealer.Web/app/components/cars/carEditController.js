@@ -4,12 +4,15 @@
     carEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService'];
 
     function carEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
+        $scope.moreImages = [];
         $scope.carDetail = {
             UpdatedDate: new Date(),
-        };
+        };        
 
         $scope.UpdateCar = UpdateCar;
         function UpdateCar() {
+            $scope.carDetail.MoreImages = JSON.stringify($scope.moreImages); //chuyển sang dạng chuỗi truyền vào database
+
             apiService.put('api/car/update', $scope.carDetail,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được cập nhật thành công.');
@@ -34,6 +37,7 @@
         function loadCarDetail() {
             apiService.get('api/car/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.carDetail = result.data;
+                $scope.moreImages = JSON.parse($scope.carDetail.MoreImages); //parse ra dạng mảng
             }, function (error) {
                 notificationService.displayError(error.data);
             });
@@ -88,6 +92,22 @@
             }
             finder.popup();
         }
+
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                });
+            }
+            finder.popup();
+        }
+
+        $scope.removeImage = function (index) {
+            $scope.moreImages.splice(index, 1);
+        }
+
+
 
         loadCategory();
         loadCarDetail();
