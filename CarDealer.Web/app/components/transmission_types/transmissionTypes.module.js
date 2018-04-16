@@ -8,14 +8,17 @@
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('transmission_types', {
             url: "/transmission_types",
+            parent: 'base',
             templateUrl: "/app/components/transmission_types/transmissionTypeListView.html",
             controller: "transmissionTypeListController"
         }).state('transmission_type_add', {
             url: "/transmission_type_add",
+            parent: 'base',
             templateUrl: "/app/components/transmission_types/transmissionTypeAddView.html",
             controller: "transmissionTypeAddController"
         }).state('transmission_type_edit', {
             url: "/transmission_type_edit/:id",
+            parent: 'base',
             templateUrl: "/app/components/transmission_types/transmissionTypeEditView.html",
             controller: "transmissionTypeEditController"
         });

@@ -272,6 +272,9 @@
     <Content Include="app\components\cars\carListController.js" />
     <Content Include="app\components\cars\carListView.html" />
     <Content Include="app\components\cars\carAddView.html" />
+    <Content Include="app\components\home\rootController.js" />
+    <Content Include="app\components\login\loginController.js" />
+    <Content Include="app\components\login\loginView.html" />
     <Content Include="app\components\manufacture_years\manufactureYearAddController.js" />
     <Content Include="app\components\manufacture_years\manufactureYearAddView.html" />
     <Content Include="app\components\manufacture_years\manufactureYearEditController.js" />
@@ -329,6 +332,7 @@
     <Content Include="app\shared\modules\cardealer.common.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\commonService.js" />
+    <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -3359,15 +3363,6 @@
     <Content Include="Assets\admin\libs\ng-ckeditor\src\scripts\03-outro.js" />
     <Content Include="Assets\admin\libs\ng-ckeditor\test\directiveOnFormSpec.js" />
     <Content Include="Assets\admin\libs\ng-ckeditor\test\directiveSpec.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\components\ngDroplet.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\dist\ng-droplet.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\dist\ng-droplet.min.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\example\css\Default.css" />
-    <Content Include="Assets\admin\libs\ng-droplet\example\index.html" />
-    <Content Include="Assets\admin\libs\ng-droplet\example\js\app\Default.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\example\server\default.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\gulpfile.js" />
-    <Content Include="Assets\admin\libs\ng-droplet\karma.conf.js" />
     <Content Include="Assets\admin\libs\ngBootbox\dist\ngBootbox.js" />
     <Content Include="Assets\admin\libs\ngBootbox\dist\ngBootbox.min.js" />
     <Content Include="Assets\admin\libs\ngBootbox\examples\example-1\app.js" />
@@ -3403,7 +3398,6 @@
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\footer\" />
     <Folder Include="app\shared\navigation\" />
-    <Folder Include="Assets\admin\libs\ng-droplet\example\server\uploads\" />
     <Folder Include="Assets\client\" />
     <Folder Include="UploadFiles\" />
   </ItemGroup>
@@ -3824,12 +3818,6 @@
     <Content Include="Assets\admin\libs\ng-ckeditor\package.json" />
     <Content Include="Assets\admin\libs\ng-ckeditor\README.md" />
     <Content Include="Assets\admin\libs\ng-ckeditor\src\styles\ng-ckeditor.less" />
-    <Content Include="Assets\admin\libs\ng-droplet\.bower.json" />
-    <Content Include="Assets\admin\libs\ng-droplet\bower.json" />
-    <Content Include="Assets\admin\libs\ng-droplet\LICENSE" />
-    <Content Include="Assets\admin\libs\ng-droplet\package.json" />
-    <Content Include="Assets\admin\libs\ng-droplet\Procfile" />
-    <Content Include="Assets\admin\libs\ng-droplet\README.md" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>

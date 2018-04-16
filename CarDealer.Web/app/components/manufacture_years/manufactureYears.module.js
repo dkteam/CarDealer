@@ -8,14 +8,17 @@
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('manufacture_years', {
             url: "/manufacture_years",
+            parent: 'base',
             templateUrl: "/app/components/manufacture_years/manufactureYearListView.html",
             controller: "manufactureYearListController"
         }).state('manufacture_year_add', {
             url: "/manufacture_year_add",
+            parent: 'base',
             templateUrl: "/app/components/manufacture_years/manufactureYearAddView.html",
             controller: "manufactureYearAddController"
         }).state('manufacture_year_edit', {
             url: "/manufacture_year_edit/:id",
+            parent: 'base',
             templateUrl: "/app/components/manufacture_years/manufactureYearEditView.html",
             controller: "manufactureYearEditController"
         });

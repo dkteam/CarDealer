@@ -8,14 +8,17 @@
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('cars', {
             url: "/cars",
+            parent: 'base',
             templateUrl: "/app/components/cars/carListView.html",
             controller: "carListController"
         }).state('car_add', {
             url: "/car_add",
+            parent: 'base',
             templateUrl: "/app/components/cars/carAddView.html",
             controller: "carAddController"
         }).state('car_edit', {
             url: "/car_edit/:id",
+            parent: 'base',
             templateUrl: "/app/components/cars/carEditView.html",
             controller: "carEditController"
         });
