@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace CarDealer.Web.Api
 {
     [RoutePrefix("api/style")]
+    [Authorize]
     public class StyleController : ApiControllerBase
     {
         #region Initialize

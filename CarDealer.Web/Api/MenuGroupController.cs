@@ -13,6 +13,7 @@ using CarDealer.Web.Models;
 namespace CarDealer.Web.Api
 {
     [RoutePrefix("api/menugroup")]
+    [Authorize]
     public class MenuGroupController : ApiControllerBase
     {
         #region Initialize

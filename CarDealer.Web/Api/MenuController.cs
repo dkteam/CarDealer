@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace CarDealer.Web.Api
 {
     [RoutePrefix("api/menu")]
+    [Authorize]
     public class MenuController : ApiControllerBase
     {
         #region Initialize

@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace CarDealer.Web.Api
 {
     [RoutePrefix("api/post")]
+    [Authorize]
     public class PostController : ApiControllerBase
     {
         #region Initialize
