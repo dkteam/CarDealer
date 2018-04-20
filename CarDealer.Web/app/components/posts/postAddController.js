@@ -6,6 +6,7 @@
     function postAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.postDetail = {
             CreatedDate: new Date(),
+            UpdatedDate: new Date(),
             ViewCount: 0,
             Status: true
         };

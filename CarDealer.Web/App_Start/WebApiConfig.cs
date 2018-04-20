@@ -19,6 +19,12 @@ namespace CarDealer.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{string}",
+            //    defaults: new { string = RouteParameter.Optional }
+            //);
         }
     }
 }

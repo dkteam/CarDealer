@@ -169,6 +169,38 @@
     <Compile Include="Migrations\201804150726257_editImageLength.Designer.cs">
       <DependentUpon>201804150726257_editImageLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804171110457_editContentFooterField.cs" />
+    <Compile Include="Migrations\201804171110457_editContentFooterField.Designer.cs">
+      <DependentUpon>201804171110457_editContentFooterField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804190529466_addParentFieldMenu.cs" />
+    <Compile Include="Migrations\201804190529466_addParentFieldMenu.Designer.cs">
+      <DependentUpon>201804190529466_addParentFieldMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804190740065_editTargetFieldMenu.cs" />
+    <Compile Include="Migrations\201804190740065_editTargetFieldMenu.Designer.cs">
+      <DependentUpon>201804190740065_editTargetFieldMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191029336_galleriesTable.cs" />
+    <Compile Include="Migrations\201804191029336_galleriesTable.Designer.cs">
+      <DependentUpon>201804191029336_galleriesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191046368_editGalleries.cs" />
+    <Compile Include="Migrations\201804191046368_editGalleries.Designer.cs">
+      <DependentUpon>201804191046368_editGalleries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191634025_editDb.cs" />
+    <Compile Include="Migrations\201804191634025_editDb.Designer.cs">
+      <DependentUpon>201804191634025_editDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191810189_addLandingPagesTable.cs" />
+    <Compile Include="Migrations\201804191810189_addLandingPagesTable.Designer.cs">
+      <DependentUpon>201804191810189_addLandingPagesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804191850475_editLandingPage.cs" />
+    <Compile Include="Migrations\201804191850475_editLandingPage.Designer.cs">
+      <DependentUpon>201804191850475_editLandingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -180,6 +212,7 @@
     <Compile Include="Repositories\FuelRepository.cs" />
     <Compile Include="Repositories\InstallmentPaymentMethodRepository.cs" />
     <Compile Include="Repositories\InstallmentPeriodRepository.cs" />
+    <Compile Include="Repositories\LandingPageRepository.cs" />
     <Compile Include="Repositories\ManufactureYearRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -290,6 +323,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804150726257_editImageLength.resx">
       <DependentUpon>201804150726257_editImageLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171110457_editContentFooterField.resx">
+      <DependentUpon>201804171110457_editContentFooterField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190529466_addParentFieldMenu.resx">
+      <DependentUpon>201804190529466_addParentFieldMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190740065_editTargetFieldMenu.resx">
+      <DependentUpon>201804190740065_editTargetFieldMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191029336_galleriesTable.resx">
+      <DependentUpon>201804191029336_galleriesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191046368_editGalleries.resx">
+      <DependentUpon>201804191046368_editGalleries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191634025_editDb.resx">
+      <DependentUpon>201804191634025_editDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191810189_addLandingPagesTable.resx">
+      <DependentUpon>201804191810189_addLandingPagesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191850475_editLandingPage.resx">
+      <DependentUpon>201804191850475_editLandingPage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

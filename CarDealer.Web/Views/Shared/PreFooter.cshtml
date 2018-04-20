@@ -1,0 +1,72 @@
+﻿@model CarDealer.Web.Models.PreFooterViewModel
+
+<div class="section pre-footer novi-background bg-cover">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="footer-title">
+                    <span>Tin tức & Sự kiện</span>
+                </div>
+                @foreach (var item in Model.LatestPosts)
+                {
+                    var url = "/" + item.Alias + ".p-" + item.ID + ".html";
+                    <div class="news-minimal">
+                        <p class="news-minimal-text">@item.Name</p>
+                        <div class="news-minimal-link">
+                            <a href="@url">Xem chi tiết</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="footer-title">
+                    <span>Xe mới về</span>
+                </div>
+                @foreach (var item in Model.LatestCars)
+                {
+                    var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                    <div class="footer-product">
+                        <figure class="footer-product-img">
+                            <a href="@url">
+                                <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                            </a>
+
+                        </figure>
+                        <div class="caption">
+                            <p class="title"><a href="@url"> @item.Name</a></p>
+                            <div class="product-info">@item.Odo Km</div>
+                            <div class="product-link">
+                                <a href="@url">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="footer-title">
+                    <span>Liên hệ</span>
+                </div>
+                <address>
+                    <span aria-hidden="true" class="fa fa-user fa-lg novi-icon"></span>
+                    <a href="@Model.SupportOnline.Facebook">@Model.SupportOnline.Name</a>
+                </address>
+                <address>
+                    <span aria-hidden="true" class="fa fa-map-marker novi-icon"></span>
+                    <a>@Model.SupportOnline.Address</a>
+                </address>
+                <div class="footer-info">
+                    <div class="info-phone">
+                        <span aria-hidden="true" class="fa fa-phone novi-icon"></span>
+                        Điện thoại: <a href="tel:#"> @Model.SupportOnline.Mobile</a>
+                    </div>
+                    <div class="info-email">
+                        <span aria-hidden="true" class="fa fa-envelope novi-icon"></span>Email:
+                        <a href="mailto:#" tabindex="-1">@Model.SupportOnline.Email</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

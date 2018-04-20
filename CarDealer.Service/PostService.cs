@@ -17,6 +17,7 @@ namespace CarDealer.Service
         Post Delete(int id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetAll(string keyWord);
+        IEnumerable<Post> GetLatestPosts(int top);
         IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow);
         IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
         Post GetById(int id);
@@ -144,6 +145,10 @@ namespace CarDealer.Service
                 }
 
             }
+        }
+        public IEnumerable<Post> GetLatestPosts(int top)
+        {
+            return _postRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

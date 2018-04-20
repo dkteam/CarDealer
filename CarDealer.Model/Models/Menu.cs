@@ -25,10 +25,11 @@ namespace CarDealer.Model.Models
 
         public int? DisplayOrder { set; get; }
 
-        public int? GroupID { set; get; }
+        public int? ParentID { set; get; }
 
-        [MaxLength(10)]
-        public string Target { set; get; }
+        public int? GroupID { set; get; }
+                
+        public bool Target { set; get; }
 
         public bool Status { set; get; }
 

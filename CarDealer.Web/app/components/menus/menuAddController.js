@@ -5,12 +5,13 @@
 
     function menuAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.menus = {
-            Status: true
+            Status: true,
+            Target: false
         };
 
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
-            $scope.menus.Alias = commonService.getSeoTitle($scope.menus.Name);
+            $scope.menus.URL = commonService.getSeoTitle($scope.menus.Name);
         }
 
         $scope.ChooseImage = function () {
@@ -31,6 +32,14 @@
             });
         }
 
+        function loadMenuParent() {
+            apiService.get('api/menu/getallNonPaging', null, function (result) {
+                $scope.menuParents = result.data;
+            }, function () {
+                console.log('cannot get list parent')
+            });
+        }
+
         $scope.AddMenu = AddMenu;
         function AddMenu() {
             apiService.post('api/menu/create', $scope.menus,
@@ -42,6 +51,7 @@
                 });
         };
 
+        loadMenuParent();
         loadMenuGroup();
     }
 })(angular.module('cardealer.menus'));

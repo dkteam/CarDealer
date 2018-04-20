@@ -134,6 +134,12 @@ namespace CarDealer.Web.Infrastucture.Extensions
             fuel.Description = fuelVm.Description;
         }
 
+        public static void UpdateFooter(this Footer footer, FooterViewModel footerVm)
+        {
+            footer.ID = footerVm.ID;
+            footer.Content = footerVm.Content;
+        }
+
         public static void UpdateStyle(this Style style, StyleViewModel styleVm)
         {
             style.ID = styleVm.ID;
@@ -187,6 +193,29 @@ namespace CarDealer.Web.Infrastucture.Extensions
             menu.GroupID = menuVm.GroupID;
             menu.Target = menuVm.Target;            
             menu.Status = menuVm.Status;
+            menu.ParentID = menuVm.ParentID;
+        }
+
+        public static void UpdateLandingPage(this LandingPage db, LandingPageViewModel vm)
+        {
+            db.ID = vm.ID;
+            db.Name = vm.Name;
+            db.Image = vm.Image;
+            db.Content = vm.Content;
+        }
+
+        public static void UpdateSupportOnline(this SupportOnline db, SupportOnlineViewModel vm)
+        {
+            db.ID = vm.ID;
+            db.Name = vm.Name;
+            db.Skype = vm.Skype;
+            db.Mobile = vm.Mobile;
+            db.Email = vm.Email;
+            db.Zalo = vm.Zalo;
+            db.Facebook = vm.Facebook;
+            db.DisplayOrder = vm.DisplayOrder;
+            db.Status = vm.Status;
+            db.Address = vm.Address;
         }
     }
 }

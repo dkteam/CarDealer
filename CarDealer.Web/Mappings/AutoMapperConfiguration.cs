@@ -34,6 +34,8 @@ namespace CarDealer.Web.Mappings
                 cfg.CreateMap<Slide, SlideViewModel>().MaxDepth(2);
                 cfg.CreateMap<Menu, MenuViewModel>().MaxDepth(2);
                 cfg.CreateMap<MenuGroup, MenuGroupViewModel>().MaxDepth(2);
+                cfg.CreateMap<Footer, FooterViewModel>().MaxDepth(2);
+                cfg.CreateMap<LandingPage, LandingPageViewModel>().MaxDepth(2);
             });
         }
     }

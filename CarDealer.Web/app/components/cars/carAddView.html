@@ -79,14 +79,6 @@
                             <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
                             <span ng-show="frmAddCar.wheeldrive.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
-                        <div class="form-group">
-                            <label>Năm sản xuất</label>
-                            <select class="form-control" name="manufactureyear" ng-model="carDetail.ManufactureYearID" ng-options="option.ID as option.Name for option in manufactureyears">
-                                <option value="">--- chọn năm ---</option>
-                            </select>
-                            <input type="hidden" name="manufactureyear" ng-model="carDetail.ManufactureYearID" />
-                            <span class="help-block">Dùng trong trường hợp xe cũ</span>
-                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -98,6 +90,14 @@
                 <div class="box box-success">
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="form-group">
+                            <label>Năm sản xuất</label>
+                            <select class="form-control" name="manufactureyear" ng-model="carDetail.ManufactureYearID" ng-options="option.ID as option.Name for option in manufactureyears">
+                                <option value="">--- chọn năm ---</option>
+                            </select>
+                            <input type="hidden" name="manufactureyear" ng-model="carDetail.ManufactureYearID" />
+                            <span class="help-block">Dùng trong trường hợp xe cũ</span>
+                        </div>
                         <div class="form-group">
                             <label>Hệ thống sang số<span class="has-error">(*)</span></label>
                             <select class="form-control" name="transmissiontype" ng-model="carDetail.TransmissionTypeID" ng-options="option.ID as option.Name for option in transmissiontypes">
@@ -116,16 +116,10 @@
                         </div>
                         <!-- text input -->
                         <div class="form-group">
-                            <label>Giá cũ</label>
+                            <label>Giá bán</label>
                             <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.Price">
-                            <span class="help-block">Giá cũ hay giá chưa giảm</span>
+                            <span class="help-block">Giá bán chưa bao gồm VAT</span>
                             <span ng-show="frmAddCar.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
-                        </div>
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>Giá mới</label>
-                            <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.PromotionPrice">
-                            <span class="help-block">Giá mới - giá bán hiện tại</span>
                         </div>
                         <!-- text input -->
                         <div class="form-group">
@@ -184,7 +178,7 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" ng-model="carDetail.HotFlag" ng-checked="carDetail.HotFlag">
-                                        Đang hót
+                                        Đang hót/Mới về
                                     </label>
                                 </div>
                             </div>
@@ -251,7 +245,7 @@
                 <div class="box-title">
                     <span class="input-group-btn">
                         <button class="btn btn-primary pull-right" type="button" ng-disabled="frmAddCar.$invalid" ng-click="AddCar()"><i class="fa fa-save"></i> Lưu</button>
-                        <button class="btn btn-default pull-right" type="button" ui-sref="posts"><i class="fa fa-trash-o"></i> Hủy</button>
+                        <button class="btn btn-default pull-right" type="button" ui-sref="cars"><i class="fa fa-trash-o"></i> Hủy</button>
                     </span>
                 </div>
             </div>

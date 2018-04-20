@@ -47,6 +47,15 @@
                 console.log('cannot get list parent')
             });
         }
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.postDetail.Image = fileUrl;
+                })
+            }
+            finder.popup();
+        }
 
         loadParentCategory();
         loadPostDetail();

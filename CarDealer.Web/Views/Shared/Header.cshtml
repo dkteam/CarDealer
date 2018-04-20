@@ -1,0 +1,104 @@
+﻿@model CarDealer.Web.Models.HeaderViewModel
+
+<header class="section page-header">
+    <!-- RD Navbar-->
+    <div class="rd-navbar-wrap">
+        <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+            <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+            <div class="rd-navbar-aside-outer rd-navbar-collapse bg-gray-dark">
+                <div class="rd-navbar-aside">
+                    <div class="block-left">
+                        <ul class="list-inline">
+                            <li>
+                                <div class="unit  align-items-center">
+                                    <div class="unit-left"><span class="icon ei icon_phone novi-icon"></span></div>
+                                    <div class="unit-body"><a href="tel:#">@Model.SupportOnline.Mobile</a></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="unit  align-items-center">
+                                    <div class="unit-left"><span class="icon ei icon_pin novi-icon"></span></div>
+                                    <div class="unit-body"><a href="#">@Model.SupportOnline.Address</a></div>
+                                </div>
+                            </li>
+                            <li>
+                                <ul class="social-list">
+                                    <li><a href="@Model.SupportOnline.Facebook" class="icon fa fa-facebook novi-icon"></a></li>
+                                    <li><a href="@Model.SupportOnline.Skype" class="icon fa fa-skype novi-icon"></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block-right">
+                        <ul class="list-inline">
+                            @foreach (var item in Model.Menus.Where(x => x.GroupID == 6 && x.ParentID == null))
+                            {
+                                <li>
+                                    <a href="@item.URL">@item.Name</a>
+                                </li>
+                            }
+                            @*<li>
+                                <a href="#register" data-toggle='modal'>Đăng ký</a>
+                            </li>
+                            <li>
+                                <a href="#SignIn" data-toggle='modal'>Đăng nhập</a>
+                            </li>*@
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="rd-navbar-main-outer">
+                <div class="rd-navbar-main">
+                    <!-- RD Navbar Panel-->
+                    <div class="rd-navbar-panel">
+                        <!-- RD Navbar Toggle-->
+                        <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                        <!-- RD Navbar Brand-->
+                        <div class="rd-navbar-brand">
+                            <a class="brand" href="index.html"><img class="brand-logo-dark" src="/Assets/client/images/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-main-element">
+                        <div class="rd-navbar-nav-wrap">
+                            <!-- RD Navbar Nav-->
+                            <ul class="rd-navbar-nav">
+                                @foreach (var item in Model.Menus.Where(x => x.GroupID == 7 && x.ParentID == null))
+                                {
+                                    var url = "/" + item.URL + ".mn-" + item.ID + ".html";
+                                    var acitiveClass = (item.URL == "trang-chu") ? "active" : "";
+
+                                    var childCategories = Model.Menus.Where(x => x.ParentID == item.ID);
+
+                                    <li class="rd-nav-item @acitiveClass">
+                                        <a class="rd-nav-link" href="@url">@item.Name</a>
+                                        @if (item.URL == "san-pham")
+                                        {
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                @foreach (var category in Model.Categories)
+                                                {
+                                                    var urlChild = "/" + category.Alias + ".cc-" + category.ID + ".html";
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@category.Name</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                        @if (childCategories.Count() > 0)
+                                        {
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                @foreach (var category in childCategories)
+                                                {
+                                                    var urlChild = "/" + category.URL + ".cc-" + category.ID + ".html";
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@category.Name</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

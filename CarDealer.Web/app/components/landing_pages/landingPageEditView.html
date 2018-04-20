@@ -1,0 +1,58 @@
+﻿<section class="content-header">
+    <h1>
+        Chỉnh sửa Landing Page: {{landingPageDetail.Name}}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="footers">Footers</a></li>
+        <li class="active">Chỉnh sửa</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sửa thông tin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmEditLandingPage" role="form" ng-submit="UpdateLandingPage()">
+                <div class="box-body">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Hình nền (*)</label>
+                        <div class="col-sm-10">
+                            <img src="{{landingPageDetail.Image}}" style="width: 30%" />
+                            <input type="text" class="form-control" placeholder="Hình nền ..." required name="image" ng-model="landingPageDetail.Image" ng-maxlength="500">
+                            <button type="button" class="btn btn-default" ng-click="ChooseImage()">Chọn ảnh</button>
+                            <span class="help-block"><span ng-show="frmEditLandingPage.image.$invalid" class="has-error">(Bắt buộc)</span></span>
+                            <span ng-show="frmEditLandingPage.image.$error.maxlength" class="has-error">Tối đa 500 ký tự</span>
+                        </div>
+                            
+                        </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên trang landing page</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" disabled ng-model="landingPageDetail.Name" ng-maxlength="50">
+                            <span ng-show="frmEditLandingPage.name.$error.maxlength" class="has-error">Tối đa 50 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nội dung HTML</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="content" ckeditor="ckeditorOptions()" required ng-model="landingPageDetail.Content"></textarea>
+                            <span class="help-block"><span ng-show="frmEditLandingPage.content.$invalid" class="has-error">(Bắt buộc)</span></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-default" ui-sref="landing_pages"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmEditLandingPage.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

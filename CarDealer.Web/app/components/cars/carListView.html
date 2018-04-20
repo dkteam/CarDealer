@@ -54,9 +54,7 @@
                                 <td>{{item.Description}}</td>
                                 <td ng-repeat="category in categories" ng-if="item.CategoryID == category.ID">{{category.Name}}</td>
                                 <td>{{item.CarStatus}}</td>
-                                <!--<td>{{item.PromotionPrice != 0 | iif : item.PromotionPrice : item.Price | currency: "&#8363" : 0}}</td>-->
-                                <td>{{((item.PromotionPrice > 0 | iif : item.PromotionPrice : item.Price) | number:0) + "&#8363"}}</td>
-                                <!--<td>{{item.PromotionPrice > 0 | iif : item.PromotionPrice : item.Price | currency: "&#8363" : 0}}</td>-->
+                                <td>{{(item.Price | number:0) + "&#8363"}}</td>
                                 <td>{{item.ViewCount}}</td>
                                 <td>{{item.CreatedDate|date:'dd/MM/yyyy hh:mm:ss'}}</td>
                                 <!--class="badge bg-red"-->

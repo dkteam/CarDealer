@@ -10,5 +10,7 @@ namespace CarDealer.Common
     {
         public const string CarTag = "car";
         public const string PostTag = "post";
+        public const string Footer = "footer";
+        public const string PreFooter = "pre-footer";
     }
 }

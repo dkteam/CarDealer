@@ -1,0 +1,13 @@
+﻿@model IEnumerable<CarDealer.Web.Models.CarCategoryViewModel>
+
+<div class="col-sm-12 col-md-3">
+    <ul class="product-filter">
+        @foreach (var item in Model)
+        {
+            var url = "/" + item.Alias + ".cc-" + item.ID + ".html";
+            <li>
+                <a href="@url">@item.Name</a>
+            </li>
+        }
+    </ul>
+</div>

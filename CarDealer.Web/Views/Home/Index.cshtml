@@ -1,0 +1,502 @@
+﻿@model CarDealer.Web.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+
+<section id="home" class="section swiper-container swiper-slider swiper-slider-1" data-loop="true" data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
+    <div class="swiper-wrapper text-center">
+        @foreach (var item in Model.Slides)
+        {
+            <div class="swiper-slide context-dark" data-slide-bg="@item.Image" alt="@item.Name" style="background-position: 50% 50%;">
+            </div>
+        }
+    </div>
+    <div class="slider-form">
+        <div class="sidebar-form-wrapper">
+            <div class="sidebar-form">
+                <form action="javascript:;" class="form2">
+                    <div class="select1_wrapper">
+                        <label>Chọn dòng xe</label>
+                        <div class="select1_inner">
+                            <select class="select2 select" style="width: 100%">
+                                @foreach (var item in Model.CarCategories)
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="select1_wrapper">
+                        <label>Chọn MODEL</label>
+                        <div class="select1_inner">
+                            <select class="select2 select" style="width: 100%">
+                                <option value="1">Tất cả model</option>
+                                <option value="2">Model 1</option>
+                                <option value="3">Model 2</option>
+                                <option value="4">Model 3</option>
+                                <option value="5">Model 4</option>
+                                <option value="6">Model 5</option>
+                                <option value="7">Model 6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="select1_wrapper">
+                        <label>Chọn loại xe</label>
+                        <div class="select1_inner">
+                            <select class="select2 select" style="width: 100%">
+                                <option value="1">Tất cả</option>
+                                <option value="2">Type 1</option>
+                                <option value="3">Type 2</option>
+                                <option value="4">Type 3</option>
+                                <option value="5">Type 4</option>
+                                <option value="6">Type 5</option>
+                                <option value="7">Type 6</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="slider-range-wrapper">
+                        <div class="txt">Khoảng giá cần tìm</div>
+                        <div class="slider-range"></div>
+                        <div class="clearfix">
+                            <input type="text" class="amount" readonly="">
+                            <input type="text" class="amount2" readonly="">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-default btn-form2-submit">Tìm xe</button>
+                    <div class="reset-filters"><a href="#">Làm lại</a></div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- Swiper Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Swiper Navigation-->
+    <div class="swiper-button-prev fa-arrow-left"></div>
+    <div class="swiper-button-next fa-arrow-right"></div>
+
+</section>
+<section class="form-section">
+    <div class="container">
+        <div class="slider-form">
+            <div class="sidebar-form-wrapper">
+                <div class="sidebar-form">
+                    <form action="javascript:;" class="form2">
+                        <div class="select1_wrapper">
+                            <label>Chọn dòng xe</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">Any Make</option>
+                                    <option value="2">Alfa Romeo</option>
+                                    <option value="3">Aston Martin</option>
+                                    <option value="4">Audi</option>
+                                    <option value="5">Bentley</option>
+                                    <option value="6">BMW</option>
+                                    <option value="7">Bugatti</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="select1_wrapper">
+                            <label>Chọn MODEL</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">Any Model</option>
+                                    <option value="2">Model 1</option>
+                                    <option value="3">Model 2</option>
+                                    <option value="4">Model 3</option>
+                                    <option value="5">Model 4</option>
+                                    <option value="6">Model 5</option>
+                                    <option value="7">Model 6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="select1_wrapper">
+                            <label>Chọn loại xe</label>
+                            <div class="select1_inner">
+                                <select class="select2 select" style="width: 100%">
+                                    <option value="1">Any Type</option>
+                                    <option value="2">Type 1</option>
+                                    <option value="3">Type 2</option>
+                                    <option value="4">Type 3</option>
+                                    <option value="5">Type 4</option>
+                                    <option value="6">Type 5</option>
+                                    <option value="7">Type 6</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="slider-range-wrapper">
+                            <div class="txt">Khoảng giá cần tìm</div>
+                            <div class="slider-range"></div>
+                            <div class="clearfix">
+                                <input type="text" class="amount" readonly="">
+                                <input type="text" class="amount2" readonly="">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-default btn-form2-submit">Tìm xe</button>
+                        <div class="reset-filters"><a href="#">Làm lại</a></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="section section-md novi-background bg-cover">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item in Model.HotCarTop3)
+            {
+                var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img">
+                                <a href="@url">
+                                    <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                <div class="rating-block">
+                                    <span class="rating-text"><span>@item.Price.Value.ToString("N0")</span><span>&#8363</span></span>
+                                    <span class="stars">
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="product-item-title"><a href="@url">@item.Name</a></div>
+                                <div class="product-item-text">@item.Description</div>
+                                <div class="link">
+                                    <a href="@url" class="btn-default btn1">
+                                        <span>Xem chi tiết</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<div id="welcome" class="section text-center">
+    <section class="parallax-container parallax1" data-parallax-img="@Model.welcomeLandingPage.Image">
+        <div class="parallax-content">
+           @Html.Raw(Model.welcomeLandingPage.Content)
+        </div>
+    </section>
+</div>
+<div id="best" class="section section-md best novi-background bg-cover">
+    <div class="container">
+        @*<div class="section-title-md">
+            Những sản phẩm với những ưu đãi tốt nhất
+        </div>*@
+        <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-1">
+            <ul class="nav nav-tabs">
+                <li class="active" role="presentation">
+                    <a href="#tabs-1-1" data-toggle="tab">Sản phẩm giá tốt</a>
+                </li>
+                <li role="presentation">
+                    <a href="#tabs-1-2" data-toggle="tab">Sản phẩm đang hót</a>
+                </li>
+                <li role="presentation">
+                    <a href="#tabs-1-3" data-toggle="tab">Sản phẩm bán chạy</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tabs-1-1">
+                    <div class="row row-fix">
+                        @{ Html.RenderAction("Category", "Home");}
+                        <div class="col-sm-12 col-md-9">
+                            <div class="row">
+                                @foreach (var item in Model.BestPriceCars)
+                                {
+                                    var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                        <div class="product-minimal">
+                                            <div class="thumbnail clearfix">
+                                                <figure class="product-minimal-img">
+                                                    <a href="@url">
+                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                    </a>
+                                                </figure>
+                                                <div class="caption">
+                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                                    {
+                                                        if (item.ManufactureYearID == manufactureYear.ID)
+                                                        {
+                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                        }
+                                                    }
+                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                    <div class="info">
+                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                        <span class="speed">@item.Odo km</span>
+                                                    </div>
+                                                    <ul class="tag-list">
+                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Đã sử dụng" )</a></li>
+                                                        @foreach (var style in Model.Styles)
+                                                        {
+                                                            if (item.StyleID == style.ID)
+                                                            {
+                                                                <li><a href="#">@style.Name</a></li>
+                                                            }
+                                                        }
+                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
+                                                        {
+                                                            if (item.ManufactureYearID == manufactureYear.ID)
+                                                            {
+                                                                <li><a href="#">@manufactureYear.Name</a></li>
+                                                            }
+                                                        }*@
+                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                        {
+                                                            if (item.TransmissionTypeID == transmissionType.ID)
+                                                            {
+                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                            }
+                                                        }
+                                                        @foreach (var fuel in Model.Fuels)
+                                                        {
+                                                            if (item.FuelID == fuel.ID)
+                                                            {
+                                                                <li><a href="#">@fuel.Name</a></li>
+                                                            }
+                                                        }
+
+                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tabs-1-2">
+                    <div class="row row-fix">
+                        @{ Html.RenderAction("Category", "Home");}
+                        <div class="col-sm-12 col-md-9">
+                            <div class="row">
+                                @foreach (var item in Model.HotCars)
+                                {
+                                    var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                        <div class="product-minimal">
+                                            <div class="thumbnail clearfix">
+                                                <figure class="product-minimal-img">
+                                                    <a href="@url">
+                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                    </a>
+                                                </figure>
+                                                <div class="caption">
+                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                                    {
+                                                        if (item.ManufactureYearID == manufactureYear.ID)
+                                                        {
+                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                        }
+                                                    }
+                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                    <div class="info">
+                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                        <span class="speed">@item.Odo km</span>
+                                                    </div>
+                                                    <ul class="tag-list">
+                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Đã sử dụng" )</a></li>
+                                                        @foreach (var style in Model.Styles)
+                                                        {
+                                                            if (item.StyleID == style.ID)
+                                                            {
+                                                                <li><a href="#">@style.Name</a></li>
+                                                            }
+                                                        }
+                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
+                                                        {
+                                                            if (item.ManufactureYearID == manufactureYear.ID)
+                                                            {
+                                                                <li><a href="#">@manufactureYear.Name</a></li>
+                                                            }
+                                                        }*@
+                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                        {
+                                                            if (item.TransmissionTypeID == transmissionType.ID)
+                                                            {
+                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                            }
+                                                        }
+                                                        @foreach (var fuel in Model.Fuels)
+                                                        {
+                                                            if (item.FuelID == fuel.ID)
+                                                            {
+                                                                <li><a href="#">@fuel.Name</a></li>
+                                                            }
+                                                        }
+
+                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tabs-1-3">
+                    <div class="row row-fix">
+                        @{ Html.RenderAction("Category", "Home");}
+                        <div class="col-sm-12 col-md-9">
+                            <div class="row">
+                                @foreach (var item in Model.BestSellerCars)
+                                {
+                                    var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                        <div class="product-minimal">
+                                            <div class="thumbnail clearfix">
+                                                <figure class="product-minimal-img">
+                                                    <a href="@url">
+                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                    </a>
+                                                </figure>
+                                                <div class="caption">
+                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                                    {
+                                                        if (item.ManufactureYearID == manufactureYear.ID)
+                                                        {
+                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                        }
+                                                    }
+                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                    <div class="info">
+                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                        <span class="speed">@item.Odo km</span>
+                                                    </div>
+                                                    <ul class="tag-list">
+                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Đã sử dụng" )</a></li>
+                                                        @foreach (var style in Model.Styles)
+                                                        {
+                                                            if (item.StyleID == style.ID)
+                                                            {
+                                                                <li><a href="#">@style.Name</a></li>
+                                                            }
+                                                        }
+                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
+                                                        {
+                                                            if (item.ManufactureYearID == manufactureYear.ID)
+                                                            {
+                                                                <li><a href="#">@manufactureYear.Name</a></li>
+                                                            }
+                                                        }*@
+                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                        {
+                                                            if (item.TransmissionTypeID == transmissionType.ID)
+                                                            {
+                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                            }
+                                                        }
+                                                        @foreach (var fuel in Model.Fuels)
+                                                        {
+                                                            if (item.FuelID == fuel.ID)
+                                                            {
+                                                                <li><a href="#">@fuel.Name</a></li>
+                                                            }
+                                                        }
+
+                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="parallax-container parallax1" data-parallax-img="@Model.featureLandingPage.Image">
+    <div class="parallax-content">
+        <div class="section">
+            <div class="container">
+                <div class="row row-fix">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="figure-section">
+                            <div class="section-title">
+                                Kinh doanh xe uy tín hàng đầu
+                            </div>
+                            <h3>Tại sao nên mua xe Mercedes-Benz tại Haxaco?</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="figure-section-text">
+                                        <p>  Với đội ngũ nhân viên chuyên nghiệp, giàu kinh nghiệm luôn sẳn sàng phục vụ quý khách hàng. Mercedes Haxaco cam kết là lựa chọn tốt nhất cho khách hàng mua sắm xe hơi hạng sang tại Việt Nam.</p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-marked-left">
+                                        <li>
+                                            <a href="#">Hỗ trợ tài chính chuyên nghiệp</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Thương hiệu hạng sang đến từ Đức</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Sự hài lòng của quý khách</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Dịch vụ hàng đầu đạt chuẩn quốc tế</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="section section-sm novi-background bg-cover bg-gray-light section-shadow">
+    <div class="container">
+        @Html.Raw(Model.counterLandingPage.Content)
+    </div>
+</div>
+<div id="testimonials" class="section section-lg testimonials-bg novi-background custom-bg-image">
+
+    <div class="container">
+        @Html.Raw(Model.commentLandingPage.Content)
+    </div>
+</div>
+<!--
+    <div class="footer-map">
+      <div class="google-map-container google-map-2" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="14" data-icon="images/gmap_marker.png" data-icon-active="images/gmap_marker_active.png" data-styles="[{&quot;featureType&quot;:&quot;water&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#e9e9e9&quot;},{&quot;lightness&quot;:17}]},{&quot;featureType&quot;:&quot;landscape&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f5f5f5&quot;},{&quot;lightness&quot;:20}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:17}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:29},{&quot;weight&quot;:0.2}]},{&quot;featureType&quot;:&quot;road.arterial&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:18}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:16}]},{&quot;featureType&quot;:&quot;poi&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f5f5f5&quot;},{&quot;lightness&quot;:21}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#dedede&quot;},{&quot;lightness&quot;:21}]},{&quot;elementType&quot;:&quot;labels.text.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:16}]},{&quot;elementType&quot;:&quot;labels.text.fill&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:36},{&quot;color&quot;:&quot;#333333&quot;},{&quot;lightness&quot;:40}]},{&quot;elementType&quot;:&quot;labels.icon&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f2f2f2&quot;},{&quot;lightness&quot;:19}]},{&quot;featureType&quot;:&quot;administrative&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#fefefe&quot;},{&quot;lightness&quot;:20}]},{&quot;featureType&quot;:&quot;administrative&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#fefefe&quot;},{&quot;lightness&quot;:17},{&quot;weight&quot;:1.2}]}]">
+        <div class="google-map"></div>
+        <ul class="google-map-markers">
+          <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-description="9870 St Vincent Place, Glasgow"></li>
+        </ul>
+      </div>
+    </div>
+-->

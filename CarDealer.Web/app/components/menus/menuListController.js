@@ -112,7 +112,16 @@
             });
         }
 
+        function loadParent() {
+            apiService.get('api/menu/getallNonPaging', null, function (result) {
+                $scope.menuParents = result.data;
+            }, function () {
+                console.log('cannot get list parent')
+            });
+        }
+
         loadMenuGroup();
+        loadParent();
         $scope.getMenus();
     }
 })(angular.module('cardealer.menus'));

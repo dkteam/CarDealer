@@ -49,7 +49,7 @@ namespace CarDealer.Service
 
         public IEnumerable<Menu> GetAll()
         {
-            return _menu.GetAll();
+            return _menu.GetAll().OrderBy(x => x.DisplayOrder);
         }
 
         public IEnumerable<Menu> GetAll(string keyWord)

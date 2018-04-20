@@ -3,6 +3,8 @@ using CarDealer.Data.Infrastructure;
 using CarDealer.Data.Repositories;
 using CarDealer.Model.Models;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace CarDealer.Service
 {
@@ -17,6 +19,14 @@ namespace CarDealer.Service
         IEnumerable<Car> GetAll();
 
         IEnumerable<Car> GetAll(string keyWord);
+
+        IEnumerable<Car> GetBestSeller(int top);
+
+        IEnumerable<Car> GetHot(int top);
+
+        IEnumerable<Car> GetLatestCar(int top);
+
+        IEnumerable<Car> GetBestPrice(int top);
 
         Car GetById(int id);
 
@@ -132,6 +142,26 @@ namespace CarDealer.Service
                 }
 
             }
+        }
+
+        public IEnumerable<Car> GetBestSeller(int top)
+        {
+            return _carRepository.GetMulti(x => x.Status && x.Bestseller == true).OrderByDescending(x => x.UpdatedDate).Take(top);
+        }
+
+        public IEnumerable<Car> GetHot(int top)
+        {
+            return _carRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.UpdatedDate).Take(top);
+        }
+
+        public IEnumerable<Car> GetBestPrice(int top)
+        {
+            return _carRepository.GetMulti(x => x.Status && x.BestPrice == true).OrderByDescending(x => x.UpdatedDate).Take(top);
+        }
+
+        public IEnumerable<Car> GetLatestCar(int top)
+        {
+            return _carRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

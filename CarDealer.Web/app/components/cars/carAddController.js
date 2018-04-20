@@ -6,6 +6,8 @@
     function carAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.carDetail = {
             CreatedDate: new Date(),
+            UpdatedDate: new Date(),
+            Odo: 0,
             ViewCount: 0,
             Price: 0,
             CarStatus: true,

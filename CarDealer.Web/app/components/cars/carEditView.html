@@ -78,14 +78,6 @@
                             <span class="help-block">Xuất hiện ở trang chi tiết xe</span>
                             <span ng-show="frmAddCar.wheeldrive.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
                         </div>
-                        <div class="form-group">
-                            <label>Năm sản xuất</label>
-                            <select class="form-control" name="manufactureyear" ng-model="carDetail.ManufactureYearID" ng-options="option.ID as option.Name for option in manufactureyears">
-                                <option value="">--- chọn năm ---</option>
-                            </select>
-                            <input type="hidden" name="manufactureyear" ng-model="carDetail.ManufactureYearID" />
-                            <span class="help-block">Dùng trong trường hợp xe cũ</span>
-                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -97,6 +89,14 @@
                 <div class="box box-success">
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="form-group">
+                            <label>Năm sản xuất</label>
+                            <select class="form-control" name="manufactureyear" ng-model="carDetail.ManufactureYearID" ng-options="option.ID as option.Name for option in manufactureyears">
+                                <option value="">--- chọn năm ---</option>
+                            </select>
+                            <input type="hidden" name="manufactureyear" ng-model="carDetail.ManufactureYearID" />
+                            <span class="help-block">Dùng trong trường hợp xe cũ</span>
+                        </div>
                         <div class="form-group">
                             <label>Hệ thống sang số<span class="has-error">(*)</span></label>
                             <select class="form-control" name="transmissiontype" ng-model="carDetail.TransmissionTypeID" ng-options="option.ID as option.Name for option in transmissiontypes">
@@ -115,16 +115,10 @@
                         </div>
                         <!-- text input -->
                         <div class="form-group">
-                            <label>Giá cũ</label>
+                            <label>Giá bán</label>
                             <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.Price">
-                            <span class="help-block">Giá cũ hay giá chưa giảm</span>
+                            <span class="help-block">Giá bán chưa bao gồm VAT 10%</span>
                             <span ng-show="frmAddCar.metaKeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
-                        </div>
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>Giá mới</label>
-                            <input type="number" class="form-control" name="metaKeyword" ng-model="carDetail.PromotionPrice">
-                            <span class="help-block">Giá mới - giá bán hiện tại</span>
                         </div>
                         <!-- text input -->
                         <div class="form-group">

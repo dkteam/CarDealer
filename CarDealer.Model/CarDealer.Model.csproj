@@ -95,8 +95,10 @@
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Fuel.cs" />
+    <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\InstallmentPaymentMethod.cs" />
     <Compile Include="Models\InstallmentPeriod.cs" />
+    <Compile Include="Models\LandingPage.cs" />
     <Compile Include="Models\ManufactureYear.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuGroup.cs" />

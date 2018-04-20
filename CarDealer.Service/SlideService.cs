@@ -49,7 +49,7 @@ namespace CarDealer.Service
 
         public IEnumerable<Slide> GetAll()
         {
-            return _slideRepository.GetAll();
+            return _slideRepository.GetAll().OrderBy(x=>x.DisplayOrder);
         }
 
         public IEnumerable<Slide> GetAll(string keyWord)

@@ -49,7 +49,7 @@
                     </div>-->
                     <!-- select -->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Nhóm Menu</label>
+                        <label class="col-sm-2 control-label">Vị trí</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="groupid" ng-model="menus.GroupID" ng-options="option.ID as option.Name for option in menuGroups">
                                 <option value="">--- chọn nhóm menu ---</option>
@@ -59,10 +59,22 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Target</label>
+                        <label class="col-sm-2 control-label">Menu cha</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="Target" name="target" ng-model="menus.Target" ng-maxlength="10"></textarea>
-                            <span ng-show="frmAddMenu.target.$error.maxlength" class="has-error">Tối đa 10 ký tự</span>
+                            <select class="form-control" name="groupid" ng-model="menus.ParentID" ng-options="option.ID as option.Name for option in menuParents">
+                                <option value="">--- chọn menu cha ---</option>
+                            </select>
+                            <input type="hidden" name="groupid" ng-model="menus.ParentID" />
+                            <span class="help-block"> Menu này thuộc menu nào?</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="menus.Target" ng-checked="menus.Target"> Mở tab mới
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">

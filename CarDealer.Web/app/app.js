@@ -11,7 +11,10 @@
          'cardealer.styles',
          'cardealer.transmission_types',
          'cardealer.slides',
+         'cardealer.footers',
          'cardealer.menus',
+         'cardealer.support_onlines',
+         'cardealer.landing_pages',
          'cardealer.common'])
          .config(config)
          .config(configAuthentication);

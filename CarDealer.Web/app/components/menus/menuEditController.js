@@ -4,9 +4,7 @@
     menuEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService'];
 
     function menuEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
-        $scope.menus = {
-            Status: true
-        };
+        $scope.menus = {};
 
         $scope.UpdateMenu = UpdateMenu;
         function UpdateMenu() {
@@ -31,7 +29,7 @@
 
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
-            $scope.menus.Alias = commonService.getSeoTitle($scope.menus.Name);
+            $scope.menus.URL = commonService.getSeoTitle($scope.menus.Name);
         }
 
         function loadMenuDetail() {
@@ -50,7 +48,18 @@
             });
         }
 
+
+        function loadMenuParent() {
+            apiService.get('api/menu/getallNonPaging', null, function (result) {
+                $scope.menuParents = result.data;
+            }, function () {
+                console.log('cannot get list parent')
+            });
+        }
+
+
         loadMenuGroup();
+        loadMenuParent();
         loadMenuDetail();
     }
 })(angular.module('cardealer.menus'));

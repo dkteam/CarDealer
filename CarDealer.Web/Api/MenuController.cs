@@ -56,6 +56,23 @@ namespace CarDealer.Web.Api
             });
         }
 
+        [Route("getallNonPaging")]
+        [HttpGet]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+
+                var listNonPaging = _menuService.GetAll().ToList();
+
+                var listVm = Mapper.Map<List<Menu>, List<MenuViewModel>>(listNonPaging);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listVm);
+
+                return response;
+            });
+        }
+
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)

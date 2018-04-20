@@ -11,6 +11,7 @@ namespace CarDealer.Model.Models
         public string ID { set; get; }
 
         [Required]
+        [Column(TypeName = "ntext")]
         public string Content { set; get; }
     }
 }
