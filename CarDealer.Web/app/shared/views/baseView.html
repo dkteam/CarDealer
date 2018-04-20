@@ -181,7 +181,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="javascript:void(0);">
+                    <a ui-sref="home">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -237,8 +237,6 @@
                     <ul class="treeview-menu">
                         <li><a ui-sref="slides"><i class="fa fa-circle-o"></i> Slides</a></li>
                         <li><a ui-sref="menus"><i class="fa fa-circle-o"></i> Menus</a></li>
-                        <li><a ui-sref="landing_pages"><i class="fa fa-circle-o"></i> Landing Pages</a></li>
-                        <li><a ui-sref="footers"><i class="fa fa-circle-o"></i> Footers</a></li>
                         <li><a ui-sref="supportonline_edit"><i class="fa fa-circle-o"></i> Thông tin liên hệ</a></li>
                     </ul>
                 </li>
@@ -246,6 +244,19 @@
                     <a href="javascript:void(0);">
                         <i class="fa fa-picture-o"></i> <span id="upImgToServer">Upload hình lên Server</span>
                     </a>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-code"></i>
+                        <span> HTML Codes</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a ui-sref="landing_pages"><i class="fa fa-circle-o"></i> Landing Pages</a></li>
+                        <li><a ui-sref="footers"><i class="fa fa-circle-o"></i> Footers</a></li>
+                    </ul>
                 </li>
             </ul>
         </section>
