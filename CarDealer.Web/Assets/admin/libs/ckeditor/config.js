@@ -18,7 +18,7 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserFlashUploadUrl = '/Assets/admin/libs/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
 
     //config.fullPage = false;
-    config.allowedContent = true;
+    //config.allowedContent = true;
 
     CKFinder.setupCKEditor(null, '/Assets/admin/libs/ckfinder/');
 };

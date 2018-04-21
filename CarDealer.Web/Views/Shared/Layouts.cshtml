@@ -16,6 +16,7 @@
     <link href="/Assets/client/css/font-awesome.css" rel="stylesheet">
     <link href="/Assets/client/css/light-gallery.css" rel="stylesheet">
     <link href="/Assets/client/css/elegant-icons.css" rel="stylesheet">
+    <link href="/Assets/client/css/gflexslider.css" rel="stylesheet">
 
     <link href="/Assets/client/css/animate.css" rel="stylesheet">
     <link href="/Assets/client/css/select2.css" rel="stylesheet">
@@ -50,7 +51,6 @@
 <body class="front" data-spy="scroll" data-target="#top1" data-offset="96">
     <div id="main">
         @{ Html.RenderAction("Header", "Home");}
-
         @RenderBody()
         @{ Html.RenderAction("PreFooter", "Home");}
         @{ Html.RenderAction("Footer", "Home");}
@@ -116,7 +116,6 @@
     </div>
     <div class="snackbars" id="form-output-global"></div>
     <script src="/Assets/client/js/bootstrap.min.js"></script>
-
     @RenderSection("jsFooter", required:false)
 </body>
 </html>

@@ -80,6 +80,7 @@ namespace CarDealer.Web.Infrastucture.Extensions
             car.ViewCount = carVm.ViewCount;
             car.CategoryID = carVm.CategoryID;
             car.Tags = carVm.Tags;
+            car.Features = carVm.Features;
 
             car.CreatedDate = carVm.CreatedDate;
             car.CreatedBy = carVm.CreatedBy;

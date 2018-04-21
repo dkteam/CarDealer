@@ -56,7 +56,6 @@ D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.xml
 D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.Integration.Mvc.xml
 D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.Integration.WebApi.xml
 D:\16. WEB\CarDealer\CarDealer.Web\bin\AutoMapper.xml
-D:\16. WEB\CarDealer\CarDealer.Web\bin\CKFinder.pdb
 D:\16. WEB\CarDealer\CarDealer.Web\bin\EntityFramework.xml
 D:\16. WEB\CarDealer\CarDealer.Web\bin\EntityFramework.SqlServer.xml
 D:\16. WEB\CarDealer\CarDealer.Web\bin\Microsoft.AspNet.Identity.Core.xml

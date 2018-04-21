@@ -73,6 +73,8 @@ namespace CarDealer.Model.Models
         public bool? BestPrice { set; get; }
 
         public int? ViewCount { set; get; }
+        
+        public string Features { set; get; }
 
         public string Tags { set; get; }
 

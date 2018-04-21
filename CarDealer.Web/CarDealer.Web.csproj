@@ -62,9 +62,9 @@
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+    <Reference Include="CKFinder, Version=2.4.1.2663, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\11. PROGRAMMING\06. Website\ASPdotNet\ck edited\CKFinder.dll</HintPath>
+      <HintPath>..\..\..\11. PROGRAMMING\06. Website\ASPdotNet\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -219,7 +219,9 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3574,6 +3576,8 @@
     <Content Include="Assets\client\images\footer-1-80x65.jpg" />
     <Content Include="Assets\client\images\footer-2-80x65.jpg" />
     <Content Include="Assets\client\images\footer-3-80x65.jpg" />
+    <Content Include="Assets\client\images\gallery-next.png" />
+    <Content Include="Assets\client\images\gallery-prev.png" />
     <Content Include="Assets\client\images\gmap_marker.png" />
     <Content Include="Assets\client\images\home-1-370x200.jpg" />
     <Content Include="Assets\client\images\home-2-370x200.jpg" />
@@ -3616,6 +3620,7 @@
     <Content Include="Assets\client\images\slider-11-1920x1200.jpg" />
     <Content Include="Assets\client\images\slider-2-1920x1200.jpg" />
     <Content Include="Assets\client\images\slider-3-1920x1200.jpg" />
+    <Content Include="Assets\client\images\slide_nav.png" />
     <Content Include="Assets\client\images\testimonial-bg.jpg" />
     <Content Include="Assets\client\images\_blank.png" />
     <Content Include="Assets\client\js\bootstrap.min.js" />
@@ -3639,6 +3644,7 @@
     <Content Include="Assets\client\js\rd-navbar.js" />
     <Content Include="Assets\client\js\scripts.js" />
     <Content Include="Assets\client\js\select2.js" />
+    <Content Include="Assets\client\js\custome\sorting.js" />
     <Content Include="Assets\client\js\superfish.js" />
     <Content Include="Assets\client\js\swiper.js" />
     <Content Include="Assets\client\js\waypoint.js" />
@@ -4121,6 +4127,9 @@
     <Content Include="Views\Shared\PreFooter.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Category.cshtml" />
+    <Content Include="Views\Car\Category.cshtml" />
+    <Content Include="Views\Car\Detail.cshtml" />
+    <Content Include="Views\Post\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarDealer.Common\CarDealer.Common.csproj">

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarDealer.Model.Models
 {
-    [Table("CarCategory")]
+    [Table("CarCategories")]
     public class CarCategory : Auditable
     {
         [Key]

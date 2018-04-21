@@ -1,0 +1,357 @@
+﻿@model CarDealer.Web.Models.CarViewModel
+
+@{
+    var category = (CarDealer.Web.Models.CarCategoryViewModel)ViewBag.Category;
+    var manufactureYear = (IEnumerable<CarDealer.Web.Models.ManufactureYearViewModel>)ViewBag.ManufactureYear;
+    var transmissionType = (IEnumerable<CarDealer.Web.Models.TransmissionTypeViewModel>)ViewBag.TransmissionType;
+    var style = (IEnumerable<CarDealer.Web.Models.StyleViewModel>)ViewBag.Style;
+    var fuel = (IEnumerable<CarDealer.Web.Models.FuelViewModel>)ViewBag.Fuel;
+
+    var moreImages = (List<string>)ViewBag.MoreImages;
+    var relatedCars = (IEnumerable<CarDealer.Web.Models.CarViewModel>)ViewBag.RelatedCars;
+    var supportOnline = (CarDealer.Web.Models.SupportOnlineViewModel)ViewBag.SupportOnline;
+    ViewBag.Title = "Chi tiết xe " + Model.Name;
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+
+@section jsFooter{
+    <script src="~/Assets/client/js/superfish.js"></script>
+}
+
+<div class="section top4-wrapper novi-background">
+    <div class="container">
+        <div class="top4"></div>
+    </div>
+</div>
+<div class="section breadcrumbs1_wrapper novi-background">
+    <div class="container">
+        @{ var url = "/" + category.Alias + ".cc-" + category.ID + ".html";}
+        <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span><a href="@url">@category.Name</a><span></span>@Model.Name</div>
+    </div>
+</div>
+<div class="section section-md-bottom content novi-background bg-cover">
+    <div class="container">
+        <div class="row row-fix">
+            <div class="col-sm-12 col-md-9  col-md-push-3 column-content">
+                <div class="gslider-wrapper">
+                    <div id="gslider" class="flexslider">
+                        <ul class="slides">
+                            @if (moreImages.Count > 0)
+                            {
+                                foreach (var image in moreImages)
+                                {
+                                    <li>
+                                        <img src="@image" alt="@Model.Name" class="img-responsive">
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <ul class="slides">
+                            @if (moreImages.Count > 0)
+                            {
+                                foreach (var image in moreImages)
+                                {
+                                    <li>
+                                        <img src="@image" alt="@Model.Name" class="img-responsive">
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="tabs2-wrapper">
+                    <ul class="tabs clearfix" data-tabgroup="second-tab-group">
+                        <li class="active"><a href="#tabs3-1">Tổng quan</a></li>
+                        <li><a href="#tabs3-2">Đặc điểm &amp; Options</a></li>
+                        <li><a href="#tabs3-3">Hỗ trợ tài chính</a></li>
+                    </ul>
+                </div>
+                <div id="second-tab-group" class="tabgroup">
+                    <div id="tabs3-1">
+                        <div class="title2">Mô tả</div>
+                        <p>@Model.Description</p>
+                        <div class="title2">Chi tiết</div>
+                        <p>@Html.Raw(Model.Content)</p>
+                    </div>
+
+                    <div id="tabs3-2">
+                        <div class="row row-fix">
+                            @Html.Raw(Model.Features)
+                        </div>
+                    </div>
+
+                    <div id="tabs3-3">
+                        <p> Theo nguồn tin của Zing.vn, Go-Jek, đối thủ của Grab tại Đông Nam Á, đang trong giai đoạn tuyển lãnh đạo và lên kế hoạch đến Việt Nam. Tuy nhiên, Go-Jek không phải là hãng được thí điểm xe hợp đồng điện tử theo quy định của Bộ Giao thông Vận tải, nên việc vào Việt Nam ngay là không thể. Hãng này có thể phải đợi Nghị định 86 ban hành. </p>
+                        <div class="google-map-container google-map-2" data-center="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-zoom="14" data-icon="images/gmap_marker.png" data-icon-active="images/gmap_marker_active.png" data-styles="[{&quot;featureType&quot;:&quot;water&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#e9e9e9&quot;},{&quot;lightness&quot;:17}]},{&quot;featureType&quot;:&quot;landscape&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f5f5f5&quot;},{&quot;lightness&quot;:20}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:17}]},{&quot;featureType&quot;:&quot;road.highway&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:29},{&quot;weight&quot;:0.2}]},{&quot;featureType&quot;:&quot;road.arterial&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:18}]},{&quot;featureType&quot;:&quot;road.local&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:16}]},{&quot;featureType&quot;:&quot;poi&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f5f5f5&quot;},{&quot;lightness&quot;:21}]},{&quot;featureType&quot;:&quot;poi.park&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#dedede&quot;},{&quot;lightness&quot;:21}]},{&quot;elementType&quot;:&quot;labels.text.stroke&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;color&quot;:&quot;#ffffff&quot;},{&quot;lightness&quot;:16}]},{&quot;elementType&quot;:&quot;labels.text.fill&quot;,&quot;stylers&quot;:[{&quot;saturation&quot;:36},{&quot;color&quot;:&quot;#333333&quot;},{&quot;lightness&quot;:40}]},{&quot;elementType&quot;:&quot;labels.icon&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;off&quot;}]},{&quot;featureType&quot;:&quot;transit&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#f2f2f2&quot;},{&quot;lightness&quot;:19}]},{&quot;featureType&quot;:&quot;administrative&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#fefefe&quot;},{&quot;lightness&quot;:20}]},{&quot;featureType&quot;:&quot;administrative&quot;,&quot;elementType&quot;:&quot;geometry.stroke&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#fefefe&quot;},{&quot;lightness&quot;:17},{&quot;weight&quot;:1.2}]}]">
+                            <div class="google-map"></div>
+                            <ul class="google-map-markers">
+                                <li data-location="9870 St Vincent Place, Glasgow, DC 45 Fr 45." data-description="9870 St Vincent Place, Glasgow"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--
+                                            <div id="tabs3-4">
+                                                <div class="comment-block clearfix">
+                                                    <figure><img src="images/customer-2-104x104.jpg" alt="" class="img-responsive"></figure>
+                                                    <div class="caption">
+                                                        <div class="top clearfix">
+                                                            <div class="txt1">John Doe</div>
+                                                            <div class="txt2">30 MAY 2018 <a href="#">Posted at 12:25 AM</a></div>
+                                                            <div class="ic10"><a href="#"> <i class="fa fa-mail-reply novi-icon"></i> <span></span> </a></div>
+                                                        </div>
+                                                        <div class="txt3"> In eget dolor. Lorem ipsum dolor sit amet consectetuer adipiscing elit. Ut ornare
+                                                            cursus nibh. Sed lorem volutpat purus scel erisque dapibus. Etiam adipiscing ante nec nibh. In in
+                                                            felis in metus mollis blandit.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-block clearfix left1">
+                                                    <figure><img src="images/customer-3-104x104.jpg" alt="" class="img-responsive"></figure>
+                                                    <div class="caption">
+                                                        <div class="top clearfix">
+                                                            <div class="txt1">Amanda Bernshtein</div>
+                                                            <div class="txt2">30 MAY 2018 <a href="#">Posted at 12:25 AM</a></div>
+                                                            <div class="ic10"><a href="#"> <i class="fa fa-mail-reply novi-icon"></i> <span></span> </a></div>
+                                                        </div>
+                                                        <div class="txt3"> In eget dolor. Lorem ipsum dolor sit amet consectetuer adipiscing elit. Ut ornare
+                                                            cursus nibh. Sed lorem volu tpat purus scelerisque dapibus. Etiam adipiscing ante nec nibh. In in
+                                                            felis in metus mollis
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="divider1"></div>
+                                                <div class="title2">ADD A REPLY</div>
+                                                <div id="note3"></div>
+                                                <div id="fields3">
+                                                    <form id="ajax-contact-form3" class="form-horizontal rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post" action="bat/rd-mailform.php">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group form-wrap">
+                                                                            <label for="inputName2" class="form-label">Your Name</label>
+                                                                            <input type="text" class="form-control" id="inputName2" name="name"  placeholder="Your Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group form-wrap">
+                                                                            <label for="inputEmail2">Email</label>
+                                                                            <input type="text" class="form-control" id="inputEmail2" name="email" placeholder="E-mail address">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="col-sm-12">
+
+                                                                <div class="form-group form-wrap">
+                                                                    <label for="inputMessage2">Your Message</label>
+                                                                    <textarea class="form-control" rows="9" id="inputMessage2" name="content"placeholder="Your Message"></textarea>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <button type="submit" class="btn-default btn-cf-submit3">SEND COMMENTS</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                    -->
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div class="banner2-wrapper">
+                            <div class="contact-banner">
+                                <div class="top-info clearfix">
+                                    <div class="info1">
+                                        <div class="banner-title">@Model.Name</div>
+                                        <div class="txt2">
+                                            <span class="txt">Người lái thử nhận xét</span>
+                                            <span class="stars">
+                                                <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="txt3">@(Model.Price == 0 ? "Liên hệ" : Model.Price.Value.ToString("N0"))</div>
+                                <div class="txt4">Liên hệ: @supportOnline.Name</div>
+                                <div class="txt5">
+                                    @supportOnline.Address <br />
+                                    Điện thoại: <a href="tel:#" style="font-weight:bold">@supportOnline.Mobile</a>
+                                </div>
+                                <div class="form-wrapper">
+                                    <div id="note2"></div>
+                                    <div id="fields2">
+                                        <form id="ajax-contact-form2" class="form-horizontal rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post" action="bat/rd-mailform.php">
+                                            <div class="form-group form-wrap">
+                                                <label for="inputEmail">Email</label><input type="text" class="form-control" id="inputEmail" name="email" placeholder="Địa chỉ email">
+                                            </div>
+                                            <div class="form-group form-wrap">
+                                                <label for="inputMessage">Thông điệp</label>
+                                                <textarea class="form-control" rows="9" id="inputMessage" placeholder="Lời nhắn" name="content"></textarea>
+                                            </div>
+
+                                            <div class="checkbox-inline">
+                                                <label>
+                                                    <input type="checkbox"> Gửi cho tôi một bản sao
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox-inline">
+                                                <label>
+                                                    <input type="checkbox" checked> Đăng ký nhận tin khuyến mãi
+                                                </label>
+                                            </div>
+
+                                            <button type="submit" class="btn-default btn-cf-submit2">Gửi</button>
+
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-12">
+                        <div class="banner3-wrapper">
+                            <div class="banner3">
+                                <div class="top-info clearfix">
+                                    <div class="info1">
+                                        <div class="txt1">Hỗ trợ tài chính</div>
+                                    </div>
+                                </div>
+                                <div class="txt2">Dòng xe</div>
+                                <div class="txt3">Maybach</div>
+                                <div class="form-wrapper">
+                                    <div id="note1"></div>
+                                    <div id="fields1">
+                                        <form id="ajax-contact-form1" class="form-horizontal" action="javascript:;">
+
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="inputName">Trả trước (VNĐ)</label>
+                                                        <input type="text" class="form-control" id="inputName" name="name" value="34990">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="select1_wrapper">
+                                                            <label>Thời gian trả góp</label>
+                                                            <div class="select1_inner form-control">
+                                                                <select class="select2 select" style="width: 100%">
+                                                                    <option value="1">60 tháng</option>
+                                                                    <option value="2">48 tháng</option>
+                                                                    <option value="3">36 tháng</option>
+                                                                    <option value="4">24 tháng</option>
+                                                                    <option value="5">12 tháng</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <button type="submit" class="btn-default btn-cf-submit1">Tính</button>
+
+
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-12">
+                        <div class="banner novi-background">
+                            <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            @if (relatedCars.Count() > 0)
+            {
+                foreach (var item in relatedCars)
+                {
+                    var urlRelated = "/" + item.Alias + ".c-" + item.ID + ".html";
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                        <div class="product-minimal">
+                            <div class="thumbnail clearfix">
+                                <figure class="product-minimal-img">
+                                    <a href="details.html">
+                                        <img src="@item.Image" alt="" class="img-responsive">
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @foreach (var manu in manufactureYear)
+                                    {
+                                        if (item.ManufactureYearID == manu.ID)
+                                        {
+                                            <p class="small">Model @manu.Name</p>
+                                        }
+                                    }
+                                    <div class="product-minimal-title"><a href="@urlRelated"> @item.Name</a></div>
+                                    <div class="info">
+                                        <span class="price">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</span>
+                                        <span class="speed">@item.Odo</span>
+                                    </div>
+                                    <ul class="tag-list">
+                                        <li><a href="#">@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                        @foreach (var manufacture in manufactureYear)
+                                        {
+                                            if (item.ManufactureYearID == manufacture.ID)
+                                            {
+                                                <li><a>@manufacture.Name</a></li>
+                                            }
+                                        }
+                                        @foreach (var styleType in style)
+                                        {
+                                            if (item.StyleID == styleType.ID)
+                                            {
+                                                <li><a>@styleType.Name</a></li>
+                                            }
+                                        }
+                                        @foreach (var transmission in transmissionType)
+                                        {
+                                            if (item.TransmissionTypeID == transmission.ID)
+                                            {
+                                                <li><a>@transmission.Name</a></li>
+                                            }
+                                        }
+                                        @foreach (var fuelenging in fuel)
+                                        {
+                                            if (item.FuelID == fuelenging.ID)
+                                            {
+                                                <li><a>@fuelenging.Name</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+

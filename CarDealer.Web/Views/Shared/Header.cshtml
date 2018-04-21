@@ -56,7 +56,7 @@
                         <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                         <!-- RD Navbar Brand-->
                         <div class="rd-navbar-brand">
-                            <a class="brand" href="index.html"><img class="brand-logo-dark" src="/Assets/client/images/logo.png" alt="" /></a>
+                            <a class="brand" href="/"><img class="brand-logo-dark" src="/Assets/client/images/logo.png" alt="" /></a>
                         </div>
                     </div>
                     <div class="rd-navbar-main-element">
@@ -66,28 +66,46 @@
                                 @foreach (var item in Model.Menus.Where(x => x.GroupID == 7 && x.ParentID == null))
                                 {
                                     var url = "/" + item.URL + ".mn-" + item.ID + ".html";
+                                    var urlHome = "/";
                                     var acitiveClass = (item.URL == "trang-chu") ? "active" : "";
-
                                     var childCategories = Model.Menus.Where(x => x.ParentID == item.ID);
 
                                     <li class="rd-nav-item @acitiveClass">
-                                        <a class="rd-nav-link" href="@url">@item.Name</a>
+                                        @if (item.URL == "trang-chu")
+                                        {
+                                            <a class="rd-nav-link" href="@urlHome">@item.Name</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="rd-nav-link" href="@url">@item.Name</a>
+                                        }
+
                                         @if (item.URL == "san-pham")
                                         {
                                             <ul class="rd-menu rd-navbar-dropdown">
-                                                @foreach (var category in Model.Categories)
+                                                @foreach (var carCategory in Model.CarCategories)
                                                 {
-                                                    var urlChild = "/" + category.Alias + ".cc-" + category.ID + ".html";
-                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@category.Name</a></li>
+                                                    var urlChild = "/" + carCategory.Alias + ".cc-" + carCategory.ID + ".html";
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@carCategory.Name</a></li>
                                                 }
                                             </ul>
                                         }
-                                        @if (childCategories.Count() > 0)
+                                        @if (item.URL == "tin-tuc-su-kien")
+                                        {
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                @foreach (var postCategory in Model.PostCategories)
+                                                {
+                                                    var urlChild = "/" + postCategory.Alias + ".pc-" + postCategory.ID + ".html";
+                                                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@postCategory.Name</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                        @if (childCategories.Count() > 0 && item.URL != "san-pham" && item.URL != "tin-tuc-su-kien")
                                         {
                                             <ul class="rd-menu rd-navbar-dropdown">
                                                 @foreach (var category in childCategories)
                                                 {
-                                                    var urlChild = "/" + category.URL + ".cc-" + category.ID + ".html";
+                                                    var urlChild = "/" + category.URL + ".mn-" + category.ID + ".html";
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@category.Name</a></li>
                                                 }
                                             </ul>

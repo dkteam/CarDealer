@@ -1,0 +1,368 @@
+﻿@model CarDealer.Web.Models.CarViewModel
+
+@{
+    var category = (CarDealer.Web.Models.CarCategoryViewModel)ViewBag.Category;
+    ViewBag.Title = "Dòng xe " + category.Name;
+    Layout = "~/Views/Shared/Layouts.cshtml";
+
+}
+
+@section jsFooter{
+    <script src="~/Assets/client/js/custome/sorting.js"></script>
+}
+
+<div class="section">
+    <div class="top3-wrapper novi-background bg-cover">
+        <div class="container">
+            <div class="top3 clearfix">
+                <div class="tabs-wrapper">
+                    <div class="txt">Chế độ xem</div>
+                    <div class="tabs1-wrapper">
+                        <ul class="tabs clearfix" data-tabgroup="first-tab-group">
+                            <li class="active"><a href="#tabs2-2"><i class="fa fa-th"></i></a></li>
+                            <li><a href="#tabs2-1"><i class="fa fa-list"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sort-wrapper">
+                    <div class="txt">Sắp xếp</div>
+                    <div class="select1_wrapper">
+                        <label>Sắp xếp</label>
+                        <div class="select1_inner">
+                            <select class="select2 select" id="selectSorting" style="width: 100%">          
+                                <option value="0">-- chọn --</option>
+                                <option value="1">Bán chạy</option>
+                                <option value="2">Giá (thấp -> cao)</option>
+                                <option value="3">Giá (cao -> thấp)</option>
+                                <option value="4">Mới</option>
+                            </select>
+                            <input type="hidden" id="forSorting" value="@Model.carPaginationSet.Page"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>@category.Name</div>
+        </div>
+    </div>
+    <div class="content section-md-bottom novi-background bg-cover">
+        <div class="container">
+            <div class="row row-fix">
+                <div class="col-sm-12 col-md-9 col-md-push-3 column-content">
+                    <div id="first-tab-group" class="tabgroup">
+                        <div id="tabs2-1">
+                            <div class="product-list-classic">
+                                @if (Model.carPaginationSet.Count > 0)
+                                {
+                                    foreach (var item in Model.carPaginationSet.Items)
+                                    {
+                                        var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                                        <div class="product-box-horizontal">
+                                            <div class="product-box-inner">
+                                                <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
+                                                <div class="caption">
+                                                    <div class="caption-header">
+                                                        <div class="info1">
+                                                            <div class="txt1"><a href="@url">@item.Name</a></div>
+                                                            <div class="txt2">
+                                                                <span class="txt">Người lái thử phản hồi</span> <span class="stars"><i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                         </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info2">
+                                                            <div class="txt3">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
+                                                        </div>
+                                                    </div>
+                                                    <p>
+                                                        @item.Description
+                                                    </p>
+                                                    <div class="caption-footer">
+                                                        <div class="info3">
+                                                            <div class="txt5">@item.Odo Km</div>
+                                                            <ul class="tag-list">
+                                                                @foreach (var manufactureYear in Model.ManufactureYears)
+                                                                {
+                                                                    if (item.ManufactureYearID == manufactureYear.ID)
+                                                                    {
+                                                                        <li><a>@manufactureYear.Name</a></li>
+                                                                    }
+                                                                }
+                                                                <li><a>@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                                                @foreach (var transmissiontType in Model.TransmissionTypes)
+                                                                {
+                                                                    if (item.TransmissionTypeID == transmissiontType.ID)
+                                                                    {
+                                                                        <li><a>@transmissiontType.Name</a></li>
+                                                                    }
+                                                                }
+                                                                @foreach (var fuel in Model.Fuels)
+                                                                {
+                                                                    if (item.FuelID == fuel.ID)
+                                                                    {
+                                                                        <li><a>@fuel.Name</a></li>
+                                                                    }
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                        <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="clearfix col-xs-12 text-center">
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Chưa có sản phẩm nào trong danh mục này</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @if (Model.carPaginationSet.TotalPages > 1)
+                            {
+                                //Create numeric links
+                                var startPageIndex = Math.Max(1, Model.carPaginationSet.Page - Model.carPaginationSet.MaxPageDisplay / 2);
+                                var endPageIndex = Math.Min(Model.carPaginationSet.TotalPages, Model.carPaginationSet.Page + Model.carPaginationSet.MaxPageDisplay / 2);
+
+                                <div class="pager_wrapper">
+                                    <ul class="pager clearfix">
+                                        @if (Model.carPaginationSet.Page > 1)
+                                        {
+                                            <li class="prev"><a href="?page=1"></a></li>
+                                            <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
+                                        }
+
+                                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        {
+                                            if (Model.carPaginationSet.Page == i)
+                                            {
+                                                <li class="active"><span>@i</span></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                            }
+                                        }
+                                        @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
+                                        {
+                                            <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
+                                            <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+
+                        </div>
+                        <div id="tabs2-2">
+                            <div class="row">
+                                @if (Model.carPaginationSet.Count > 0)
+                                {
+                                    foreach (var item in Model.carPaginationSet.Items)
+                                    {
+                                        var url = "/" + item.Alias + ".c-" + item.ID + ".html";
+                                        <div class="col-sm-4">
+                                            <div class="product-box-vertical">
+                                                <div class="box-vertical-inner">
+                                                    <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
+                                                    <div class="caption">
+                                                        <div class="caption-header">
+                                                            <div class="info1">
+                                                                <div class="txt1"><a href="@url">@item.Name</a></div>
+                                                                <div class="txt2">
+                                                                    <span class="txt">Người đã lái thử phản hồi</span> <span class="stars">                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                             </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @*<p style="text-align:justify">
+                                                                @item.Description
+                                                            </p>*@
+
+                                                        <ul class="list1">
+                                                            <li><a>Model 2015</a></li>
+                                                            <li><a>Xe mới</a></li>
+                                                            <li><a>Hộp số tự động 8 cấp</a></li>
+                                                            <li><a>Máy dầu</a></li>
+                                                        </ul>
+
+                                                        <div class="txt5">@item.Odo Km</div>
+                                                        <div class="caption-footer">
+                                                            <div class="info2">
+                                                                <div class="txt6">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
+                                                            </div>
+                                                            <div class="info3">
+                                                                <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="row">
+                                        <div class="clearfix col-xs-12 text-center">
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Chưa có sản phẩm nào trong danh mục này</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @if (Model.carPaginationSet.TotalPages > 1)
+                            {
+                                //Create numeric links
+                                var startPageIndex = Math.Max(1, Model.carPaginationSet.Page - Model.carPaginationSet.MaxPageDisplay / 2);
+                                var endPageIndex = Math.Min(Model.carPaginationSet.TotalPages, Model.carPaginationSet.Page + Model.carPaginationSet.MaxPageDisplay / 2);
+
+                                <div class="pager_wrapper">
+                                    <ul class="pager clearfix">
+                                        @if (Model.carPaginationSet.Page > 1)
+                                        {
+                                            <li class="prev"><a href="?page=1"></a></li>
+                                            <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
+                                        }
+
+                                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        {
+                                            if (Model.carPaginationSet.Page == i)
+                                            {
+                                                <li class="active"><span>@i</span></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                            }
+                                        }
+                                        @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
+                                        {
+                                            <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
+                                            <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12">
+                            <div class="sidebar-form-wrapper">
+                                <div class="sidebar-form">
+                                    <form action="javascript:;" class="form2">
+                                        <div class="select1_wrapper">
+                                            <label>Chọn dòng xe</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Tất cả</option>
+                                                    <option value="2">A - Class</option>
+                                                    <option value="3">V - Class</option>
+                                                    <option value="4">GLE</option>
+                                                    <option value="5">GLC</option>
+                                                    <option value="6">Coupe</option>
+                                                    <option value="7">Maybach</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select1_wrapper">
+                                            <label>Chọn MODEL</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Tất cả</option>
+                                                    <option value="2">Model 1</option>
+                                                    <option value="3">Model 2</option>
+                                                    <option value="4">Model 3</option>
+                                                    <option value="5">Model 4</option>
+                                                    <option value="6">Model 5</option>
+                                                    <option value="7">Model 6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select1_wrapper">
+                                            <label>Chọn loại xe</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Tất cả</option>
+                                                    <option value="2">Type 1</option>
+                                                    <option value="3">Type 2</option>
+                                                    <option value="4">Type 3</option>
+                                                    <option value="5">Type 4</option>
+                                                    <option value="6">Type 5</option>
+                                                    <option value="7">Type 6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select1_wrapper">
+                                            <label>Tình trạng</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Tất cả</option>
+                                                    <option value="2">Mới</option>
+                                                    <option value="3">Cũ 98%</option>
+                                                    <option value="4">Status 3</option>
+                                                    <option value="5">Status 4</option>
+                                                    <option value="6">Status 5</option>
+                                                    <option value="7">Status 6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select1_wrapper">
+                                            <label>Số năm đã chạy</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Min Year</option>
+                                                    <option value="2">2018</option>
+                                                    <option value="3">2017</option>
+                                                    <option value="4">2016</option>
+                                                    <option value="5">2015</option>
+                                                    <option value="6">2014</option>
+                                                    <option value="7">2013</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="select1_wrapper">
+                                            <label>Số năm đã chạy</label>
+                                            <div class="select1_inner">
+                                                <select class="select2 select" style="width: 100%">
+                                                    <option value="1">Max Year</option>
+                                                    <option value="2">2018</option>
+                                                    <option value="3">2017</option>
+                                                    <option value="4">2016</option>
+                                                    <option value="5">2015</option>
+                                                    <option value="6">2014</option>
+                                                    <option value="7">2013</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="slider-range-wrapper">
+                                            <div class="txt">Khoảng giá muốn tìm</div>
+                                            <div class="slider-range"></div>
+                                            <div class="clearfix">
+                                                <input type="text" class="amount" readonly="">
+                                                <input type="text" class="amount2" readonly="">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn-default btn-form2-submit">Tìm xe</button>
+                                        <div class="reset-filters"><a href="#">Làm lại</a></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-12">
+                            <div class="banner">
+                                <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

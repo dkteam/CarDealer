@@ -17,6 +17,7 @@ namespace CarDealer.Web.Infrastucture.Core
         }
         public int TotalPages { set; get; }
         public int TotalCount { set; get; }
+        public int MaxPageDisplay { set; get; }
         public IEnumerable<T> Items { set; get; }
     }
 }

@@ -112,7 +112,7 @@ body.loading .flex-viewport {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background: url(../images/slide_nav.png) 0 0 no-repeat;
+  background: url(/Assets/client/images/slide_nav.png) 0 0 no-repeat;
 }
 .flex-direction-nav .flex-prev {
   left: 0;

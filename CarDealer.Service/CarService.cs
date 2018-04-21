@@ -28,6 +28,10 @@ namespace CarDealer.Service
 
         IEnumerable<Car> GetBestPrice(int top);
 
+        IEnumerable<Car> GetReatedCars(int id, int top);
+
+        IEnumerable<Car> GetProductsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
+
         Car GetById(int id);
 
         void SaveChanges();
@@ -162,6 +166,44 @@ namespace CarDealer.Service
         public IEnumerable<Car> GetLatestCar(int top)
         {
             return _carRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Car> GetProductsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow)
+        {
+            var query = _carRepository.GetMulti(x => x.Status && x.CategoryID == categoryId);
+
+            switch (sort)
+            {
+                case "new":
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+                case "pricedescending":
+                    query = query.OrderByDescending(x => x.Price);
+                    break;
+                case "price":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                case "bestseller":
+                    query = query.OrderBy(x => x.Bestseller);
+                    break;
+                case "hot":
+                    query = query.OrderBy(x => x.HotFlag);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+
+            }
+
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<Car> GetReatedCars(int id, int top)
+        {
+            var product = _carRepository.GetSingleById(id);
+            return _carRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

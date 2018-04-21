@@ -14,6 +14,7 @@ namespace CarDealer.Web.Controllers
     public class HomeController : Controller
     {
         ICarCategoryService _carCategoryService;
+        IPostCategoryService _postCategoryService;
         ISlideService _slideService;
         IMenuService _menuService;
         IFooterService _footerService;
@@ -26,7 +27,8 @@ namespace CarDealer.Web.Controllers
         IPostService _postService;
         ILandingPageService _landingPageService;
 
-        public HomeController(ICarCategoryService carCategoryService,
+        public HomeController(  ICarCategoryService carCategoryService,
+                                IPostCategoryService postCategoryService,
                                 ISlideService slideService,
                                 ICarService carService,
                                 IManufactureYearService manufactureYearService,
@@ -40,6 +42,7 @@ namespace CarDealer.Web.Controllers
                                 IFooterService footerService)
         {
             this._carCategoryService = carCategoryService;
+            this._postCategoryService = postCategoryService;
             this._menuService = menuService;
             this._slideService = slideService;
             this._footerService = footerService;
@@ -151,8 +154,11 @@ namespace CarDealer.Web.Controllers
             var menuModel = _menuService.GetAll();
             var menuView = Mapper.Map<IEnumerable<Menu>, IEnumerable<MenuViewModel>>(menuModel);
 
-            var categoryModel = _carCategoryService.GetAll();
-            var categoryView = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(categoryModel);
+            var carCategoryModel = _carCategoryService.GetAll();
+            var carCategoryView = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(carCategoryModel);
+
+            var postCategoryModel = _postCategoryService.GetAll();
+            var postCategoryView = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(postCategoryModel);
 
             var supportOnlineModel = _supportOnline.GetById(1);
             var supportOnlineView = Mapper.Map<SupportOnline, SupportOnlineViewModel>(supportOnlineModel);
@@ -161,8 +167,9 @@ namespace CarDealer.Web.Controllers
 
             var header = new HeaderViewModel();
             header.Menus = menuView;
-            header.Categories = categoryView;
+            header.CarCategories = carCategoryView;
             header.SupportOnline = supportOnlineView;
+            header.PostCategories = postCategoryView;
 
             return PartialView(header);
         }
@@ -175,7 +182,7 @@ namespace CarDealer.Web.Controllers
             var supportOnlineView = Mapper.Map<SupportOnline, SupportOnlineViewModel>(supportOnlineModel);
 
             //get latest car
-            var latestCarModel = _carService.GetLatestCar(6);
+            var latestCarModel = _carService.GetLatestCar(4);
             var latestCarView = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(latestCarModel);
 
             //get latest posts

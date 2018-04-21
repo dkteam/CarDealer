@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealer.Web.Infrastucture.Core;
+using System;
 using System.Collections.Generic;
 
 namespace CarDealer.Web.Models
@@ -57,6 +58,8 @@ namespace CarDealer.Web.Models
 
         public string Tags { set; get; }
 
+        public string Features { set; get; }
+
         public virtual BrandViewModel Brand { set; get; }
 
         public virtual FuelViewModel Fuel { set; get; }
@@ -83,6 +86,15 @@ namespace CarDealer.Web.Models
 
         public virtual List<OrderDetailViewModel> OrderDetails { set; get; }
 
-        public virtual List<CarTagViewModel> CarTags { set; get; }
+        public virtual List<CarTagViewModel> CarTags { set; get; }        
+
+        public IEnumerable<CarCategoryViewModel> Categories { set; get; }
+
+        //for Client Site
+        public IEnumerable<FuelViewModel> Fuels { set; get; }
+        public IEnumerable<TransmissionTypeViewModel> TransmissionTypes { set; get; }
+        public IEnumerable<ManufactureYearViewModel> ManufactureYears { set; get; }
+        public IEnumerable<StyleViewModel> Styles { set; get; }
+        public PaginationSet<CarViewModel> carPaginationSet { set; get; }
     }
 }
