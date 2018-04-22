@@ -23,6 +23,7 @@ namespace CarDealer.Service
         IEnumerable<Post> GetPostsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
         Post GetById(int id);
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetReatedPosts(int id, int top);
         void SaveChanges();
     }
 
@@ -161,7 +162,7 @@ namespace CarDealer.Service
                 case "new":
                     query = query.OrderByDescending(x => x.CreatedDate);
                     break;
-                case "views":
+                case "viewcount":
                     query = query.OrderByDescending(x => x.ViewCount);
                     break;
                 default:
@@ -173,6 +174,12 @@ namespace CarDealer.Service
             totalRow = query.Count();
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<Post> GetReatedPosts(int id, int top)
+        {
+            var product = _postRepository.GetSingleById(id);
+            return _postRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

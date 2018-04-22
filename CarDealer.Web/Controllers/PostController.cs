@@ -41,7 +41,25 @@ namespace CarDealer.Web.Controllers
                 TotalCount = totalRow,
                 TotalPages = totalPage
             };
-            return View();
+
+            var carView = new PostViewModel();
+            carView.postPaginationSet = paginationSet;
+
+            return View(carView);
+        }
+
+        public ActionResult Detail( int id)
+        {
+            var postModel = _postService.GetById(id);
+            var postView = Mapper.Map<Post, PostViewModel>(postModel);
+
+            var relatedPosts = _postService.GetReatedPosts(id, 10);
+            ViewBag.RelatedPosts = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(relatedPosts);
+
+            var category = _postCategoryService.GetById(postModel.CategoryID.Value);
+            ViewBag.Category = Mapper.Map<PostCategory, PostCategoryViewModel>(category);
+
+            return View(postView);
         }
     }
 }

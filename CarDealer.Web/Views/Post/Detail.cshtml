@@ -1,135 +1,25 @@
 ﻿@model CarDealer.Web.Models.PostViewModel
 
 @{
-    var Category = (CarDealer.Web.Models.PostCategoryViewModel)ViewBag.Category;
-    ViewBag.Title = "Các bài viết về " + Category.Name;
+    var relatedCars = (IEnumerable<CarDealer.Web.Models.PostViewModel>)ViewBag.RelatedPosts;
+    var category = (CarDealer.Web.Models.PostCategoryViewModel)ViewBag.Category;
+    ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
-@section jsFooter{
-<script src="~/Assets/client/js/custome/postSorting.js"></script>
-}
-
 <div class="section">
-    <div class="top3-wrapper novi-background bg-cover">
-        <div class="container">
-            <div class="top3 clearfix">
-                <div class="tabs-wrapper">
-                    <div class="txt">Chế độ xem</div>
-                    <div class="tabs1-wrapper">
-                        <ul class="tabs clearfix" data-tabgroup="first-tab-group">
-                            <li class="active"><a href="#tabs2-1"><i class="fa fa-list"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sort-wrapper">
-                    <div class="txt">Sắp xếp theo</div>
-                    <div class="select1_wrapper">
-                        <label>Sort</label>
-                        <div class="select1_inner">
-                            <select class="select2 select" id="selectSorting" style="width: 100%">
-                                <option value="0">-- chọn --</option>
-                                <option value="1">Mới nhất</option>
-                                <option value="2">Lượt xem</option>
-                            </select>
-                            <input type="hidden" id="forSorting" value="@Model.postPaginationSet.Page" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="breadcrumbs1_wrapper novi-background">
         <div class="container">
-            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>@Category.Name</div>
+            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>@category.Name</div>
         </div>
     </div>
     <div class="section-md-bottom content novi-background bg-cover">
         <div class="container">
             <div class="row row-fix">
                 <div class="col-sm-12 col-md-9  column-content">
-                    <div id="first-tab-group" class="tabgroup">
-                        <div id="tabs2-1">
-                            <div class="product-list-classic">
-                                @if (Model.postPaginationSet.Count > 0)
-                                {
-                                    foreach (var item in Model.postPaginationSet.Items)
-                                    {
-                                        var url = "/" + item.Alias + ".p-" + item.ID + ".html";
-                                        <div class="product-box-horizontal">
-                                            <div class="product-box-inner">
-                                                <figure><a href="@url"><img src="@item.Image" alt="" class="img-responsive"></a></figure>
-                                                <div class="caption">
-                                                    <div class="caption-header">
-                                                        <div class="info1">
-                                                            <div class="txt1"><a href="@url">@item.Name</a></div>
-                                                            <div class="txt2">
-                                                                <span class="txt">Lượt xem: </span>
-                                                                <span class="stars">@item.ViewCount</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        @item.Description
-                                                    </p>
-
-                                                    <div class="caption-footer">
-                                                        <div class="info3">
-                                                            
-                                                            <ul class="tag-list">
-                                                                <li><a>Đăng ngày: @item.CreatedDate</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                                else
-                                {
-                                    <div class="row">
-                                        <div class="clearfix col-xs-12 text-center">
-                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Chưa có bài viết nào trong danh mục này</span>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                            @if (Model.postPaginationSet.TotalPages > 1)
-                            {
-                                //Create numeric links
-                                var startPageIndex = Math.Max(1, Model.postPaginationSet.Page - Model.postPaginationSet.MaxPageDisplay / 2);
-                                var endPageIndex = Math.Min(Model.postPaginationSet.TotalPages, Model.postPaginationSet.Page + Model.postPaginationSet.MaxPageDisplay / 2);
-
-                                <div class="pager_wrapper">
-                                    <ul class="pager clearfix">
-                                        @if (Model.postPaginationSet.Page > 1)
-                                        {
-                                            <li class="prev"><a href="?page=1"></a></li>
-                                            <li class="prev"><a href="?page=@(Model.postPaginationSet.Page-1)"></a></li>
-                                        }
-
-                                        @for (int i = startPageIndex; i <= endPageIndex; i++)
-                                        {
-                                            if (Model.postPaginationSet.Page == i)
-                                            {
-                                                <li class="active"><span>@i</span></li>
-                                            }
-                                            else
-                                            {
-                                                <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
-                                            }
-                                        }
-                                        @if (Model.postPaginationSet.Page < Model.postPaginationSet.TotalPages)
-                                        {
-                                            <li class="next"><a href="?page=@(Model.postPaginationSet.Page+1)"></a></li>
-                                            <li class="next"><a href="?page=@Model.postPaginationSet.TotalPages"></a></li>
-                                        }
-                                    </ul>
-                                </div>
-                            }
-                        </div>
-                    </div>
+                    <div class="title2" style="text-align:center">@Model.Name</div>
+                    <p style="text-align:justify; font-weight: bold; font-style:italic">@Model.Description</p>
+                    <p style="text-align:justify">@Html.Raw(Model.Content)</p>
+                    <span class="pull-right">Đăng ngày: @Model.CreatedDate</span>
                 </div>
                 <div class="col-sm-12 col-md-3  column-sidebar">
                     <div class="row">
@@ -232,18 +122,39 @@
                                         <button type="submit" class="btn-default btn-form2-submit">SUBMIT FILTERS</button>
                                         <div class="reset-filters"><a href="#">RESET ALL FILTERS</a></div>
                                     </form>
+
                                 </div>
+
                             </div>
+
                         </div>
                         <div class="col-sm-6 col-md-12">
-                            <div class="banner">
-                                <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
+                            <div class="sidebar-form-wrapper">
+                                <div class="sidebar-form">
+                                    @if (relatedCars.Count() > 0)
+                                    {
+                                        foreach (var otherPost in relatedCars)
+                                        {
+                                            var url = "/" + otherPost.Alias + ".p-" + otherPost.ID + ".html";
+                                            <div class="footer-product">
+                                                <figure class="footer-product-img">
+                                                    <a href="@url">
+                                                        <img src="@otherPost.Image" alt="@otherPost.Name" class="img-responsive">
+                                                    </a>
 
+                                                </figure>
+                                                <div class="caption">
+                                                    <p class="box-title"><a href="@url">@otherPost.Name</a></p>
+                                                    <div><span>@otherPost.CreatedDate</span></div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

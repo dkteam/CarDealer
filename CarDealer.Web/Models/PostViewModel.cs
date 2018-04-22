@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealer.Web.Infrastucture.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -47,5 +48,9 @@ namespace CarDealer.Web.Models
         public PostCategoryViewModel PostCategory { set; get; }
 
         public List<PostTagViewModel> PostTags { set; get; }
+
+
+        //for client site
+        public PaginationSet<PostViewModel> postPaginationSet { set; get; }
     }
 }

@@ -11,6 +11,7 @@
             language: 'vi',
             height: '300px',
             allowedContent: true,
+            extraAllowedContent: "div(*)"
 
         }
 

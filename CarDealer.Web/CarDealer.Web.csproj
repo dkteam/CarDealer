@@ -245,6 +245,7 @@
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PeriodViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
@@ -3624,6 +3625,7 @@
     <Content Include="Assets\client\images\testimonial-bg.jpg" />
     <Content Include="Assets\client\images\_blank.png" />
     <Content Include="Assets\client\js\bootstrap.min.js" />
+    <Content Include="Assets\client\js\custome\postSorting.js" />
     <Content Include="Assets\client\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Assets\client\js\jquery-ui.js" />
     <Content Include="Assets\client\js\jquery.appear.js" />
@@ -3644,7 +3646,7 @@
     <Content Include="Assets\client\js\rd-navbar.js" />
     <Content Include="Assets\client\js\scripts.js" />
     <Content Include="Assets\client\js\select2.js" />
-    <Content Include="Assets\client\js\custome\sorting.js" />
+    <Content Include="Assets\client\js\custome\carSorting.js" />
     <Content Include="Assets\client\js\superfish.js" />
     <Content Include="Assets\client\js\swiper.js" />
     <Content Include="Assets\client\js\waypoint.js" />
@@ -4130,6 +4132,7 @@
     <Content Include="Views\Car\Category.cshtml" />
     <Content Include="Views\Car\Detail.cshtml" />
     <Content Include="Views\Post\Category.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarDealer.Common\CarDealer.Common.csproj">

@@ -38,11 +38,11 @@
                                 </li>
                             }
                             @*<li>
-                                <a href="#register" data-toggle='modal'>Đăng ký</a>
-                            </li>
-                            <li>
-                                <a href="#SignIn" data-toggle='modal'>Đăng nhập</a>
-                            </li>*@
+                                    <a href="#register" data-toggle='modal'>Đăng ký</a>
+                                </li>
+                                <li>
+                                    <a href="#SignIn" data-toggle='modal'>Đăng nhập</a>
+                                </li>*@
                         </ul>
                     </div>
 
@@ -77,7 +77,16 @@
                                         }
                                         else
                                         {
-                                            <a class="rd-nav-link" href="@url">@item.Name</a>
+                                            if (item.URL == "san-pham" || item.URL == "tin-tuc-su-kien" || childCategories.Count() > 0)
+                                            {
+                                                <a class="rd-nav-link">@item.Name</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="rd-nav-link" href="@url">@item.Name</a>
+
+                                            }
+
                                         }
 
                                         @if (item.URL == "san-pham")
@@ -113,6 +122,7 @@
                                     </li>
                                 }
                             </ul>
+
                         </div>
                     </div>
                 </div>

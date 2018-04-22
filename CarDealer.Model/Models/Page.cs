@@ -15,6 +15,10 @@ namespace CarDealer.Model.Models
         [MaxLength(256)]
         public string Name { set; get; }
 
+        [Required]
+        [MaxLength(256)]
+        public string Alias { set; get; }
+
         public string Content { set; get; }
     }
 }
