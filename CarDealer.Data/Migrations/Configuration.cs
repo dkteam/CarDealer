@@ -13,7 +13,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(CarDealer.Data.CarDealerDbContext context)

@@ -135,18 +135,6 @@ namespace CarDealer.Web.Infrastucture.Extensions
             fuel.Description = fuelVm.Description;
         }
 
-        public static void UpdateUser(this ApplicationUser user, UserViewModel userVm)
-        {
-            user.Id = userVm.Id;
-            user.FullName = userVm.FullName;
-            user.Image = userVm.Image;
-            user.UserName = userVm.UserName;
-            user.Email = userVm.Email;
-            user.Address = userVm.Address;
-            user.BirthDay = userVm.BirthDay;
-        }
-
-
         public static void UpdatePage(this Page page, PageViewModel pageVm)
         {
             page.ID = pageVm.ID;
@@ -246,6 +234,33 @@ namespace CarDealer.Web.Infrastucture.Extensions
             db.DisplayOrder = vm.DisplayOrder;
             db.Status = vm.Status;
             db.Address = vm.Address;
+        }
+
+        public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
+        {
+            appGroup.ID = appGroupViewModel.ID;
+            appGroup.Name = appGroupViewModel.Name;
+        }
+
+        public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleViewModel, string action = "add")
+        {
+            if (action == "update")
+                appRole.Id = appRoleViewModel.Id;
+            else
+                appRole.Id = Guid.NewGuid().ToString();
+            appRole.Name = appRoleViewModel.Name;
+            appRole.Description = appRoleViewModel.Description;
+        }
+        public static void UpdateUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
+        {
+
+            appUser.Id = appUserViewModel.Id;
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.Image = appUserViewModel.Image;
+            appUser.BirthDay = appUserViewModel.BirthDay;
+            appUser.Email = appUserViewModel.Email;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
     }
 }

@@ -37,7 +37,10 @@ namespace CarDealer.Web.Mappings
                 cfg.CreateMap<Footer, FooterViewModel>().MaxDepth(2);
                 cfg.CreateMap<LandingPage, LandingPageViewModel>().MaxDepth(2);
                 cfg.CreateMap<Page, PageViewModel>().MaxDepth(2);
-                cfg.CreateMap<ApplicationUser, UserViewModel>().MaxDepth(2);
+
+                cfg.CreateMap<ApplicationUser, ApplicationUserViewModel>().MaxDepth(2);
+                cfg.CreateMap<ApplicationRole, ApplicationRoleViewModel>().MaxDepth(2);
+                cfg.CreateMap<ApplicationGroup, ApplicationGroupViewModel>().MaxDepth(2);
             });
         }
     }

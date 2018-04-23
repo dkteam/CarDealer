@@ -225,8 +225,24 @@
     <Compile Include="Migrations\201804221559112_editApplicationUser.Designer.cs">
       <DependentUpon>201804221559112_editApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804230119319_renameTableIdentity.cs" />
+    <Compile Include="Migrations\201804230119319_renameTableIdentity.Designer.cs">
+      <DependentUpon>201804230119319_renameTableIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230151575_AddGroupUser.cs" />
+    <Compile Include="Migrations\201804230151575_AddGroupUser.Designer.cs">
+      <DependentUpon>201804230151575_AddGroupUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804230819330_editAppUser.cs" />
+    <Compile Include="Migrations\201804230819330_editAppUser.Designer.cs">
+      <DependentUpon>201804230819330_editAppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
     <Compile Include="Repositories\CarCategoryRepository.cs" />
     <Compile Include="Repositories\CarRepository.cs" />
@@ -253,7 +269,6 @@
     <Compile Include="Repositories\SystemConfigRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\TransmissionTypeRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\VisitorStatisticRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -390,6 +405,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804221559112_editApplicationUser.resx">
       <DependentUpon>201804221559112_editApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230119319_renameTableIdentity.resx">
+      <DependentUpon>201804230119319_renameTableIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230151575_AddGroupUser.resx">
+      <DependentUpon>201804230151575_AddGroupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804230819330_editAppUser.resx">
+      <DependentUpon>201804230819330_editAppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

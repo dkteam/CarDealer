@@ -14,7 +14,7 @@
             }).then(function (response) {
                 userInfo = {
                     accessToken: response.data.access_token,
-                    userName: userName
+                    userName: userName,
                 };
                 authenticationService.setTokenInfo(userInfo);
                 authData.authenticationData.IsAuthenticated = true;

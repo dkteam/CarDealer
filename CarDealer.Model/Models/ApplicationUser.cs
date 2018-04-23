@@ -16,7 +16,6 @@ namespace CarDealer.Model.Models
         public string FullName { set; get; }
 
         [MaxLength(256)]
-        [Required]
         public string Image { set; get; }
 
         [MaxLength(256)]
@@ -31,5 +30,7 @@ namespace CarDealer.Model.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public virtual IEnumerable<Order> Orders { set; get; }
     }
 }

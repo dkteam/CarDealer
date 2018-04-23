@@ -16,6 +16,9 @@
          'cardealer.menus',
          'cardealer.support_onlines',
          'cardealer.landing_pages',
+         'cardealer.application_groups',
+         'cardealer.application_roles',
+         'cardealer.application_users',
          'cardealer.common'])
          .config(config)
          .config(configAuthentication);

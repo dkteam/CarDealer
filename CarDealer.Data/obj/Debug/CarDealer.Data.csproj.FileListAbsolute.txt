@@ -54,6 +54,9 @@ D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.updateDb
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editPages.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editSupportOnline1.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editApplicationUser.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.renameTableIdentity.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.AddGroupUser.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editAppUser.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.csproj.GenerateResource.Cache
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.dll
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.pdb
