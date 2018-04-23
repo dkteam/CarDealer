@@ -20,6 +20,7 @@
         {
             CreateCarCategorySample(context);
             CreateMenuGroupSample(context);
+            CreatePageSample(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -53,6 +54,22 @@
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
 
 
+        }
+
+        private void CreatePageSample(CarDealer.Data.CarDealerDbContext context)
+        {
+            if (context.Pages.Count() == 0)
+            {
+                var page = new Page()
+                {
+                    Name = "Giới thiệu",
+                    Alias = "gioi-thieu",
+                    Content = "Nội dung giới thiệu",
+                    Status = true
+                };
+                context.Pages.Add(page);
+                context.SaveChanges();
+            }
         }
 
         private void CreateCarCategorySample(CarDealer.Data.CarDealerDbContext context)

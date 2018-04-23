@@ -14,6 +14,10 @@ namespace CarDealer.Model.Models
         [MaxLength(50)]
         public string Name { set; get; }
 
+        [Required]
+        [MaxLength(256)]
+        public string Image { set; get; }
+
         [MaxLength(50)]
         public string Skype { set; get; }
 

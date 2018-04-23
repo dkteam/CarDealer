@@ -135,6 +135,18 @@ namespace CarDealer.Web.Infrastucture.Extensions
             fuel.Description = fuelVm.Description;
         }
 
+        public static void UpdateUser(this ApplicationUser user, UserViewModel userVm)
+        {
+            user.Id = userVm.Id;
+            user.FullName = userVm.FullName;
+            user.Image = userVm.Image;
+            user.UserName = userVm.UserName;
+            user.Email = userVm.Email;
+            user.Address = userVm.Address;
+            user.BirthDay = userVm.BirthDay;
+        }
+
+
         public static void UpdatePage(this Page page, PageViewModel pageVm)
         {
             page.ID = pageVm.ID;
@@ -225,6 +237,7 @@ namespace CarDealer.Web.Infrastucture.Extensions
         {
             db.ID = vm.ID;
             db.Name = vm.Name;
+            db.Image = vm.Image;
             db.Skype = vm.Skype;
             db.Mobile = vm.Mobile;
             db.Email = vm.Email;

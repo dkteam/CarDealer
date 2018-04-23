@@ -11,6 +11,7 @@
          'cardealer.styles',
          'cardealer.transmission_types',
          'cardealer.slides',
+         'cardealer.pages',
          'cardealer.footers',
          'cardealer.menus',
          'cardealer.support_onlines',

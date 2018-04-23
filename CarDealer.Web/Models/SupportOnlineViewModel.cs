@@ -6,6 +6,8 @@
 
         public string Name { set; get; }
 
+        public string Image { set; get; }
+
         public string Skype { set; get; }
 
         public string Mobile { set; get; }

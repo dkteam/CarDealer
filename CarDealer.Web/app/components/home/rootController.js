@@ -10,6 +10,11 @@
         }
         $scope.authentication = authData.authenticationData;
         $scope.sideBar = "/app/shared/views/sideBar.html";
+
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.popup();
+        }
         //authenticationService.validateRequest();
     }
 })(angular.module('cardealer'));

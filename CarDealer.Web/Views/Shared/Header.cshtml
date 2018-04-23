@@ -33,8 +33,9 @@
                         <ul class="list-inline">
                             @foreach (var item in Model.Menus.Where(x => x.GroupID == 6 && x.ParentID == null))
                             {
+                                var url = "/trang/" + item.URL + ".html";
                                 <li>
-                                    <a href="@item.URL">@item.Name</a>
+                                    <a href="@url">@item.Name</a>
                                 </li>
                             }
                             @*<li>
@@ -65,7 +66,7 @@
                             <ul class="rd-navbar-nav">
                                 @foreach (var item in Model.Menus.Where(x => x.GroupID == 7 && x.ParentID == null))
                                 {
-                                    var url = "/" + item.URL + ".mn-" + item.ID + ".html";
+                                    var url = "/trang/" + item.URL + ".html";
                                     var urlHome = "/";
                                     var acitiveClass = (item.URL == "trang-chu") ? "active" : "";
                                     var childCategories = Model.Menus.Where(x => x.ParentID == item.ID);
@@ -114,7 +115,7 @@
                                             <ul class="rd-menu rd-navbar-dropdown">
                                                 @foreach (var category in childCategories)
                                                 {
-                                                    var urlChild = "/" + category.URL + ".mn-" + category.ID + ".html";
+                                                    var urlChild = "/trang/" + category.URL + ".html";
                                                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="@urlChild">@category.Name</a></li>
                                                 }
                                             </ul>

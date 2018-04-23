@@ -25,6 +25,16 @@
             });
         }
 
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.supportOnlines.Image = fileUrl;
+                })
+            }
+            finder.popup();
+        }
+
         loadsupportOnlineDetail();
     }
 })(angular.module('cardealer.support_onlines'));

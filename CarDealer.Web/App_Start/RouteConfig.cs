@@ -9,19 +9,19 @@ namespace CarDealer.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             
-            routes.MapRoute(
-               name: "About",
-               url: "gioi-thieu.html",
-               defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
-               namespaces: new string[] { "CarDealer.Web.Controllers" }
-           );
+           // routes.MapRoute(
+           //    name: "About",
+           //    url: "gioi-thieu.html",
+           //    defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+           //    namespaces: new string[] { "CarDealer.Web.Controllers" }
+           //);
 
-          //  routes.MapRoute(
-          //    name: "Menu",
-          //    url: "{alias}.mn-{id}.html",
-          //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-          //    namespaces: new string[] { "CarDealer.Web.Controllers" }
-          //);
+            routes.MapRoute(
+              name: "Menu",
+              url: "trang/{alias}.html",
+              defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
+              namespaces: new string[] { "CarDealer.Web.Controllers" }
+          );
 
             routes.MapRoute(
                name: "Post",

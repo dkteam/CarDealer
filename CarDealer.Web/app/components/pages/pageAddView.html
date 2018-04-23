@@ -1,0 +1,77 @@
+﻿<section class="content-header">
+    <h1>
+        Thêm page
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="pages">Pages</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Điền thông tin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmAddPage" role="form" ng-submit="AddPage()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên page (<span style="color:red">*</span>)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tên page" name="name" ng-model="pages.Name" required ng-maxlength="256" ng-change="GetSeoTitle()">
+                            <span ng-show="frmAddPage.name.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <span ng-show="frmAddPage.name.$invalid" class="has-error">*Bắt buộc</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Alias (<span style="color:red">*</span>)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="alias" ng-maxlength="256" required name="alias" ng-model="pages.Alias">
+                            <span ng-show="frmAddPage.alias.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                            <span ng-show="frmAddPage.alias.$invalid" class="has-error">*Bắt buộc</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Metakeyword</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-maxlength="256" name="metakeyword" ng-model="pages.MetaKeyword">
+                            <span ng-show="frmAddPage.metakeyword.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Meta Description</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control"  ng-maxlength="256" name="metadescription" ng-model="pages.MetaDescription"></textarea>
+                            <span ng-show="frmAddPage.metadescription.$error.maxlength" class="has-error">Tối đa 256 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nội dung</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="Nội dung chi tiết" name="content" ckeditor="ckeditorOptions()" ng-model="pages.Content"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="pages.Status" ng-checked="pages.Status"> Kích hoạt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" class="btn btn-default" ui-sref="pages"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmAddPage.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

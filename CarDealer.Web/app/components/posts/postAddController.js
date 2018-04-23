@@ -20,7 +20,6 @@
             language: 'vi',
             height: '300px',
             $invalid: false
-
         }
 
         //$scope.displayCKEditor = displayCKEditor;

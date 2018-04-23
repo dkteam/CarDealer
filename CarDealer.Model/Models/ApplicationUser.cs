@@ -16,6 +16,10 @@ namespace CarDealer.Model.Models
         public string FullName { set; get; }
 
         [MaxLength(256)]
+        [Required]
+        public string Image { set; get; }
+
+        [MaxLength(256)]
         public string Address { set; get; }
 
         public DateTime? BirthDay { set; get; }
