@@ -8,13 +8,13 @@ namespace CarDealer.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
-           // routes.MapRoute(
-           //    name: "About",
-           //    url: "gioi-thieu.html",
-           //    defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
-           //    namespaces: new string[] { "CarDealer.Web.Controllers" }
-           //);
+
+            // routes.MapRoute(
+            //    name: "About",
+            //    url: "gioi-thieu.html",
+            //    defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+            //    namespaces: new string[] { "CarDealer.Web.Controllers" }
+            //);
 
             routes.MapRoute(
               name: "Menu",
@@ -22,6 +22,13 @@ namespace CarDealer.Web
               defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
               namespaces: new string[] { "CarDealer.Web.Controllers" }
           );
+
+            routes.MapRoute(
+           name: "Search",
+           url: "tim-kiem.html",
+           defaults: new { controller = "Car", action = "Search", id = UrlParameter.Optional },
+           namespaces: new string[] { "CarDealer.Web.Controllers" }
+       );
 
             routes.MapRoute(
                name: "Post",

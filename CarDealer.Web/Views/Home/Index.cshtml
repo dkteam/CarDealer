@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 
+@section jsFooter{
+    <script src="~/Assets/client/js/custome/carSearch.js"></script>
+}
 
 <section id="home" class="section swiper-container swiper-slider swiper-slider-1" data-loop="true" data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
     <div class="swiper-wrapper text-center">
@@ -17,11 +20,12 @@
     <div class="slider-form">
         <div class="sidebar-form-wrapper">
             <div class="sidebar-form">
-                <form action="javascript:;" class="form2">
+                <form class="form2">
                     <div class="select1_wrapper">
                         <label>Chọn dòng xe</label>
                         <div class="select1_inner">
-                            <select class="select2 select" style="width: 100%">
+                            <select class="select2 select" required id="selectModel" style="width: 100%">
+                                <option>-- Tất cả --</option>
                                 @foreach (var item in Model.CarCategories)
                                 {
                                     <option value="@item.ID">@item.Name</option>
@@ -30,45 +34,48 @@
                         </div>
                     </div>
                     <div class="select1_wrapper">
-                        <label>Chọn MODEL</label>
+                        <label>Chọn kiểu dáng</label>
                         <div class="select1_inner">
-                            <select class="select2 select" style="width: 100%">
-                                <option value="1">Tất cả model</option>
-                                <option value="2">Model 1</option>
-                                <option value="3">Model 2</option>
-                                <option value="4">Model 3</option>
-                                <option value="5">Model 4</option>
-                                <option value="6">Model 5</option>
-                                <option value="7">Model 6</option>
+                            <select class="select2 select" id="selectStyle" style="width: 100%">
+                                <option>-- Tất cả --</option>
+                                @foreach (var item in Model.Styles)
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
                             </select>
                         </div>
                     </div>
                     <div class="select1_wrapper">
-                        <label>Chọn loại xe</label>
+                        <label>Số ghế</label>
                         <div class="select1_inner">
-                            <select class="select2 select" style="width: 100%">
-                                <option value="1">Tất cả</option>
-                                <option value="2">Type 1</option>
-                                <option value="3">Type 2</option>
-                                <option value="4">Type 3</option>
-                                <option value="5">Type 4</option>
-                                <option value="6">Type 5</option>
-                                <option value="7">Type 6</option>
+                            <select class="select2 select" id="selectTotalSeat" style="width: 100%">
+                                <option>-- Tất cả --</option>
+                                @foreach (var item in Model.TotalSeats)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
                             </select>
                         </div>
                     </div>
 
-
-                    <div class="slider-range-wrapper">
+                    <div class="select1_wrapper">
+                        <label>Tình trạng</label>
+                        <div class="select1_inner">
+                            <select class="select2 select" id="selectCarStatus" style="width: 100%">
+                                <option value="true">Xe mới</option>
+                                <option value="false">Đã sử dụng</option>
+                            </select>
+                        </div>
+                    </div>
+                    @*<div class="slider-range-wrapper">
                         <div class="txt">Khoảng giá cần tìm</div>
                         <div class="slider-range"></div>
                         <div class="clearfix">
                             <input type="text" class="amount" readonly="">
                             <input type="text" class="amount2" readonly="">
                         </div>
-                    </div>
-                    <button type="submit" class="btn-default btn-form2-submit">Tìm xe</button>
-                    <div class="reset-filters"><a href="#">Làm lại</a></div>
+                    </div>*@
+                    <button type="button" id="btnSearch" class="btn-default btn-form2-submit">Tìm xe</button>
                 </form>
             </div>
         </div>
@@ -155,36 +162,36 @@
             @foreach (var item in Model.HotCarTop3)
             {
                 var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                <div class="col-sm-4">
-                    <div class="product-item-classic">
-                        <div class="thumbnail clearfix">
-                            <figure class="product-item-img">
-                                <a href="@url">
-                                    <img src="@item.Image" alt="@item.Name" class="img-responsive">
+            <div class="col-sm-4">
+                <div class="product-item-classic">
+                    <div class="thumbnail clearfix">
+                        <figure class="product-item-img">
+                            <a href="@url">
+                                <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                            </a>
+                        </figure>
+                        <div class="caption">
+                            <div class="rating-block">
+                                <span class="rating-text"><span>@item.Price.Value.ToString("N0")</span><span>&#8363</span></span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="product-item-title"><a href="@url">@item.Name</a></div>
+                            <div class="product-item-text">@item.Description</div>
+                            <div class="link">
+                                <a href="@url" class="btn-default btn1">
+                                    <span>Xem chi tiết</span>
                                 </a>
-                            </figure>
-                            <div class="caption">
-                                <div class="rating-block">
-                                    <span class="rating-text"><span>@item.Price.Value.ToString("N0")</span><span>&#8363</span></span>
-                                    <span class="stars">
-                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
-                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
-                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
-                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
-                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <div class="product-item-title"><a href="@url">@item.Name</a></div>
-                                <div class="product-item-text">@item.Description</div>
-                                <div class="link">
-                                    <a href="@url" class="btn-default btn1">
-                                        <span>Xem chi tiết</span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             }
 
         </div>
@@ -193,15 +200,15 @@
 <div id="welcome" class="section text-center">
     <section class="parallax-container parallax1" data-parallax-img="@Model.welcomeLandingPage.Image">
         <div class="parallax-content">
-           @Html.Raw(Model.welcomeLandingPage.Content)
+            @Html.Raw(Model.welcomeLandingPage.Content)
         </div>
     </section>
 </div>
 <div id="best" class="section section-md best novi-background bg-cover">
     <div class="container">
         @*<div class="section-title-md">
-            Những sản phẩm với những ưu đãi tốt nhất
-        </div>*@
+                Những sản phẩm với những ưu đãi tốt nhất
+            </div>*@
         <div class="tabs-custom tabs-horizontal tabs-corporate" id="tabs-1">
             <ul class="nav nav-tabs">
                 <li class="active" role="presentation">
@@ -254,12 +261,12 @@
                                                             }
                                                         }
                                                         @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                        {
-                                                            if (item.ManufactureYearID == manufactureYear.ID)
                                                             {
-                                                                <li><a href="#">@manufactureYear.Name</a></li>
-                                                            }
-                                                        }*@
+                                                                if (item.ManufactureYearID == manufactureYear.ID)
+                                                                {
+                                                                    <li><a href="#">@manufactureYear.Name</a></li>
+                                                                }
+                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -326,12 +333,12 @@
                                                             }
                                                         }
                                                         @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                        {
-                                                            if (item.ManufactureYearID == manufactureYear.ID)
                                                             {
-                                                                <li><a href="#">@manufactureYear.Name</a></li>
-                                                            }
-                                                        }*@
+                                                                if (item.ManufactureYearID == manufactureYear.ID)
+                                                                {
+                                                                    <li><a href="#">@manufactureYear.Name</a></li>
+                                                                }
+                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -398,12 +405,12 @@
                                                             }
                                                         }
                                                         @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                        {
-                                                            if (item.ManufactureYearID == manufactureYear.ID)
                                                             {
-                                                                <li><a href="#">@manufactureYear.Name</a></li>
-                                                            }
-                                                        }*@
+                                                                if (item.ManufactureYearID == manufactureYear.ID)
+                                                                {
+                                                                    <li><a href="#">@manufactureYear.Name</a></li>
+                                                                }
+                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)

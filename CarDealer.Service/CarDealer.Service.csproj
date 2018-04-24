@@ -76,6 +76,7 @@
     <Compile Include="SlideService.cs" />
     <Compile Include="StyleService.cs" />
     <Compile Include="SupportOnlineService.cs" />
+    <Compile Include="TotalSeatService.cs" />
     <Compile Include="TransmissionTypeService.cs" />
   </ItemGroup>
   <ItemGroup>

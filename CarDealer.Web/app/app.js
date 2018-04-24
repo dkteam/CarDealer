@@ -14,6 +14,7 @@
          'cardealer.pages',
          'cardealer.footers',
          'cardealer.menus',
+         'cardealer.total_seats',
          'cardealer.support_onlines',
          'cardealer.landing_pages',
          'cardealer.application_groups',

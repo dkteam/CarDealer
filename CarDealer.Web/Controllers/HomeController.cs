@@ -20,6 +20,7 @@ namespace CarDealer.Web.Controllers
         IFooterService _footerService;
         ICarService _carService;
         IManufactureYearService _manufactureYearService;
+        ITotalSeatService _totalSeatService;
         IStyleService _styleService;
         ITransmissionTypeService _transmissionTypeService;
         IFuelService _fuelService;
@@ -32,6 +33,7 @@ namespace CarDealer.Web.Controllers
                                 ISlideService slideService,
                                 ICarService carService,
                                 IManufactureYearService manufactureYearService,
+                                ITotalSeatService totalSeatService,
                                 IStyleService styleService,
                                 ITransmissionTypeService transmissionTypeService,
                                 IMenuService menuService,
@@ -52,6 +54,7 @@ namespace CarDealer.Web.Controllers
             this._landingPageService = landingPageService;
 
             this._manufactureYearService = manufactureYearService;
+            this._totalSeatService = totalSeatService;
             this._styleService = styleService;
             this._transmissionTypeService = transmissionTypeService;
             this._fuelService = fuelService;
@@ -85,6 +88,10 @@ namespace CarDealer.Web.Controllers
             //get all manufacture_years
             var manufactureYearModel = _manufactureYearService.GetAll();
             var manufactureYearView = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(manufactureYearModel);
+
+            //get all total seat
+            var totalSeatModel = _totalSeatService.GetAll();
+            var totalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
 
             //get all style
             var styleModel = _styleService.GetAll();
@@ -128,6 +135,7 @@ namespace CarDealer.Web.Controllers
 
             homeView.Fuels = fuelView;
             homeView.ManufactureYears = manufactureYearView;
+            homeView.TotalSeats = totalSeatView;
             homeView.TransmissionTypes = transmissionTypeView;
             homeView.Styles = styleView;
 

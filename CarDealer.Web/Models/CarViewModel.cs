@@ -38,6 +38,8 @@ namespace CarDealer.Web.Models
 
         public string WheelDrive { set; get; }
 
+        public int? TotalSeatId { set; get; }
+
         public decimal? Price { set; get; }
 
         public decimal? PromotionPrice { set; get; }
@@ -89,6 +91,8 @@ namespace CarDealer.Web.Models
         public virtual List<CarTagViewModel> CarTags { set; get; }        
 
         public IEnumerable<CarCategoryViewModel> Categories { set; get; }
+
+        public virtual TotalSeatViewModel TotalSeat { set; get; }
 
         //for Client Site
         public IEnumerable<FuelViewModel> Fuels { set; get; }

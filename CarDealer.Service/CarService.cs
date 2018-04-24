@@ -16,6 +16,8 @@ namespace CarDealer.Service
 
         Car Delete(int id);
 
+        IEnumerable<Car> SearchCar(int? modelId, int? styleId, int? totalSeatId, bool carStatus);
+
         IEnumerable<Car> GetAll();
 
         IEnumerable<Car> GetAll(string keyWord);
@@ -32,6 +34,11 @@ namespace CarDealer.Service
 
         IEnumerable<Car> GetProductsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
 
+        IEnumerable<Car> Search(int? modelId,
+                                        int? styleId,
+                                        int? totalSeatId,
+                                        bool carStatus, int page, int pageSize, string sort, out int totalRow);
+
         Car GetById(int id);
 
         void SaveChanges();
@@ -44,9 +51,9 @@ namespace CarDealer.Service
         private ICarTagRepository _carTagRepository;
         private IUnitOfWork _unitOfWork;
 
-        public CarService(  ICarRepository carRepository, 
-                            ICarTagRepository carTagRepository, 
-                            ITagRepository tagRepository, 
+        public CarService(ICarRepository carRepository,
+                            ICarTagRepository carTagRepository,
+                            ITagRepository tagRepository,
                             IUnitOfWork unitOfWork)
         {
             this._carRepository = carRepository;
@@ -121,7 +128,7 @@ namespace CarDealer.Service
         public void Update(Car car)
         {
             _carRepository.Update(car);
-            
+
             if (!string.IsNullOrEmpty(car.Tags))
             {
                 string[] tags = car.Tags.Split(',');
@@ -204,6 +211,87 @@ namespace CarDealer.Service
         {
             var product = _carRepository.GetSingleById(id);
             return _carRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Car> SearchCar(int? modelId, int? styleId, int? totalSeatId, bool carStatus)
+        {
+            IEnumerable<Car> cars;
+
+
+            if (modelId == null && styleId != null && totalSeatId != null)
+            {
+                cars = _carRepository.GetMulti(x => x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus==carStatus);
+            }
+            else if (styleId == null && modelId != null && totalSeatId != null)
+            {
+                cars = _carRepository.GetMulti(x => x.CategoryID == modelId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
+            }
+            else if (totalSeatId == null && modelId != null && styleId != null)
+            {
+                cars = _carRepository.GetMulti(x => x.CategoryID == modelId && x.StyleID == styleId && x.CarStatus == carStatus);
+            }
+            else if (modelId != null && styleId != null && totalSeatId != null)
+            {
+                cars = _carRepository.GetMulti(x => x.CategoryID == modelId && x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
+            }
+            else
+            {
+                cars = _carRepository.GetMulti(x=>x.CarStatus==carStatus);
+            }
+            return cars;
+        }
+
+        public IEnumerable<Car> Search(int? modelId, int? styleId, int? totalSeatId, bool carStatus, int page, int pageSize, string sort, out int totalRow)
+        {
+            IEnumerable<Car> query;
+
+            if (modelId == null && styleId != null && totalSeatId != null)
+            {
+                query = _carRepository.GetMulti(x => x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
+            }
+            else if (styleId == null && modelId != null && totalSeatId != null)
+            {
+                query = _carRepository.GetMulti(x => x.CategoryID == modelId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
+            }
+            else if (totalSeatId == null && modelId != null && styleId != null)
+            {
+                query = _carRepository.GetMulti(x => x.CategoryID == modelId && x.StyleID == styleId && x.CarStatus == carStatus);
+            }
+            else if (modelId != null && styleId != null && totalSeatId != null)
+            {
+                query = _carRepository.GetMulti(x => x.CategoryID == modelId && x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
+            }
+            else
+            {
+                query = _carRepository.GetMulti(x => x.CarStatus == carStatus);
+            }
+
+            switch (sort)
+            {
+                case "new":
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+                case "pricedescending":
+                    query = query.OrderByDescending(x => x.Price);
+                    break;
+                case "price":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                case "bestseller":
+                    query = query.OrderBy(x => x.Bestseller);
+                    break;
+                case "hot":
+                    query = query.OrderBy(x => x.HotFlag);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+
+            }
+
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
     }
 }

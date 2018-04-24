@@ -79,6 +79,14 @@
             });
         }
 
+        function loadTotalSeat() {
+            apiService.get('api/totalseat/getallnonpaging', null, function (result) {
+                $scope.totalSeats = result.data;
+            }, function () {
+                console.log('cannot get list parent')
+            });
+        }
+
         $scope.ChooseImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
@@ -110,5 +118,6 @@
         loadStyle();
         loadTransmissionType();
         loadFuel();
+        loadTotalSeat();
     }
 })(angular.module('cardealer.cars'));

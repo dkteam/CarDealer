@@ -17,6 +17,7 @@ namespace CarDealer.Web.Models
         public IEnumerable<FuelViewModel> Fuels { set; get; }
         public IEnumerable<TransmissionTypeViewModel> TransmissionTypes { set; get; }
         public IEnumerable<ManufactureYearViewModel> ManufactureYears { set; get; }
+        public IEnumerable<TotalSeatViewModel> TotalSeats { set; get; }
         public IEnumerable<StyleViewModel> Styles { set; get; }
 
         public LandingPageViewModel welcomeLandingPage { set; get; }

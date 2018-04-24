@@ -43,6 +43,7 @@ namespace CarDealer.Data
         public DbSet<Error> Errors { set; get; }
         public DbSet<CarCategory> CarCategories { set; get; }
         public DbSet<LandingPage> LandingPages { set; get; }
+        public DbSet<TotalSeat> TotalSeats { set; get; }
 
         public DbSet<ApplicationGroup> ApplicationGroups { set; get; }
         public DbSet<ApplicationRole> ApplicationRoles { set; get; }

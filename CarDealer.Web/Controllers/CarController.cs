@@ -19,6 +19,7 @@ namespace CarDealer.Web.Controllers
         ICarCategoryService _carCategoryService;
 
         IManufactureYearService _manufactureYearService;
+        ITotalSeatService _totalSeatService;
         IStyleService _styleService;
         ITransmissionTypeService _transmissionTypeService;
         IFuelService _fuelService;
@@ -26,6 +27,7 @@ namespace CarDealer.Web.Controllers
 
         public CarController(ICarService carService,
                                 IManufactureYearService manufactureYearService,
+                                ITotalSeatService totalSeatService,
                                 IStyleService styleService,
                                 ITransmissionTypeService transmissionTypeService,
                                 IMenuService menuService,
@@ -37,6 +39,7 @@ namespace CarDealer.Web.Controllers
             this._carCategoryService = carCategoryService;
 
             this._manufactureYearService = manufactureYearService;
+            this._totalSeatService = totalSeatService;
             this._supportOnline = supportOnline;
             this._styleService = styleService;
             this._transmissionTypeService = transmissionTypeService;
@@ -92,6 +95,66 @@ namespace CarDealer.Web.Controllers
             var category = _carCategoryService.GetById(id);
             ViewBag.Category = Mapper.Map<CarCategory, CarCategoryViewModel>(category);
 
+            var paginationSet = new PaginationSet<CarViewModel>()
+            {
+                Items = carViewModel,
+                MaxPageDisplay = int.Parse(ConfigHelper.GetByKey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            //get all manufacture_years
+            var manufactureYearModel = _manufactureYearService.GetAll();
+            var manufactureYearView = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(manufactureYearModel);
+
+            //get all style
+            var styleModel = _styleService.GetAll();
+            var styleView = Mapper.Map<IEnumerable<Style>, IEnumerable<StyleViewModel>>(styleModel);
+
+            //get all transmission_types
+            var transmissionTypeModel = _transmissionTypeService.GetAll();
+            var transmissionTypeView = Mapper.Map<IEnumerable<TransmissionType>, IEnumerable<TransmissionTypeViewModel>>(transmissionTypeModel);
+
+            //get all fules
+            var fuelModel = _fuelService.GetAll();
+            var fuelView = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(fuelModel);
+
+            var carView = new CarViewModel();
+            carView.carPaginationSet = paginationSet;
+            carView.Fuels = fuelView;
+            carView.ManufactureYears = manufactureYearView;
+            carView.TransmissionTypes = transmissionTypeView;
+            carView.Styles = styleView;
+
+            return View(carView);
+        }
+
+        public JsonResult CarSearch(int? modelId, int? styleId, int? totalSeatId, bool carStatus)
+        {
+            var resultModel = _carService.SearchCar(modelId, styleId, totalSeatId, carStatus);
+            var resultView = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(resultModel);
+
+            return Json(new
+            {
+                data = resultView
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult Search(int? modelId,
+                                        int? styleId,
+                                        int? totalSeatId,
+                                        bool carStatus,
+                                        int page = 1,
+                                        string sort = "")
+        {
+            int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
+            int totalRow = 0;
+            var carModel = _carService.Search(modelId, styleId, totalSeatId, carStatus, page, pageSize, sort, out totalRow);
+            var carViewModel = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(carModel);
+            var totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+            
             var paginationSet = new PaginationSet<CarViewModel>()
             {
                 Items = carViewModel,

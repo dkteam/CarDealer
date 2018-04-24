@@ -67,11 +67,11 @@
       <HintPath>..\..\..\11. PROGRAMMING\06. Website\ASPdotNet\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -214,6 +214,7 @@
     <Compile Include="Api\SlideController.cs" />
     <Compile Include="Api\StyleController.cs" />
     <Compile Include="Api\SupportOnlineController.cs" />
+    <Compile Include="Api\TotalSeatController.cs" />
     <Compile Include="Api\TransmissionTypeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Models\StyleViewModel.cs" />
     <Compile Include="Models\SupportOnlineViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
+    <Compile Include="Models\TotalSeatViewModel.cs" />
     <Compile Include="Models\TransmissionTypeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -378,6 +380,13 @@
     <Content Include="app\components\support_onlines\supportOnlineEditController.js" />
     <Content Include="app\components\support_onlines\supportOnlineEditView.html" />
     <Content Include="app\components\support_onlines\supportOnlines.module.js" />
+    <Content Include="app\components\total_seats\totalSeatAddController.js" />
+    <Content Include="app\components\total_seats\totalSeatAddView.html" />
+    <Content Include="app\components\total_seats\totalSeatEditController.js" />
+    <Content Include="app\components\total_seats\totalSeatEditView.html" />
+    <Content Include="app\components\total_seats\totalSeatListController.js" />
+    <Content Include="app\components\total_seats\totalSeatListView.html" />
+    <Content Include="app\components\total_seats\totalSeats.module.js" />
     <Content Include="app\components\transmission_types\transmissionTypeAddController.js" />
     <Content Include="app\components\transmission_types\transmissionTypeAddView.html" />
     <Content Include="app\components\transmission_types\transmissionTypeEditController.js" />
@@ -387,6 +396,7 @@
     <Content Include="app\components\transmission_types\transmissionTypes.module.js" />
     <Content Include="app\shared\directives\asDateDirective.js" />
     <Content Include="app\shared\filters\targetFilter.js" />
+    <Content Include="app\shared\filters\usedFilter.js" />
     <Content Include="app\shared\services\notificationService.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />
@@ -3666,6 +3676,7 @@
     <Content Include="Assets\client\images\_blank.png" />
     <Content Include="Assets\client\js\bootstrap.min.js" />
     <Content Include="Assets\client\js\custome\postSorting.js" />
+    <Content Include="Assets\client\js\custome\carSearch.js" />
     <Content Include="Assets\client\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Assets\client\js\jquery-ui.js" />
     <Content Include="Assets\client\js\jquery.appear.js" />
@@ -4178,6 +4189,7 @@
     <Content Include="Views\Post\Category.cshtml" />
     <Content Include="Views\Post\Detail.cshtml" />
     <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Car\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarDealer.Common\CarDealer.Common.csproj">

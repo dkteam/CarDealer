@@ -54,6 +54,8 @@ namespace CarDealer.Model.Models
         [MaxLength(256)]
         public string WheelDrive { set; get; }
 
+        public int? TotalSeatId { set; get; }
+
         public decimal? Price { set; get; }
 
         public decimal? PromotionPrice { set; get; }
@@ -89,6 +91,9 @@ namespace CarDealer.Model.Models
 
         [ForeignKey("StyleID")]
         public virtual Style Style { set; get; }
+
+        [ForeignKey("TotalSeatId")]
+        public virtual TotalSeat TotalSeat { set; get; }
 
         [ForeignKey("ManufactureYearID")]
         public virtual ManufactureYear ManufactureYear { set; get; }

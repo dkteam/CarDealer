@@ -69,6 +69,7 @@ namespace CarDealer.Web.Infrastucture.Extensions
             car.Engine = carVm.Engine;
             car.FuelConsumption = carVm.FuelConsumption;
             car.WheelDrive = carVm.WheelDrive;
+            car.TotalSeatId = carVm.TotalSeatId;
             car.Price = carVm.Price;
             car.PromotionPrice = carVm.PromotionPrice;
             car.Warranty = carVm.Warranty;
@@ -155,6 +156,12 @@ namespace CarDealer.Web.Infrastucture.Extensions
         {
             footer.ID = footerVm.ID;
             footer.Content = footerVm.Content;
+        }
+
+        public static void UpdateTotalSeat(this TotalSeat totalSeat, TotalSeatViewModel totalSeatVm)
+        {
+            totalSeat.Id = totalSeatVm.Id;
+            totalSeat.Name = totalSeatVm.Name;
         }
 
         public static void UpdateStyle(this Style style, StyleViewModel styleVm)
