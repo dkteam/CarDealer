@@ -16,6 +16,7 @@
 
 @section jsFooter{
     <script src="~/Assets/client/js/superfish.js"></script>
+    <script src="~/Assets/client/js/custome/sendFeedback.js"></script>
 }
 
 <div class="section top4-wrapper novi-background">
@@ -174,107 +175,136 @@
                                     </div>
                                 </div>
                                 <div class="txt3">@(Model.Price == 0 ? "Liên hệ" : Model.Price.Value.ToString("N0"))</div>
-                                <div class="txt4">Liên hệ: @supportOnline.Name</div>
-                                <div class="txt5">
-                                    @supportOnline.Address <br />
-                                    Điện thoại: <a href="tel:#" style="font-weight:bold">@supportOnline.Mobile</a>
-                                </div>
-                                <div class="form-wrapper">
-                                    <div id="note2"></div>
-                                    <div id="fields2">
-                                        <form id="ajax-contact-form2" class="form-horizontal rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post" action="bat/rd-mailform.php">
-                                            <div class="form-group form-wrap">
-                                                <label for="inputEmail">Email</label><input type="text" class="form-control" id="inputEmail" name="email" placeholder="Địa chỉ email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @{ Html.RenderAction("SendFeedback", "Feedback");}
+                @*<div class="row">
+                        <div class="col-sm-6 col-md-12">
+                            <div class="banner2-wrapper">
+                                <div class="contact-banner">
+                                    <div class="top-info clearfix">
+                                        <div class="info1">
+                                            <div class="banner-title">@Model.Name</div>
+                                            <div class="txt2">
+                                                <span class="txt">Người lái thử nhận xét</span>
+                                                <span class="stars">
+                                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                                </span>
                                             </div>
-                                            <div class="form-group form-wrap">
-                                                <label for="inputMessage">Thông điệp</label>
-                                                <textarea class="form-control" rows="9" id="inputMessage" placeholder="Lời nhắn" name="content"></textarea>
-                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="txt3">@(Model.Price == 0 ? "Liên hệ" : Model.Price.Value.ToString("N0"))</div>
+                                    <div class="txt4">Liên hệ: @supportOnline.Name</div>
+                                    <div class="txt5">
+                                        @supportOnline.Address <br />
+                                        Điện thoại: <a href="tel:#" style="font-weight:bold">@supportOnline.Mobile</a>
+                                    </div>
+                                    <div class="form-wrapper">
+                                        <div id="note2"></div>
+                                        <div id="fields2">
+                                            <form id="ajax-contact-form2" class="form-horizontal rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post" action="bat/rd-mailform.php">
+                                                <div class="form-group form-wrap">
+                                                    <label for="inputEmail">Email</label><input type="text" class="form-control" id="inputEmail" name="email" placeholder="Địa chỉ email">
+                                                </div>
+                                                <div class="form-group form-wrap">
+                                                    <label for="inputMessage">Thông điệp</label>
+                                                    <textarea class="form-control" rows="9" id="inputMessage" placeholder="Lời nhắn" name="content"></textarea>
+                                                </div>
 
-                                            <div class="checkbox-inline">
-                                                <label>
-                                                    <input type="checkbox"> Gửi cho tôi một bản sao
-                                                </label>
-                                            </div>
+                                                <div class="checkbox-inline">
+                                                    <label>
+                                                        <input type="checkbox"> Gửi cho tôi một bản sao
+                                                    </label>
+                                                </div>
 
-                                            <div class="checkbox-inline">
-                                                <label>
-                                                    <input type="checkbox" checked> Đăng ký nhận tin khuyến mãi
-                                                </label>
-                                            </div>
+                                                <div class="checkbox-inline">
+                                                    <label>
+                                                        <input type="checkbox" checked> Đăng ký nhận tin khuyến mãi
+                                                    </label>
+                                                </div>
 
-                                            <button type="submit" class="btn-default btn-cf-submit2">Gửi</button>
+                                                <button type="submit" class="btn-default btn-cf-submit2">Gửi</button>
 
 
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-12">
-                        <div class="banner3-wrapper">
-                            <div class="banner3">
-                                <div class="top-info clearfix">
-                                    <div class="info1">
-                                        <div class="txt1">Hỗ trợ tài chính</div>
+                        <div class="col-sm-6 col-md-12">
+                            <div class="banner3-wrapper">
+                                <div class="banner3">
+                                    <div class="top-info clearfix">
+                                        <div class="info1">
+                                            <div class="txt1">Hỗ trợ tài chính</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="txt2">Dòng xe</div>
-                                <div class="txt3">Maybach</div>
-                                <div class="form-wrapper">
-                                    <div id="note1"></div>
-                                    <div id="fields1">
-                                        <form id="ajax-contact-form1" class="form-horizontal" action="javascript:;">
+                                    <div class="txt2">Dòng xe</div>
+                                    <div class="txt3">Maybach</div>
+                                    <div class="form-wrapper">
+                                        <div id="note1"></div>
+                                        <div id="fields1">
+                                            <form id="ajax-contact-form1" class="form-horizontal" action="javascript:;">
 
-                                            <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="inputName">Trả trước (VNĐ)</label>
-                                                        <input type="text" class="form-control" id="inputName" name="name" value="34990">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-6 col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="inputName">Trả trước (VNĐ)</label>
+                                                            <input type="text" class="form-control" id="inputName" name="name" value="34990">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-6 col-md-12">
-                                                    <div class="form-group">
-                                                        <div class="select1_wrapper">
-                                                            <label>Thời gian trả góp</label>
-                                                            <div class="select1_inner form-control">
-                                                                <select class="select2 select" style="width: 100%">
-                                                                    <option value="1">60 tháng</option>
-                                                                    <option value="2">48 tháng</option>
-                                                                    <option value="3">36 tháng</option>
-                                                                    <option value="4">24 tháng</option>
-                                                                    <option value="5">12 tháng</option>
+                                                    <div class="col-xs-12 col-sm-6 col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="select1_wrapper">
+                                                                <label>Thời gian trả góp</label>
+                                                                <div class="select1_inner form-control">
+                                                                    <select class="select2 select" style="width: 100%">
+                                                                        <option value="1">60 tháng</option>
+                                                                        <option value="2">48 tháng</option>
+                                                                        <option value="3">36 tháng</option>
+                                                                        <option value="4">24 tháng</option>
+                                                                        <option value="5">12 tháng</option>
 
-                                                                </select>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
 
 
-                                            <button type="submit" class="btn-default btn-cf-submit1">Tính</button>
+                                                <button type="submit" class="btn-default btn-cf-submit1">Tính</button>
 
 
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
 
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-12">
+                            <div class="banner novi-background">
+                                <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
 
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-12">
-                        <div class="banner novi-background">
-                            <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
-
-                        </div>
-                    </div>
+                    </div>*@
+            </div>
+            <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
+                <div class="row">
+                    @{ Html.RenderAction("LatestPosts", "Post");}
                 </div>
             </div>
-
         </div>
         <div class="row">
             @if (relatedCars.Count() > 0)
@@ -282,62 +312,62 @@
                 foreach (var item in relatedCars)
                 {
                     var urlRelated = "/" + item.Alias + ".c-" + item.ID + ".html";
-                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
-                        <div class="product-minimal">
-                            <div class="thumbnail clearfix">
-                                <figure class="product-minimal-img">
-                                    <a href="details.html">
-                                        <img src="@item.Image" alt="" class="img-responsive">
-                                    </a>
-                                </figure>
-                                <div class="caption">
-                                    @foreach (var manu in manufactureYear)
+            <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                <div class="product-minimal">
+                    <div class="thumbnail clearfix">
+                        <figure class="product-minimal-img">
+                            <a href="@urlRelated">
+                                <img src="@item.Image" alt="" class="img-responsive">
+                            </a>
+                        </figure>
+                        <div class="caption">
+                            @foreach (var manu in manufactureYear)
                                     {
                                         if (item.ManufactureYearID == manu.ID)
                                         {
-                                            <p class="small">Model @manu.Name</p>
+                                    <p class="small">Model @manu.Name</p>
                                         }
                                     }
-                                    <div class="product-minimal-title"><a href="@urlRelated"> @item.Name</a></div>
-                                    <div class="info">
-                                        <span class="price">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</span>
-                                        <span class="speed">@item.Odo</span>
-                                    </div>
-                                    <ul class="tag-list">
-                                        <li><a href="#">@(item.CarStatus ? "Mới" : "Cũ")</a></li>
-                                        @foreach (var manufacture in manufactureYear)
+                            <div class="product-minimal-title"><a href="@urlRelated"> @item.Name</a></div>
+                            <div class="info">
+                                <span class="price">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</span>
+                                <span class="speed">@item.Odo</span>
+                            </div>
+                            <ul class="tag-list">
+                                <li><a href="#">@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                @foreach (var manufacture in manufactureYear)
                                         {
                                             if (item.ManufactureYearID == manufacture.ID)
                                             {
-                                                <li><a>@manufacture.Name</a></li>
+                                        <li><a>@manufacture.Name</a></li>
                                             }
                                         }
-                                        @foreach (var styleType in style)
+                                @foreach (var styleType in style)
                                         {
                                             if (item.StyleID == styleType.ID)
                                             {
-                                                <li><a>@styleType.Name</a></li>
+                                        <li><a>@styleType.Name</a></li>
                                             }
                                         }
-                                        @foreach (var transmission in transmissionType)
+                                @foreach (var transmission in transmissionType)
                                         {
                                             if (item.TransmissionTypeID == transmission.ID)
                                             {
-                                                <li><a>@transmission.Name</a></li>
+                                        <li><a>@transmission.Name</a></li>
                                             }
                                         }
-                                        @foreach (var fuelenging in fuel)
+                                @foreach (var fuelenging in fuel)
                                         {
                                             if (item.FuelID == fuelenging.ID)
                                             {
-                                                <li><a>@fuelenging.Name</a></li>
+                                        <li><a>@fuelenging.Name</a></li>
                                             }
                                         }
-                                    </ul>
-                                </div>
-                            </div>
+                            </ul>
                         </div>
                     </div>
+                </div>
+            </div>
                 }
             }
         </div>

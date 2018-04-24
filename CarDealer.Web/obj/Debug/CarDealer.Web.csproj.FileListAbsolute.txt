@@ -18,6 +18,8 @@ D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.Integration.Mvc.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\Autofac.Integration.WebApi.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\AutoMapper.dll
+D:\16. WEB\CarDealer\CarDealer.Web\bin\BotDetect.dll
+D:\16. WEB\CarDealer\CarDealer.Web\bin\BotDetect.Web.Mvc.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\CarDealer.Common.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\CarDealer.Data.dll
 D:\16. WEB\CarDealer\CarDealer.Web\bin\CarDealer.Model.dll

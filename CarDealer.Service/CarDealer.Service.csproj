@@ -63,6 +63,7 @@
     <Compile Include="CarCategoryService.cs" />
     <Compile Include="CarService.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="FeedbackService.cs" />
     <Compile Include="FooterService.cs" />
     <Compile Include="FuelService.cs" />
     <Compile Include="LandingPageService.cs" />

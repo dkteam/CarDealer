@@ -189,5 +189,24 @@ namespace CarDealer.Web.Controllers
 
             return View(carView);
         }
+
+        [ChildActionOnly]
+        public ActionResult CarSearchForPartialView()
+        {
+            //get car categories
+            var categoryModel = _carCategoryService.GetAll();
+            ViewBag.CategoryView = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(categoryModel);
+            
+            //get all total seat
+            var totalSeatModel = _totalSeatService.GetAll();
+            ViewBag.TotalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
+
+            //get all style
+            var styleModel = _styleService.GetAll();
+            ViewBag.StyleView = Mapper.Map<IEnumerable<Style>, IEnumerable<StyleViewModel>>(styleModel);
+        
+
+            return PartialView();
+        }
     }
 }

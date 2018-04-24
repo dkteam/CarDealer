@@ -1,0 +1,61 @@
+﻿@model CarDealer.Web.Models.HomeViewModel
+    @{ 
+        var carCategories = (IEnumerable<CarDealer.Web.Models.CarCategoryViewModel>)ViewBag.CategoryView;
+        var styles = (IEnumerable<CarDealer.Web.Models.StyleViewModel>)ViewBag.StyleView;
+        var totalSeats = (IEnumerable<CarDealer.Web.Models.TotalSeatViewModel>)ViewBag.TotalSeatView;
+    }
+
+<div class="col-sm-6 col-md-12">
+    <div class="sidebar-form-wrapper">
+        <div class="sidebar-form">
+            <form action="javascript:;" class="form2">
+                <div class="select1_wrapper">
+                    <label>Chọn dòng xe</label>
+                    <div class="select1_inner">
+                        <select class="select2 select" id="selectModel" style="width: 100%">
+                            <option value="1">Tất cả</option>
+                            @foreach (var item in carCategories)
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="select1_wrapper">
+                    <label>Kiểu dáng</label>
+                    <div class="select1_inner">
+                        <select class="select2 select" id="selectStyle" style="width: 100%">
+                            <option value="1">Tất cả</option>
+                            @foreach (var item in styles)
+                            {
+                                <option value="@item.ID">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="select1_wrapper">
+                    <label>Số ghế</label>
+                    <div class="select1_inner">
+                        <select class="select2 select" id="selectTotalSeat" style="width: 100%">
+                            <option value="1">Tất cả</option>
+                            @foreach (var item in totalSeats)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="select1_wrapper">
+                    <label>Tình trạng</label>
+                    <div class="select1_inner">
+                        <select class="select2 select" id="selectCarStatus" style="width: 100%">
+                            <option value="true">Xe mới</option>
+                            <option value="false">Đã sử dụng</option>
+                        </select>
+                    </div>
+                </div>               
+                <button type="button" id="btnSearch" class="btn-default btn-form2-submit">Tìm xe</button>
+            </form>
+        </div>
+    </div>
+</div>

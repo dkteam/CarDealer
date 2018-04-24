@@ -245,6 +245,14 @@
     <Compile Include="Migrations\201804231603101_editDb1.Designer.cs">
       <DependentUpon>201804231603101_editDb1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804240203139_addFeedback.cs" />
+    <Compile Include="Migrations\201804240203139_addFeedback.Designer.cs">
+      <DependentUpon>201804240203139_addFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804240209129_addFeedback1.cs" />
+    <Compile Include="Migrations\201804240209129_addFeedback1.Designer.cs">
+      <DependentUpon>201804240209129_addFeedback1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApplicationGroupRepository.cs" />
@@ -256,6 +264,7 @@
     <Compile Include="Repositories\CarRepository.cs" />
     <Compile Include="Repositories\CarTagRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\FooterRepostiory.cs" />
     <Compile Include="Repositories\FuelRepository.cs" />
     <Compile Include="Repositories\InstallmentPaymentMethodRepository.cs" />
@@ -429,6 +438,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804231603101_editDb1.resx">
       <DependentUpon>201804231603101_editDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804240203139_addFeedback.resx">
+      <DependentUpon>201804240203139_addFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804240209129_addFeedback1.resx">
+      <DependentUpon>201804240209129_addFeedback1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

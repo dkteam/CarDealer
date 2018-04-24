@@ -178,8 +178,8 @@
                                                             </div>
                                                         </div>
                                                         @*<p style="text-align:justify">
-                                                                @item.Description
-                                                            </p>*@
+                                                        @item.Description
+                                                    </p>*@
 
                                                         <ul class="list1">
                                                             <li><a>Model 2015</a></li>
@@ -249,109 +249,9 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
+                    @{ Html.RenderAction("SendFeedback", "Feedback");}
                     <div class="row">
-                        <div class="col-sm-6 col-md-12">
-                            <div class="sidebar-form-wrapper">
-                                <div class="sidebar-form">
-                                    <form action="javascript:;" class="form2">
-                                        <div class="select1_wrapper">
-                                            <label>Chọn dòng xe</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Tất cả</option>
-                                                    <option value="2">A - Class</option>
-                                                    <option value="3">V - Class</option>
-                                                    <option value="4">GLE</option>
-                                                    <option value="5">GLC</option>
-                                                    <option value="6">Coupe</option>
-                                                    <option value="7">Maybach</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="select1_wrapper">
-                                            <label>Chọn MODEL</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Tất cả</option>
-                                                    <option value="2">Model 1</option>
-                                                    <option value="3">Model 2</option>
-                                                    <option value="4">Model 3</option>
-                                                    <option value="5">Model 4</option>
-                                                    <option value="6">Model 5</option>
-                                                    <option value="7">Model 6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="select1_wrapper">
-                                            <label>Chọn loại xe</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Tất cả</option>
-                                                    <option value="2">Type 1</option>
-                                                    <option value="3">Type 2</option>
-                                                    <option value="4">Type 3</option>
-                                                    <option value="5">Type 4</option>
-                                                    <option value="6">Type 5</option>
-                                                    <option value="7">Type 6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="select1_wrapper">
-                                            <label>Tình trạng</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Tất cả</option>
-                                                    <option value="2">Mới</option>
-                                                    <option value="3">Cũ 98%</option>
-                                                    <option value="4">Status 3</option>
-                                                    <option value="5">Status 4</option>
-                                                    <option value="6">Status 5</option>
-                                                    <option value="7">Status 6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="select1_wrapper">
-                                            <label>Số năm đã chạy</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Min Year</option>
-                                                    <option value="2">2018</option>
-                                                    <option value="3">2017</option>
-                                                    <option value="4">2016</option>
-                                                    <option value="5">2015</option>
-                                                    <option value="6">2014</option>
-                                                    <option value="7">2013</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="select1_wrapper">
-                                            <label>Số năm đã chạy</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="1">Max Year</option>
-                                                    <option value="2">2018</option>
-                                                    <option value="3">2017</option>
-                                                    <option value="4">2016</option>
-                                                    <option value="5">2015</option>
-                                                    <option value="6">2014</option>
-                                                    <option value="7">2013</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="slider-range-wrapper">
-                                            <div class="txt">Khoảng giá muốn tìm</div>
-                                            <div class="slider-range"></div>
-                                            <div class="clearfix">
-                                                <input type="text" class="amount" readonly="">
-                                                <input type="text" class="amount2" readonly="">
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn-default btn-form2-submit">Tìm xe</button>
-                                        <div class="reset-filters"><a href="#">Làm lại</a></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        @{ Html.RenderAction("CarSearchForPartialView", "Car");}
                         <div class="col-sm-6 col-md-12">
                             <div class="banner">
                                 <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
@@ -359,10 +259,14 @@
                             </div>
                         </div>
                     </div>
+     
+                </div>
+                <div class="col-sm-12 col-md-3  column-sidebar">
+                    <div class="row">
+                        @{ Html.RenderAction("LatestPosts", "Post");}
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 
 

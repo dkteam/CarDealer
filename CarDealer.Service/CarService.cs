@@ -30,6 +30,8 @@ namespace CarDealer.Service
 
         IEnumerable<Car> GetBestPrice(int top);
 
+        IEnumerable<Car> GetUsedCar(int top);
+
         IEnumerable<Car> GetReatedCars(int id, int top);
 
         IEnumerable<Car> GetProductsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
@@ -220,7 +222,7 @@ namespace CarDealer.Service
 
             if (modelId == null && styleId != null && totalSeatId != null)
             {
-                cars = _carRepository.GetMulti(x => x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus==carStatus);
+                cars = _carRepository.GetMulti(x => x.StyleID == styleId && x.TotalSeatId == totalSeatId && x.CarStatus == carStatus);
             }
             else if (styleId == null && modelId != null && totalSeatId != null)
             {
@@ -236,7 +238,7 @@ namespace CarDealer.Service
             }
             else
             {
-                cars = _carRepository.GetMulti(x=>x.CarStatus==carStatus);
+                cars = _carRepository.GetMulti(x => x.CarStatus == carStatus);
             }
             return cars;
         }
@@ -292,6 +294,11 @@ namespace CarDealer.Service
             totalRow = query.Count();
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<Car> GetUsedCar(int top)
+        {
+            return _carRepository.GetMulti(x => x.Status && x.CarStatus == false).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

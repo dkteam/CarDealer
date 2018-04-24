@@ -81,6 +81,10 @@ namespace CarDealer.Web.Controllers
             var bestPriceCarModel = _carService.GetBestPrice(9);
             var bestPriceCarView = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(bestPriceCarModel);
 
+            //get best price
+            var usedCarModel = _carService.GetUsedCar(9);
+            var usedCarView = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(usedCarModel);
+
             //get car categories
             var categoryModel = _carCategoryService.GetAll();
             var categoryView = Mapper.Map<IEnumerable<CarCategory>, IEnumerable<CarCategoryViewModel>>(categoryModel);
@@ -128,6 +132,7 @@ namespace CarDealer.Web.Controllers
             homeView.HotCarTop3 = hotCarTop3View;
             homeView.BestPriceCars = bestPriceCarView;
             homeView.CarCategories = categoryView;
+            homeView.UsedCars = usedCarView;
             homeView.welcomeLandingPage = welcomeView;
             homeView.featureLandingPage = featureView;
             homeView.commentLandingPage = commentView;

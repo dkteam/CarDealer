@@ -229,7 +229,8 @@
                 </div>
                 <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
                     <div class="row">
-                        <div class="col-sm-6 col-md-12">
+                        @{ Html.RenderAction("LatestPosts", "Post");}
+                        @*<div class="col-sm-6 col-md-12">
                             <div class="sidebar-form-wrapper">
                                 <div class="sidebar-form">
                                     <form action="javascript:;" class="form2">
@@ -330,7 +331,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-sm-6 col-md-12">
                             <div class="banner">
                                 <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>

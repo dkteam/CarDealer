@@ -59,6 +59,8 @@ D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.AddGroup
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editAppUser.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editCar.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.editDb1.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.addFeedback.resources
+D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.Migrations.addFeedback1.resources
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.csproj.GenerateResource.Cache
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.dll
 D:\16. WEB\CarDealer\CarDealer.Data\obj\Debug\CarDealer.Data.pdb

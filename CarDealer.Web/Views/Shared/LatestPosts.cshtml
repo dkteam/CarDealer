@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CarDealer.Web.Models.PostViewModel>
+
+<div class="col-sm-6 col-md-12">
+    <div class="sidebar-form-wrapper">
+        <div class="sidebar-form">
+            @if (Model.Count() > 0)
+            {
+                foreach (var otherPost in Model)
+                {
+                    var url = "/" + otherPost.Alias + ".p-" + otherPost.ID + ".html";
+                    <div class="footer-product">
+                        <figure class="footer-product-img">
+                            <a href="@url">
+                                <img src="@otherPost.Image" alt="@otherPost.Name" class="img-responsive">
+                            </a>
+
+                        </figure>
+                        <div class="caption">
+                            <p class="box-title"><a href="@url">@otherPost.Name</a></p>
+                            <div><span>@otherPost.CreatedDate</span></div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+

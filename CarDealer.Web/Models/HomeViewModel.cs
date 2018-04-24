@@ -12,6 +12,7 @@ namespace CarDealer.Web.Models
         public IEnumerable<CarViewModel> HotCars { set; get; }
         public IEnumerable<CarViewModel> HotCarTop3 { set; get; }
         public IEnumerable<CarViewModel> BestPriceCars { set; get; }
+        public IEnumerable<CarViewModel> UsedCars { set; get; }
         public IEnumerable<CarCategoryViewModel> CarCategories { set; get; }
 
         public IEnumerable<FuelViewModel> Fuels { set; get; }

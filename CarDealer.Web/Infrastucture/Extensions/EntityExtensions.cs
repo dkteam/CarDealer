@@ -243,6 +243,17 @@ namespace CarDealer.Web.Infrastucture.Extensions
             db.Address = vm.Address;
         }
 
+        public static void UpdateFeedback(this Feedback db, FeedbackViewModel vm)
+        {
+            db.ID = vm.ID;
+            db.Name = vm.Name;
+            db.Mobile = vm.Mobile;
+            db.Email = vm.Email;
+            db.Message = vm.Message;
+            db.CreatedDate = vm.CreatedDate;
+            db.Status = vm.Status;
+        }
+
         public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
         {
             appGroup.ID = appGroupViewModel.ID;
@@ -269,5 +280,7 @@ namespace CarDealer.Web.Infrastucture.Extensions
             appUser.UserName = appUserViewModel.UserName;
             appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
+
+
     }
 }

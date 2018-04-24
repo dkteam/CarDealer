@@ -97,6 +97,7 @@
     <Compile Include="Models\CarCategory.cs" />
     <Compile Include="Models\CarTag.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Fuel.cs" />
     <Compile Include="Models\Gallery.cs" />

@@ -61,5 +61,14 @@ namespace CarDealer.Web.Controllers
 
             return View(postView);
         }
+
+        [ChildActionOnly]
+        public ActionResult LatestPosts()
+        {
+            var postModel = _postService.GetLatestPosts(5);
+            var postView = Mapper.Map<IEnumerable<Post>, IEnumerable<PostViewModel>>(postModel);
+
+            return PartialView(postView);
+        }
     }
 }
