@@ -6,12 +6,14 @@ using CarDealer.Web.App_Start;
 using CarDealer.Web.Infrastucture.Core;
 using CarDealer.Web.Infrastucture.Extensions;
 using CarDealer.Web.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace CarDealer.Web.Api
@@ -151,6 +153,9 @@ namespace CarDealer.Web.Api
                 var appUser = await _userManager.FindByIdAsync(applicationUserViewModel.Id);
                 try
                 {
+
+                    appUser.PasswordHash = _userManager.PasswordHasher.HashPassword(applicationUserViewModel.Password);
+
                     appUser.UpdateUser(applicationUserViewModel);
                     var result = await _userManager.UpdateAsync(appUser);
                     if (result.Succeeded)

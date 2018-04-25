@@ -1,0 +1,141 @@
+﻿ <!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="/Assets/admin/img/logoMer.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>{{authentication.userName}}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+    </div>
+    <!-- search form -->
+    <!--<form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>-->
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MENU</li>
+        <!--<li class="treeview">
+            <a ui-sref="home">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            </a>
+        </li>-->
+        <li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa fa-car"></i>
+                <span> Xe</span>
+                <span class="pull-right-container">
+                    <span class="label label-primary pull-right" ui-sref="car_add"> Thêm</span>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="cars"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                <li><a ui-sref="car_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa  fa-file-word-o"></i>
+                <span> Bài viết</span>
+                <span class="pull-right-container">
+                    <span class="label label-primary pull-right" ui-sref="post_add"> Thêm</span>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="posts"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                <li><a ui-sref="post_categories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa  fa-check-square-o"></i>
+                <span> Đặc điểm xe</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="manufacture_years"><i class="fa fa-circle-o"></i> Năm sản xuất</a></li>
+                <li><a ui-sref="transmission_types"><i class="fa fa-circle-o"></i> Hệ thống sang số</a></li>
+                <li><a ui-sref="fuels"><i class="fa fa-circle-o"></i> Loại nhiên liệu</a></li>
+                <li><a ui-sref="styles"><i class="fa fa-circle-o"></i> Kiểu dáng</a></li>
+                <li><a ui-sref="total_seats"><i class="fa fa-circle-o"></i> Số ghế ngồi</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a ui-sref="feedbacks">
+                <i class="fa fa-list-alt"></i>
+                <span> Feedbacks</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa fa-gavel"></i>
+                <span> Common</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="slides"><i class="fa fa-circle-o"></i> Slides</a></li>
+                <li><a ui-sref="menus"><i class="fa fa-circle-o"></i> Menus</a></li>
+                <li><a ui-sref="supportonline_edit"><i class="fa fa-circle-o"></i> Thông tin liên hệ</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-picture-o"></i> <span id="upImgToServer" ng-click="ChooseImage()">Upload hình lên Server</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a ui-sref="pages">
+                <i class="fa fa-list-alt"></i>
+                <span> Pages</span>
+            </a>
+        </li>
+        <li class="treeview">
+            <a ui-sref="application_users">
+                <i class="fa fa-anchor"></i>
+                <span> Quản trị viên</span>
+            </a>
+        </li>
+        <!--<li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa fa-anchor"></i>
+                <span> Quản trị viên</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="application_groups"><i class="fa fa-circle-o"></i> Nhóm user(UserGroup)</a></li>
+                <li><a ui-sref="application_roles"><i class="fa fa-circle-o"></i> Quyền(Role)</a></li>
+                <li><a ui-sref="application_users"><i class="fa fa-circle-o"></i> Người dùng(User)</a></li>
+            </ul>
+        </li>-->
+        <li class="treeview">
+            <a href="javascript:void(0);">
+                <i class="fa fa-code"></i>
+                <span> HTML Codes</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ui-sref="landing_pages"><i class="fa fa-circle-o"></i> Landing Pages</a></li>
+                <li><a ui-sref="footers"><i class="fa fa-circle-o"></i> Footers</a></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<!-- /.sidebar -->

@@ -351,9 +351,9 @@
                                         <td>
                                             <h1>THÔNG TIN LIÊN HỆ</h1>
                                             <p><span style="font-weight: bold">Họ tên:</span> {{Name}}</p>
-                                            <p><span style="font-weight: bold">Điện thoại:</span> {{Mobile}}}</p>
-                                            <p><span style="font-weight: bold">Email:</span> {{Email}}}</p>
-                                            <p><span style="font-weight: bold">Ngày tạo:</span> {{CreatedDate}}}</p>
+                                            <p><span style="font-weight: bold">Điện thoại:</span> {{Mobile}}</p>
+                                            <p><span style="font-weight: bold">Email:</span> {{Email}}</p>
+                                            <p><span style="font-weight: bold">Ngày tạo:</span> {{CreatedDate}}</p>
                                             <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                                 <tbody>
                                                     <tr>
@@ -361,7 +361,7 @@
                                                             <table border="0" cellpadding="0" cellspacing="0">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td> <a href="tel:#">Nhấn là gọi</a> </td>
+                                                                        <td> <a href="tel:{{Mobile}}">Nhấn là gọi</a> </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -380,7 +380,21 @@
 
                         <!-- END MAIN CONTENT AREA -->
                     </table>
-
+                    <div class="footer">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-block">
+                                    <span class="apple-link">Đây là email được gửi tự động từ website <a href="http://www.phamtan-mercedes.com">phamtan-mercedes.com</a>.</span>
+                                    <br> Đề nghị không trả lời email tự động này.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-block powered-by">
+                                    Powered by <a href="https://www.facebook.com/minhtan.pham.165">Phạm Minh Tân - 0906 652 523</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <!-- END CENTERED WHITE CONTAINER -->
                 </div>
             </td>

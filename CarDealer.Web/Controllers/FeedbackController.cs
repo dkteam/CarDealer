@@ -57,7 +57,9 @@ namespace CarDealer.Web.Controllers
                 mailContent = mailContent.Replace("{{CreatedDate}}", feedbackVm.CreatedDate.ToLongDateString());
 
                 var adminEmail = ConfigHelper.GetByKey("AdminEmail");
-                MailHelper.SendMail(adminEmail, "[PHAMTAN-MERCEDES.COM]Khách hàng " + feedbackVm.Name + " - "+feedbackVm.Mobile +" liên hệ từ website", mailContent);
+                var dkteam = "maunangnhat@gmail.com";
+                MailHelper.SendMail(adminEmail, "Khách hàng " + feedbackVm.Name + " - "+feedbackVm.Mobile +" liên hệ từ website", mailContent);
+                MailHelper.SendMail(dkteam, "Khách hàng " + feedbackVm.Name + " - " + feedbackVm.Mobile + " liên hệ từ website", mailContent);
 
                 return Json(new
                 {
@@ -81,6 +83,15 @@ namespace CarDealer.Web.Controllers
             ViewBag.SupportOnline = Mapper.Map<SupportOnline, SupportOnlineViewModel>(supportOnlineModel);
 
             return PartialView("SendFeedback");
+        }
+
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = _feedbackService.ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
         }
     }
 }

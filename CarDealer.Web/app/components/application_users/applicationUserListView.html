@@ -34,7 +34,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in data | filter:filterExpression">
+                            <tr ng-repeat="item in data | filter:filterExpression" ng-if="(item.UserName!='dkteam')">
+
                                 <td><a ui-sref="edit_application_user({id:item.Id})">{{item.FullName}}</a></td>
                                 <td><a ui-sref="edit_application_user({id:item.Id})">{{item.UserName}}</a></td>
                                 <td>{{item.Email}}</td>

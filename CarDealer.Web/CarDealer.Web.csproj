@@ -209,6 +209,7 @@
     <Compile Include="Api\ApplicationUserController.cs" />
     <Compile Include="Api\CarCategoryController.cs" />
     <Compile Include="Api\CarController.cs" />
+    <Compile Include="Api\FeedbackController.cs" />
     <Compile Include="Api\FooterController.cs" />
     <Compile Include="Api\FuelController.cs" />
     <Compile Include="Api\HomeController.cs" />
@@ -308,6 +309,13 @@
     <Content Include="app\components\car_categories\carCategoryEditView.html" />
     <Content Include="app\components\car_categories\carCategoryListController.js" />
     <Content Include="app\components\car_categories\carCategoryListView.html" />
+    <Content Include="app\shared\views\sideBar.html" />
+    <Content Include="Assets\admin\js\feedbacks\changeFeedbackStatus.js" />
+    <Content Include="app\components\feedbacks\feedbackEditController.js" />
+    <Content Include="app\components\feedbacks\feedbackEditView.html" />
+    <Content Include="app\components\feedbacks\feedbackListController.js" />
+    <Content Include="app\components\feedbacks\feedbackListView.html" />
+    <Content Include="app\components\feedbacks\feedbacks.module.js" />
     <Content Include="app\components\footers\footerEditController.js" />
     <Content Include="app\components\footers\footerEditView.html" />
     <Content Include="app\components\footers\footerListController.js" />
@@ -405,6 +413,7 @@
     <Content Include="app\components\transmission_types\transmissionTypeListView.html" />
     <Content Include="app\components\transmission_types\transmissionTypes.module.js" />
     <Content Include="app\shared\directives\asDateDirective.js" />
+    <Content Include="app\shared\filters\feedbackStatusFilter.js" />
     <Content Include="app\shared\filters\targetFilter.js" />
     <Content Include="app\shared\filters\usedFilter.js" />
     <Content Include="app\shared\services\notificationService.js" />
