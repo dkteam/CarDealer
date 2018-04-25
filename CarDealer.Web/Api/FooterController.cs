@@ -25,6 +25,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
@@ -54,6 +55,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid/{id}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, string id)
         {
@@ -70,6 +72,7 @@ namespace CarDealer.Web.Api
 
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, FooterViewModel footerVm)
         {

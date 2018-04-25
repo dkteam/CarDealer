@@ -1,10 +1,69 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-
-</body>
-</html>
+﻿<section class="content-header">
+    <h1>
+        Chỉnh sửa Feedback
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="posts"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a ui-sref="feedbacks">Feedbacks</a></li>
+        <li class="active">Chỉnh sửa</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sửa thông tin</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" novalidate name="frmEditSlide" role="form" ng-submit="UpdateFeedback()">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tên Khách hàng</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Tên slide" required name="name" ng-model="feedback.Name" ng-maxlength="100"">
+                            <span ng-show="frmEditSlide.name.$error.maxlength" class="has-error">Tối đa 100 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Số điện thoại" required name="mobile" ng-maxlength="20" ng-model="feedback.Mobile">
+                            <span ng-show="frmEditSlide.mobile.$error.maxlength" class="has-error">Tối đa 20 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="Email" required name="email" ng-maxlength="50" ng-model="feedback.Email">
+                            <span ng-show="frmEditSlide.email.$error.maxlength" class="has-error">Tối đa 50 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Thông điệp</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" style="height:150px" placeholder="Nội dung" name="message" ng-model="feedback.Message" ng-maxlength="500"></textarea>
+                            <span ng-show="frmEditSlide.message.$error.maxlength" class="has-error">Tối đa 500 ký tự</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="status" ng-model="feedback.Status" ng-checked="feedback.Status"> Kích hoạt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" class="btn btn-default" ui-sref="feedbacks"><i class="fa fa-undo"></i> Hủy</button>
+                    <button type="submit" class="btn btn-success pull-right" ng-disabled="frmEditSlide.$invalid"><i class="fa fa-save"></i> Lưu</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</section>

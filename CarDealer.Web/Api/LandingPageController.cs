@@ -27,6 +27,7 @@ namespace CarDealer.Web.Api
         #endregion
 
         [Route("getall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
@@ -57,6 +58,7 @@ namespace CarDealer.Web.Api
 
 
         [Route("getbyid/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
@@ -72,6 +74,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, LandingPageViewModel vm)
         {

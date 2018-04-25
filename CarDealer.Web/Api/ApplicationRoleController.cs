@@ -29,6 +29,7 @@ namespace CarDealer.Web.Api
 
         [Route("getlistpaging")]
         [HttpGet]
+        [Authorize]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return CreateHttpResponse(request, () =>
@@ -52,6 +53,7 @@ namespace CarDealer.Web.Api
             });
         }
         [Route("getlistall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
@@ -67,6 +69,7 @@ namespace CarDealer.Web.Api
             });
         }
         [Route("detail/{id}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Details(HttpRequestMessage request, string id)
         {
@@ -83,6 +86,7 @@ namespace CarDealer.Web.Api
         }
 
         [HttpPost]
+        [Authorize]
         [Route("add")]
         public HttpResponseMessage Create(HttpRequestMessage request, ApplicationRoleViewModel applicationRoleViewModel)
         {
@@ -109,6 +113,7 @@ namespace CarDealer.Web.Api
 
         [HttpPut]
         [Route("update")]
+        [Authorize]
         public HttpResponseMessage Update(HttpRequestMessage request, ApplicationRoleViewModel applicationRoleViewModel)
         {
             if (ModelState.IsValid)
@@ -133,6 +138,7 @@ namespace CarDealer.Web.Api
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("delete")]
         public HttpResponseMessage Delete(HttpRequestMessage request, string id)
         {
@@ -142,6 +148,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("deletemulti")]
+        [Authorize]
         [HttpDelete]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedList)
         {

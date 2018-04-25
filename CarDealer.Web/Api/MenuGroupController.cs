@@ -26,6 +26,7 @@ namespace CarDealer.Web.Api
         #endregion
 
         [Route("getallNonPaging")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
@@ -43,6 +44,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {

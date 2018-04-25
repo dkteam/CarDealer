@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="~/Assets/admin/css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link href="~/Assets/admin/libs/iCheck/skins/square/blue.css" rel="stylesheet" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,7 +32,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">*@
 </head>
 <body class="hold-transition skin-black sidebar-mini" ng-app="cardealer" ng-controller="rootController">
     <div ui-view></div>
@@ -154,11 +155,15 @@
     <script src="~/app/components/home/homeController.js"></script>
     <script src="~/app/components/login/loginController.js"></script>
 
+
+
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
         })
     </script>
+
+
     <script type="text/javascript">
         $('#upImgToServer').click(function (e) {
             e.preventDefault();

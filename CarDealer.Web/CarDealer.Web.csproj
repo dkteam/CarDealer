@@ -310,6 +310,7 @@
     <Content Include="app\components\car_categories\carCategoryListController.js" />
     <Content Include="app\components\car_categories\carCategoryListView.html" />
     <Content Include="app\shared\views\sideBar.html" />
+    <Content Include="Assets\admin\js\app.js" />
     <Content Include="Assets\admin\js\feedbacks\changeFeedbackStatus.js" />
     <Content Include="app\components\feedbacks\feedbackEditController.js" />
     <Content Include="app\components\feedbacks\feedbackEditView.html" />

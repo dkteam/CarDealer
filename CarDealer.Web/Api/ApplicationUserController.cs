@@ -37,6 +37,7 @@ namespace CarDealer.Web.Api
             _userManager = userManager;
         }
         [Route("getlistpaging")]
+        [Authorize]
         [HttpGet]
         //[Authorize(Roles = "ViewUser")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
@@ -63,6 +64,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("detail/{id}")]
+        [Authorize]
         [HttpGet]
         //[Authorize(Roles = "ViewUser")]
         public HttpResponseMessage Details(HttpRequestMessage request, string id)
@@ -89,6 +91,7 @@ namespace CarDealer.Web.Api
 
         [HttpPost]
         [Route("add")]
+        [Authorize]
         //[Authorize(Roles = "AddUser")]
         public async Task<HttpResponseMessage> Create(HttpRequestMessage request, ApplicationUserViewModel applicationUserViewModel)
         {
@@ -145,6 +148,7 @@ namespace CarDealer.Web.Api
 
         [HttpPut]
         [Route("update")]
+        [Authorize]
         //[Authorize(Roles = "UpdateUser")]
         public async Task<HttpResponseMessage> Update(HttpRequestMessage request, ApplicationUserViewModel applicationUserViewModel)
         {
@@ -197,6 +201,7 @@ namespace CarDealer.Web.Api
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize]
         //[Authorize(Roles = "DeleteUser")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, string id)
         {

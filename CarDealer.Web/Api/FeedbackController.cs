@@ -28,6 +28,7 @@ namespace CarDealer.Web.Api
         #endregion
 
         [Route("getall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
@@ -57,6 +58,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
@@ -70,23 +72,9 @@ namespace CarDealer.Web.Api
                 return response;
             });
         }
-
-        [Route("changestatus")]
-        [HttpPost]
-        public HttpResponseMessage ChangeStatus(HttpRequestMessage request, int id)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                var db = _feedbackService.ChangeStatus(id);
-                var vm = Mapper.Map<Feedback, FeedbackViewModel>(db);
-
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, vm);
-
-                return response;
-            });
-        }
-
+ 
         [Route("create")]
+        [Authorize]
         [HttpPost]
         public HttpResponseMessage Create(HttpRequestMessage request, FeedbackViewModel FeedbackVm)
         {
@@ -116,6 +104,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, FeedbackViewModel feedbackVm)
         {
@@ -132,35 +121,6 @@ namespace CarDealer.Web.Api
                     var feedbackDb = _feedbackService.GetById(feedbackVm.ID);
 
                     feedbackDb.UpdateFeedback(feedbackVm);
-                    feedbackDb.Status = !feedbackDb.Status;
-
-                    _feedbackService.Update(feedbackDb);
-                    _feedbackService.SaveChanges();
-
-                    var responseData = Mapper.Map<Feedback, FeedbackViewModel>(feedbackDb);
-                    response = request.CreateResponse(HttpStatusCode.OK, responseData);
-                }
-
-                return response;
-            });
-        }
-
-        [Route("updatestatus")]
-        [HttpPut]
-        public HttpResponseMessage UpdateStatus(HttpRequestMessage request, int id)
-        {
-            return CreateHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
-
-                if (!ModelState.IsValid)
-                {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var feedbackDb = _feedbackService.GetById(id);
-                    feedbackDb.Status = !feedbackDb.Status;
 
                     _feedbackService.Update(feedbackDb);
                     _feedbackService.SaveChanges();
@@ -174,6 +134,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("delete")]
+        [Authorize]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
@@ -199,6 +160,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("deletemulti")]
+        [Authorize]
         [HttpDelete]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedFeedbacks)
         {

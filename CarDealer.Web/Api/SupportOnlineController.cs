@@ -14,6 +14,7 @@ using CarDealer.Web.Infrastucture.Extensions;
 namespace CarDealer.Web.Api
 {
     [RoutePrefix("api/supportonline")]
+    [Authorize]
     public class SupportOnlineController : ApiControllerBase
     {
         ISupportOnlineService _supportOnlineService;
@@ -24,6 +25,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request)
         {
@@ -39,6 +41,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, SupportOnlineViewModel Vm)
         {

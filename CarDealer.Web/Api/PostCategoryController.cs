@@ -25,23 +25,9 @@ namespace CarDealer.Web.Api
         {
             this._postCategoryService = postCategoryService;
         }
-
-        //[Route("getall")]
-        //public HttpResponseMessage Get(HttpRequestMessage request)
-        //{
-        //    return CreateHttpResponse(request, () =>
-        //    {
-        //        var listCategory = _postCategoryService.GetAll();
-
-        //        var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
-
-        //        HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
-
-        //        return response;
-        //    });
-        //}
-
+        
         [Route("getall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
@@ -71,6 +57,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getallparents")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
@@ -88,6 +75,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
@@ -105,6 +93,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("create")]
+        [Authorize]
         [HttpPost]
         [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
@@ -137,6 +126,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
@@ -170,6 +160,7 @@ namespace CarDealer.Web.Api
 
 
         [Route("delete")]
+        [Authorize]
         [HttpDelete]
         [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
@@ -196,6 +187,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("deletemulti")]
+        [Authorize]
         [HttpDelete]
         [AllowAnonymous]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedPostCategories)

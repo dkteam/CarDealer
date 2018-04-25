@@ -35,6 +35,7 @@ namespace CarDealer.Web.Api
             _userManager = userManager;
         }
         [Route("getlistpaging")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
@@ -60,6 +61,7 @@ namespace CarDealer.Web.Api
             });
         }
         [Route("getlistall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
@@ -75,6 +77,7 @@ namespace CarDealer.Web.Api
             });
         }
         [Route("detail/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Details(HttpRequestMessage request, int id)
         {
@@ -95,6 +98,7 @@ namespace CarDealer.Web.Api
 
         [HttpPost]
         [Route("add")]
+        [Authorize]
         public HttpResponseMessage Create(HttpRequestMessage request, ApplicationGroupViewModel appGroupViewModel)
         {
             if (ModelState.IsValid)
@@ -138,6 +142,7 @@ namespace CarDealer.Web.Api
 
         [HttpPut]
         [Route("update")]
+        [Authorize]
         public async Task<HttpResponseMessage> Update(HttpRequestMessage request, ApplicationGroupViewModel appGroupViewModel)
         {
             if (ModelState.IsValid)
@@ -190,6 +195,7 @@ namespace CarDealer.Web.Api
 
         [HttpDelete]
         [Route("delete")]
+        [Authorize]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             var appGroup = _appGroupService.Delete(id);
@@ -198,6 +204,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("deletemulti")]
+        [Authorize]
         [HttpDelete]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedList)
         {

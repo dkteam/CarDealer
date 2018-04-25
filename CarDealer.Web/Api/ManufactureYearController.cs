@@ -28,6 +28,7 @@ namespace CarDealer.Web.Api
         #endregion
 
         [Route("getall")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request, string keyWord, int page, int pageSize = 20)
         {
@@ -57,6 +58,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getallnonpaging")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
@@ -74,6 +76,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("getbyid/{id:int}")]
+        [Authorize]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
@@ -91,6 +94,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("create")]
+        [Authorize]
         [HttpPost]
         [AllowAnonymous]
         public HttpResponseMessage Create(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
@@ -124,6 +128,7 @@ namespace CarDealer.Web.Api
 
 
         [Route("update")]
+        [Authorize]
         [HttpPut]
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, ManufactureYearViewModel manufactureYearVm)
@@ -156,6 +161,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("delete")]
+        [Authorize]
         [HttpDelete]
         [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
@@ -182,6 +188,7 @@ namespace CarDealer.Web.Api
         }
 
         [Route("deletemulti")]
+        [Authorize]
         [HttpDelete]
         [AllowAnonymous]
         public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedManufactureYears)

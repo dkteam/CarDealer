@@ -19,6 +19,7 @@ namespace CarDealer.Web.Api
 
         [HttpGet]
         [Route("TestMethod")]
+        [Authorize]
         public string TestMethod()
         {
             return "Hello, I'm Khoa";

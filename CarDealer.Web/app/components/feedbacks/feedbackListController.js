@@ -103,28 +103,7 @@
             }, function () {
                 console.log('Load feedback failed.');
             });
-        }
-
-        $scope.UpdateFeedback = UpdateFeedback;
-        function UpdateFeedback(id) {
-            loadFeedbackDetail(id);
-
-            apiService.put('api/feedback/update', $scope.feedback,
-                function (result) {
-                    notificationService.displaySuccess(result.data.Name + ' đã được cập nhật thành công.');
-                    $state.go('feedbacks');
-                }, function (error) {
-                    notificationService.displayError('Cập nhật không thành công');
-                });
-        };
-
-        function loadFeedbackDetail(id) {     
-            apiService.get('api/feedback/getbyid/' + id, null, function (result) {
-                $scope.feedback = result.data;
-            }, function (error) {
-                notificationService.displayError(error.data);
-            });
-        }
+        } 
 
         $scope.getFeedbacks();
     }
