@@ -3696,8 +3696,8 @@
     <Content Include="Assets\client\images\_blank.png" />
     <Content Include="Assets\client\js\bootstrap.min.js" />
     <Content Include="Assets\client\js\custome\carSearchForSmallScreen.js" />
-    <Content Include="Assets\client\js\custome\postSorting.js" />
     <Content Include="Assets\client\js\custome\carSearch.js" />
+    <Content Include="Assets\client\js\custome\postSorting.js" />
     <Content Include="Assets\client\js\custome\sendFeedback.js" />
     <Content Include="Assets\client\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Assets\client\js\jquery-ui.js" />
@@ -3743,7 +3743,6 @@
     <Folder Include="app\shared\navigation\" />
     <Folder Include="Assets\admin\libs\checklist-model\test\" />
     <Folder Include="UploadFiles\" />
-    <Folder Include="Views\Feedback\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -4217,6 +4216,8 @@
     <Content Include="Views\Shared\SendFeedback.cshtml" />
     <Content Include="Views\Shared\LatestPosts.cshtml" />
     <Content Include="Views\Shared\CarSearchForPartialView.cshtml" />
+    <Content Include="Views\Car\ListByTag.cshtml" />
+    <Content Include="Views\Post\ListByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarDealer.Common\CarDealer.Common.csproj">

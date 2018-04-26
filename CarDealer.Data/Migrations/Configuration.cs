@@ -21,6 +21,7 @@
             CreateCarCategorySample(context);
             CreateMenuGroupSample(context);
             CreatePageSample(context);
+            //CreateConfigTitle(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -71,6 +72,34 @@
                 context.SaveChanges();
             }
         }
+
+        //private void CreateConfigTitle(CarDealer.Data.CarDealerDbContext context)
+        //{
+        //    if (!context.SystemConfigs.Any(x => x.Code == "HomeTitle"))
+        //    {
+        //        context.SystemConfigs.Add(new SystemConfig()
+        //        {
+        //            Code = "HomeTitle",
+        //            ValueString="Trang chủ phamtan-mercedes.com - chuyên trang kinh doanh về thương hiệu xe Mercedes-Benz"
+        //        });
+        //    }
+        //    if (!context.SystemConfigs.Any(x => x.Code == "HomeMetakeyword"))
+        //    {
+        //        context.SystemConfigs.Add(new SystemConfig()
+        //        {
+        //            Code = "HomeMetakeyword",
+        //            ValueString = "Chuyên trang kinh doanh về thương hiệu xe Mercedes-Benz"
+        //        });
+        //    }
+        //    if (!context.SystemConfigs.Any(x => x.Code == "HomeMetaDescription"))
+        //    {
+        //        context.SystemConfigs.Add(new SystemConfig()
+        //        {
+        //            Code = "HomeMetaDescription",
+        //            ValueString = "Chuyên trang kinh doanh về thương hiệu xe Mercedes-Benz"
+        //        });
+        //    }
+        //}
 
         private void CreateCarCategorySample(CarDealer.Data.CarDealerDbContext context)
         {

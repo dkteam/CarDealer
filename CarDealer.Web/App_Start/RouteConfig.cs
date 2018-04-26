@@ -21,28 +21,30 @@ namespace CarDealer.Web
               url: "trang/{alias}.html",
               defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
               namespaces: new string[] { "CarDealer.Web.Controllers" }
-          );
+            );
 
             routes.MapRoute(
-           name: "Search",
-           url: "tim-kiem.html",
-           defaults: new { controller = "Car", action = "Search", id = UrlParameter.Optional },
-           namespaces: new string[] { "CarDealer.Web.Controllers" }
-       );
+               name: "Search",
+               url: "tim-kiem.html",
+               defaults: new { controller = "Car", action = "Search", id = UrlParameter.Optional },
+               namespaces: new string[] { "CarDealer.Web.Controllers" }
+            );
+
+
 
             routes.MapRoute(
                name: "Post",
                url: "{alias}.p-{id}.html",
                defaults: new { controller = "Post", action = "Detail", id = UrlParameter.Optional },
                namespaces: new string[] { "CarDealer.Web.Controllers" }
-           );
+            );
 
             routes.MapRoute(
                name: "Post Category",
                url: "{alias}.pc-{id}.html",
                defaults: new { controller = "Post", action = "Category", id = UrlParameter.Optional },
                namespaces: new string[] { "CarDealer.Web.Controllers" }
-           );
+            );
 
             routes.MapRoute(
                 name: "Car Category",
@@ -56,7 +58,22 @@ namespace CarDealer.Web
                url: "{alias}.c-{id}.html",
                defaults: new { controller = "Car", action = "Detail", id = UrlParameter.Optional },
                namespaces: new string[] { "CarDealer.Web.Controllers" }
-           );
+            );
+
+
+            routes.MapRoute(
+               name: "TagCarList",
+               url: "tag-xe/{tagid}.html",
+               defaults: new { controller = "Car", action = "ListByTag", tagid = UrlParameter.Optional },
+               namespaces: new string[] { "CarDealer.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+            name: "TagPostList",
+            url: "tag-bai-viet/{tagid}.html",
+            defaults: new { controller = "Post", action = "ListByTag", tagid = UrlParameter.Optional },
+            namespaces: new string[] { "CarDealer.Web.Controllers" }
+            );
 
             routes.MapRoute(
                 name: "Default",

@@ -1,12 +1,12 @@
 ﻿@model CarDealer.Web.Models.PostViewModel
 
 @{
-    var Category = (CarDealer.Web.Models.PostCategoryViewModel)ViewBag.Category;
+    var tag = (CarDealer.Web.Models.TagViewModel)ViewBag.Tag;
     var pageIndex = Model.postPaginationSet.Page;
-
-    ViewBag.Title = pageIndex == 1 ? "phamtan-mercedes.com - " + Category.Name : "phamtan-mercedes.com - " + Category.Name + " - Trang " + pageIndex;
-    ViewBag.Metakeyword = pageIndex == 1 ? Category.MetaKeyword : Category.MetaKeyword + " - Trang " + pageIndex;
-    ViewBag.MetaDescription = pageIndex == 1 ? Category.MetaDescription : Category.MetaDescription + " - Trang " + pageIndex;
+    
+    ViewBag.Title = pageIndex == 1 ? "phamtan-mercedes.com - Kết quả tìm kiếm xe theo tag " + tag.Name : "phamtan-mercedes.com - Kết quả tìm kiếm xe theo tag " + tag.Name + " - Trang " + pageIndex;
+    ViewBag.Metakeyword = pageIndex == 1 ? tag.Name : tag.Name + " - Trang " + pageIndex;
+    ViewBag.MetaDescription = pageIndex == 1 ? tag.Name : tag.Name + " - Trang " + pageIndex;
 
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
@@ -45,7 +45,7 @@
     </div>
     <div class="breadcrumbs1_wrapper novi-background">
         <div class="container">
-            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>@Category.Name</div>
+            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>Tag: @tag.Name</div>
         </div>
     </div>
     <div class="section-md-bottom content novi-background bg-cover">

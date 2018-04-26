@@ -1,7 +1,10 @@
 ﻿@model CarDealer.Web.Models.PageViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "phamtan-mercedes.com - " + Model.Name;
+    ViewBag.Metakeyword = Model.MetaKeyword;
+    ViewBag.MetaDescription = Model.MetaDescription;
+
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 <div class="section">

@@ -25,12 +25,6 @@ namespace CarDealer.Web.Controllers
             this._supportOnline = supportOnline;
         }
 
-        // GET: Feedback
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public JsonResult CreateFeeback(string name, string email, string mobile, string message)
         {
             if (email != "" && mobile != "" && name != "")
@@ -76,6 +70,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60)]
         public ActionResult SendFeedback()
         {
             //get infomation contact

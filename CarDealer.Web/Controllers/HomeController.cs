@@ -60,6 +60,7 @@ namespace CarDealer.Web.Controllers
             this._fuelService = fuelService;
         }
 
+        [OutputCache(Duration =60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             //get slides
@@ -124,7 +125,7 @@ namespace CarDealer.Web.Controllers
             //get feature landing pages 
             var counterLPModel = _landingPageService.GetById(6);
             var counterView = Mapper.Map<LandingPage, LandingPageViewModel>(counterLPModel);
-
+            
             var homeView = new HomeViewModel();
             homeView.Slides = slideView;
             homeView.BestSellerCars = bestsellerCarView;
@@ -147,21 +148,8 @@ namespace CarDealer.Web.Controllers
             return View(homeView);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Header()
         {
             var menuModel = _menuService.GetAll();
@@ -188,6 +176,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult PreFooter()
         {
             //get infomation contact
@@ -211,6 +200,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration =3600)]
         public ActionResult Footer()
         {
             var footerModel = _footerService.GetFooter();
@@ -220,6 +210,7 @@ namespace CarDealer.Web.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _carCategoryService.GetAll();

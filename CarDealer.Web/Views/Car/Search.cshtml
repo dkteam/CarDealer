@@ -1,7 +1,13 @@
 ﻿@model CarDealer.Web.Models.CarViewModel
 
 @{
-    ViewBag.Title = "Kết quả tìm kiếm";
+    var pageIndex = Model.carPaginationSet.Page;
+
+    ViewBag.Title = "phamtan-mercedes.com - Kết quả tìm kiếm xe Mercedes ";
+    ViewBag.Title = pageIndex == 1 ? "phamtan-mercedes.com - Kết quả tìm kiếm xe Mercedes" : "phamtan-mercedes.com - Kết quả tìm kiếm xe Mercedes - Trang " + pageIndex;
+    ViewBag.Metakeyword = pageIndex == 1 ? "xe Mercedes, xe Mercedes-Benz" : "xe Mercedes, xe Mercedes-Benz - Trang " + pageIndex;
+    ViewBag.MetaDescription = pageIndex == 1 ? "xe Mercedes, xe Mercedes-Benz" : "xe Mercedes, xe Mercedes-Benz - Trang " + pageIndex;
+
     Layout = "~/Views/Shared/Layouts.cshtml";
 
 }
@@ -39,66 +45,73 @@
                                     foreach (var item in Model.carPaginationSet.Items)
                                     {
                                         var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                                <div class="product-box-horizontal">
-                                    <div class="product-box-inner">
-                                        <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
-                                        <div class="caption">
-                                            <div class="caption-header">
-                                                <div class="info1">
-                                                    <div class="txt1"><a href="@url">@item.Name</a></div>
-                                                    <div class="txt2">
-                                                        <span class="txt">Người lái thử phản hồi</span> <span class="stars"><i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                         </span>
+                                        <div class="product-box-horizontal">
+                                            <div class="product-box-inner">
+                                                <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
+                                                <div class="caption">
+                                                    <div class="caption-header">
+                                                        <div class="info1">
+                                                            <div class="txt1"><a href="@url">@item.Name</a></div>
+                                                            <div class="txt2">
+                                                                <span class="txt">Người lái thử phản hồi</span> <span class="stars"><i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star novi-icon" aria-hidden="true"></i>                           <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                         </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info2">
+                                                            <div class="txt3">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="info2">
-                                                    <div class="txt3">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                @item.Description
-                                            </p>
-                                            <div class="caption-footer">
-                                                <div class="info3">
-                                                    <div class="txt5">@item.Odo Km</div>
-                                                    <ul class="tag-list">
-                                                        @foreach (var manufactureYear in Model.ManufactureYears)
+                                                    <p>
+                                                        @item.Description
+                                                    </p>
+                                                    <div class="caption-footer">
+                                                        <div class="info3">
+                                                            <div class="txt5">@item.Odo Km</div>
+                                                            <ul class="tag-list">
+                                                                @foreach (var manufactureYear in Model.ManufactureYears)
                                                                 {
                                                                     if (item.ManufactureYearID == manufactureYear.ID)
                                                                     {
-                                                                <li><a>@manufactureYear.Name</a></li>
+                                                                        <li><a>@manufactureYear.Name</a></li>
                                                                     }
                                                                 }
-                                                        <li><a>@(item.CarStatus ? "Mới" : "Cũ")</a></li>
-                                                        @foreach (var transmissiontType in Model.TransmissionTypes)
+                                                                <li><a>@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                                                @foreach (var transmissiontType in Model.TransmissionTypes)
                                                                 {
                                                                     if (item.TransmissionTypeID == transmissiontType.ID)
                                                                     {
-                                                                <li><a>@transmissiontType.Name</a></li>
+                                                                        <li><a>@transmissiontType.Name</a></li>
                                                                     }
                                                                 }
-                                                        @foreach (var fuel in Model.Fuels)
+                                                                @foreach (var fuel in Model.Fuels)
                                                                 {
                                                                     if (item.FuelID == fuel.ID)
                                                                     {
-                                                                <li><a>@fuel.Name</a></li>
+                                                                        <li><a>@fuel.Name</a></li>
                                                                     }
                                                                 }
-                                                    </ul>
+                                                                @foreach (var totalSeat in Model.TotalSeats)
+                                                                {
+                                                                    if (item.TotalSeatId == totalSeat.Id)
+                                                                    {
+                                                                        <li><a>@totalSeat.Name</a></li>
+                                                                    }
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                        <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
+                                                    </div>
                                                 </div>
-                                                <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
                                     }
                                 }
                                 else
                                 {
-                                <div class="row">
-                                    <div class="clearfix col-xs-12 text-center">
-                                        <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
+                                    <div class="row">
+                                        <div class="clearfix col-xs-12 text-center">
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                             @if (Model.carPaginationSet.TotalPages > 1)
@@ -107,32 +120,32 @@
                                 var startPageIndex = Math.Max(1, Model.carPaginationSet.Page - Model.carPaginationSet.MaxPageDisplay / 2);
                                 var endPageIndex = Math.Min(Model.carPaginationSet.TotalPages, Model.carPaginationSet.Page + Model.carPaginationSet.MaxPageDisplay / 2);
 
-                            <div class="pager_wrapper">
-                                <ul class="pager clearfix">
-                                    @if (Model.carPaginationSet.Page > 1)
+                                <div class="pager_wrapper">
+                                    <ul class="pager clearfix">
+                                        @if (Model.carPaginationSet.Page > 1)
                                         {
-                                        <li class="prev"><a href="?page=1"></a></li>
-                                        <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
+                                            <li class="prev"><a href="?page=1"></a></li>
+                                            <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
                                         }
 
-                                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        @for (int i = startPageIndex; i <= endPageIndex; i++)
                                         {
                                             if (Model.carPaginationSet.Page == i)
                                             {
-                                        <li class="active"><span>@i</span></li>
+                                                <li class="active"><span>@i</span></li>
                                             }
                                             else
                                             {
-                                        <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                                <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
                                             }
                                         }
-                                    @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
+                                        @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
                                         {
-                                        <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
-                                        <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
+                                            <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
+                                            <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
                                         }
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div>
                             }
 
                         </div>
@@ -143,52 +156,77 @@
                                     foreach (var item in Model.carPaginationSet.Items)
                                     {
                                         var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                                <div class="col-sm-4">
-                                    <div class="product-box-vertical">
-                                        <div class="box-vertical-inner">
-                                            <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
-                                            <div class="caption">
-                                                <div class="caption-header">
-                                                    <div class="info1">
-                                                        <div class="txt1"><a href="@url">@item.Name</a></div>
-                                                        <div class="txt2">
-                                                            <span class="txt">Người đã lái thử phản hồi</span> <span class="stars">                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                             </span>
+                                        <div class="col-sm-4">
+                                            <div class="product-box-vertical">
+                                                <div class="box-vertical-inner">
+                                                    <figure><a href="@url"><img src="@item.Image" alt="@item.Name" class="img-responsive"></a></figure>
+                                                    <div class="caption">
+                                                        <div class="caption-header">
+                                                            <div class="info1">
+                                                                <div class="txt1"><a href="@url">@item.Name</a></div>
+                                                                <div class="txt2">
+                                                                    <span class="txt">Người đã lái thử phản hồi</span> <span class="stars">                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star novi-icon" aria-hidden="true"></i>                               <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>                             </span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                @*<p style="text-align:justify">
-                                                        @item.Description
-                                                    </p>*@
+                                                        @*<p style="text-align:justify">
+                                                                @item.Description
+                                                            </p>*@
 
-                                                <ul class="list1">
-                                                    <li><a>Model 2015</a></li>
-                                                    <li><a>Xe mới</a></li>
-                                                    <li><a>Hộp số tự động 8 cấp</a></li>
-                                                    <li><a>Máy dầu</a></li>
-                                                </ul>
+                                                        <ul class="list1">
+                                                            @foreach (var manufactureYear in Model.ManufactureYears)
+                                                            {
+                                                                if (item.ManufactureYearID == manufactureYear.ID)
+                                                                {
+                                                                    <li><a>@manufactureYear.Name</a></li>
+                                                                }
+                                                            }
+                                                            <li><a>@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                                            @foreach (var transmissiontType in Model.TransmissionTypes)
+                                                            {
+                                                                if (item.TransmissionTypeID == transmissiontType.ID)
+                                                                {
+                                                                    <li><a>@transmissiontType.Name</a></li>
+                                                                }
+                                                            }
+                                                            @foreach (var fuel in Model.Fuels)
+                                                            {
+                                                                if (item.FuelID == fuel.ID)
+                                                                {
+                                                                    <li><a>@fuel.Name</a></li>
+                                                                }
+                                                            }
+                                                            @foreach (var totalSeat in Model.TotalSeats)
+                                                            {
+                                                                if (item.TotalSeatId == totalSeat.Id)
+                                                                {
+                                                                    <li><a>@totalSeat.Name</a></li>
+                                                                }
+                                                            }
+                                                        </ul>
 
-                                                <div class="txt5">@item.Odo Km</div>
-                                                <div class="caption-footer">
-                                                    <div class="info2">
-                                                        <div class="txt6">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
-                                                    </div>
-                                                    <div class="info3">
-                                                        <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
+                                                        <div class="txt5">@item.Odo Km</div>
+                                                        <div class="caption-footer">
+                                                            <div class="info2">
+                                                                <div class="txt6">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</div>
+                                                            </div>
+                                                            <div class="info3">
+                                                                <div class="txt7"><a href="@url" class="btn-default btn3">Xem chi tiết</a></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
                                     }
                                 }
                                 else
                                 {
-                                <div class="row">
-                                    <div class="clearfix col-xs-12 text-center">
-                                        <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
+                                    <div class="row">
+                                        <div class="clearfix col-xs-12 text-center">
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                             @if (Model.carPaginationSet.TotalPages > 1)
@@ -197,32 +235,32 @@
                                 var startPageIndex = Math.Max(1, Model.carPaginationSet.Page - Model.carPaginationSet.MaxPageDisplay / 2);
                                 var endPageIndex = Math.Min(Model.carPaginationSet.TotalPages, Model.carPaginationSet.Page + Model.carPaginationSet.MaxPageDisplay / 2);
 
-                            <div class="pager_wrapper">
-                                <ul class="pager clearfix">
-                                    @if (Model.carPaginationSet.Page > 1)
+                                <div class="pager_wrapper">
+                                    <ul class="pager clearfix">
+                                        @if (Model.carPaginationSet.Page > 1)
                                         {
-                                        <li class="prev"><a href="?page=1"></a></li>
-                                        <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
+                                            <li class="prev"><a href="?page=1"></a></li>
+                                            <li class="prev"><a href="?page=@(Model.carPaginationSet.Page-1)"></a></li>
                                         }
 
-                                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                        @for (int i = startPageIndex; i <= endPageIndex; i++)
                                         {
                                             if (Model.carPaginationSet.Page == i)
                                             {
-                                        <li class="active"><span>@i</span></li>
+                                                <li class="active"><span>@i</span></li>
                                             }
                                             else
                                             {
-                                        <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
+                                                <li class="li"><a href="?page=@i" title="Trang @i">@i</a></li>
                                             }
                                         }
-                                    @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
+                                        @if (Model.carPaginationSet.Page < Model.carPaginationSet.TotalPages)
                                         {
-                                        <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
-                                        <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
+                                            <li class="next"><a href="?page=@(Model.carPaginationSet.Page+1)"></a></li>
+                                            <li class="next"><a href="?page=@Model.carPaginationSet.TotalPages"></a></li>
                                         }
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div>
                             }
                         </div>
                     </div>
@@ -230,10 +268,10 @@
                 <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
                     <div class="row">
                         @{ Html.RenderAction("LatestPosts", "Post");}
-                        
+
                         <div class="col-sm-6 col-md-12">
-                                @{ Html.RenderAction("SendFeedback", "Feedback");}
-                
+                            @{ Html.RenderAction("SendFeedback", "Feedback");}
+
                         </div>
                     </div>
                 </div>
@@ -241,5 +279,3 @@
         </div>
     </div>
 </div>
-
-

@@ -25,5 +25,9 @@ namespace CarDealer.Web.Models
         public LandingPageViewModel featureLandingPage { set; get; }
         public LandingPageViewModel commentLandingPage { set; get; }
         public LandingPageViewModel counterLandingPage { set; get; }
+
+        public string Title { set; get; }
+        public string Metakeyword { set; get; }
+        public string MetaDescription { set; get; }
     }
 }

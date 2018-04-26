@@ -24,8 +24,9 @@ namespace CarDealer.Web.Controllers
         ITransmissionTypeService _transmissionTypeService;
         IFuelService _fuelService;
         ISupportOnlineService _supportOnline;
+        //IUnitOfwork _unitOfWork;
 
-        public CarController(ICarService carService,
+        public CarController(   ICarService carService,                                
                                 IManufactureYearService manufactureYearService,
                                 ITotalSeatService totalSeatService,
                                 IStyleService styleService,
@@ -35,6 +36,7 @@ namespace CarDealer.Web.Controllers
                                 ISupportOnlineService supportOnline,
                                 ICarCategoryService carCategoryService)
         {
+      
             this._carService = carService;
             this._carCategoryService = carCategoryService;
 
@@ -49,6 +51,10 @@ namespace CarDealer.Web.Controllers
         // GET: Car
         public ActionResult Detail(int id)
         {
+            //increase views
+            _carService.IncreaseView(id);
+        
+
             var carModel = _carService.GetById(id);
             var carView = Mapper.Map<Car, CarViewModel>(carModel);
 
@@ -81,9 +87,17 @@ namespace CarDealer.Web.Controllers
             var fuelModel = _fuelService.GetAll();
             ViewBag.Fuel = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(fuelModel);
 
+
+            //get all totalSeats
+            var totalSeatModel = _totalSeatService.GetAll();
+            ViewBag.TotalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
+
+            ViewBag.Tags = Mapper.Map<IEnumerable<Tag>,IEnumerable<TagViewModel>>(_carService.GetListTagByCarId(id));
+
             return View(carView);
         }
 
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Category(int id, int page = 1, string sort = "")
         {
             int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
@@ -120,16 +134,22 @@ namespace CarDealer.Web.Controllers
             var fuelModel = _fuelService.GetAll();
             var fuelView = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(fuelModel);
 
+            //get all totalSeats
+            var totalSeatModel = _totalSeatService.GetAll();
+            var totalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
+
             var carView = new CarViewModel();
             carView.carPaginationSet = paginationSet;
             carView.Fuels = fuelView;
             carView.ManufactureYears = manufactureYearView;
             carView.TransmissionTypes = transmissionTypeView;
             carView.Styles = styleView;
+            carView.TotalSeats = totalSeatView;
 
             return View(carView);
         }
 
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public JsonResult CarSearch(int? modelId, int? styleId, int? totalSeatId, bool carStatus)
         {
             var resultModel = _carService.SearchCar(modelId, styleId, totalSeatId, carStatus);
@@ -141,7 +161,7 @@ namespace CarDealer.Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Search(int? modelId,
                                         int? styleId,
                                         int? totalSeatId,
@@ -180,17 +200,24 @@ namespace CarDealer.Web.Controllers
             var fuelModel = _fuelService.GetAll();
             var fuelView = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(fuelModel);
 
+
+            //get all totalSeats
+            var totalSeatModel = _totalSeatService.GetAll();
+            var totalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
+
             var carView = new CarViewModel();
             carView.carPaginationSet = paginationSet;
             carView.Fuels = fuelView;
             carView.ManufactureYears = manufactureYearView;
             carView.TransmissionTypes = transmissionTypeView;
             carView.Styles = styleView;
+            carView.TotalSeats = totalSeatView;
 
             return View(carView);
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60)]
         public ActionResult CarSearchForPartialView()
         {
             //get car categories
@@ -208,5 +235,61 @@ namespace CarDealer.Web.Controllers
 
             return PartialView();
         }
+
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
+        public ActionResult ListByTag(string tagid, int page=1)
+        {
+            int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
+            int totalRow = 0;
+            var carModel = _carService.GetListCarByTag(tagid, page, pageSize, out totalRow);
+            var carView = Mapper.Map<IEnumerable<Car>, IEnumerable<CarViewModel>>(carModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            ViewBag.Tag = Mapper.Map<Tag, TagViewModel>(_carService.GetTag(tagid));
+            var paginationSet = new PaginationSet<CarViewModel>()
+            {
+                Items = carView,
+                MaxPageDisplay = int.Parse(ConfigHelper.GetByKey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            //get all manufacture_years
+            var manufactureYearModel = _manufactureYearService.GetAll();
+            var manufactureYearView = Mapper.Map<IEnumerable<ManufactureYear>, IEnumerable<ManufactureYearViewModel>>(manufactureYearModel);
+
+            //get all style
+            var styleModel = _styleService.GetAll();
+            var styleView = Mapper.Map<IEnumerable<Style>, IEnumerable<StyleViewModel>>(styleModel);
+
+            //get all transmission_types
+            var transmissionTypeModel = _transmissionTypeService.GetAll();
+            var transmissionTypeView = Mapper.Map<IEnumerable<TransmissionType>, IEnumerable<TransmissionTypeViewModel>>(transmissionTypeModel);
+
+            //get all fules
+            var fuelModel = _fuelService.GetAll();
+            var fuelView = Mapper.Map<IEnumerable<Fuel>, IEnumerable<FuelViewModel>>(fuelModel);
+
+            //get all totalSeats
+            var totalSeatModel = _totalSeatService.GetAll();
+            var totalSeatView = Mapper.Map<IEnumerable<TotalSeat>, IEnumerable<TotalSeatViewModel>>(totalSeatModel);
+
+            var carViewModel = new CarViewModel();
+            carViewModel.carPaginationSet = paginationSet;
+            carViewModel.Fuels = fuelView;
+            carViewModel.ManufactureYears = manufactureYearView;
+            carViewModel.TransmissionTypes = transmissionTypeView;
+            carViewModel.Styles = styleView;
+            carViewModel.TotalSeats = totalSeatView;
+
+
+
+            return View(carViewModel);
+        }
+    }
+
+    internal interface IUnitOfwork
+    {
     }
 }

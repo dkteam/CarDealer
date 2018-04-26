@@ -17,7 +17,9 @@ namespace CarDealer.Web.Controllers
         {
             this._pageService = pageService;
         }
+
         // GET: Page
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index(string alias)
         {
             var page = _pageService.GetByAlias(alias);

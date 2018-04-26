@@ -1,11 +1,10 @@
 ﻿@model CarDealer.Web.Models.HomeViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "phamtan-mercedes.com - Chuyên trang kinh doanh về thương hiệu xe Mercedes-Benz";
+    ViewBag.Metakeyword = "Mercedes-Benz";
+    ViewBag.MetaDescription = "phamtan-mercedes.com - Chuyên trang kinh doanh về thương hiệu xe Mercedes-Benz";
     Layout = "~/Views/Shared/Layouts.cshtml";
-}
-
-@section jsFooter{
 }
 
 <section id="home" class="section swiper-container swiper-slider swiper-slider-1" data-loop="true" data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
@@ -253,13 +252,6 @@
                                                                 <li><a href="#">@style.Name</a></li>
                                                             }
                                                         }
-                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                            {
-                                                                if (item.ManufactureYearID == manufactureYear.ID)
-                                                                {
-                                                                    <li><a href="#">@manufactureYear.Name</a></li>
-                                                                }
-                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -274,8 +266,13 @@
                                                                 <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-
-                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                        {
+                                                            if (item.TotalSeatId == totalSeat.Id)
+                                                            {
+                                                                <li><a>@totalSeat.Name</a></li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -325,13 +322,6 @@
                                                                 <li><a href="#">@style.Name</a></li>
                                                             }
                                                         }
-                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                            {
-                                                                if (item.ManufactureYearID == manufactureYear.ID)
-                                                                {
-                                                                    <li><a href="#">@manufactureYear.Name</a></li>
-                                                                }
-                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -346,8 +336,13 @@
                                                                 <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-
-                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                        {
+                                                            if (item.TotalSeatId == totalSeat.Id)
+                                                            {
+                                                                <li><a>@totalSeat.Name</a></li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -397,13 +392,6 @@
                                                                 <li><a href="#">@style.Name</a></li>
                                                             }
                                                         }
-                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                            {
-                                                                if (item.ManufactureYearID == manufactureYear.ID)
-                                                                {
-                                                                    <li><a href="#">@manufactureYear.Name</a></li>
-                                                                }
-                                                            }*@
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -418,8 +406,13 @@
                                                                 <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-
-                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                        {
+                                                            if (item.TotalSeatId == totalSeat.Id)
+                                                            {
+                                                                <li><a>@totalSeat.Name</a></li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -468,14 +461,7 @@
                                                             {
                                                                 <li><a href="#">@style.Name</a></li>
                                                             }
-                                                        }
-                                                        @*@foreach (var manufactureYear in Model.ManufactureYears)
-                                                {
-                                                    if (item.ManufactureYearID == manufactureYear.ID)
-                                                    {
-                                                        <li><a href="#">@manufactureYear.Name</a></li>
-                                                    }
-                                                }*@
+                                                        }                                        
                                                         @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
@@ -490,8 +476,13 @@
                                                                 <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-
-                                                        @*<li><a href="#">@item.FuelConsumption</a></li>*@
+                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                        {
+                                                            if (item.TotalSeatId == totalSeat.Id)
+                                                            {
+                                                                <li><a>@totalSeat.Name</a></li>
+                                                            }
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>

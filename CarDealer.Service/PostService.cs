@@ -22,8 +22,11 @@ namespace CarDealer.Service
         IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
         IEnumerable<Post> GetPostsByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
         Post GetById(int id);
-        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
+        IEnumerable<Post> GetAllByTagPaging(string tagId, int page, int pageSize, out int totalRow);
+        IEnumerable<Tag> GetListTagByPostId(int id);
         IEnumerable<Post> GetReatedPosts(int id, int top);
+        Tag GetTag(string tagId);
+        void IncreaseView(int id);
         void SaveChanges();
     }
 
@@ -98,10 +101,10 @@ namespace CarDealer.Service
             return _postRepository.GetMultiPaging(x => x.Status && x.CategoryID == categoryId, out totalRow, page, pageSize, new string[] { "PostCategory" });
         }
 
-        public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
+        public IEnumerable<Post> GetAllByTagPaging(string tagId, int page, int pageSize, out int totalRow)
         {
             //TODO: Select all post by tag
-            return _postRepository.GetAllByTagPaging(tag, page, pageSize, out totalRow);
+            return _postRepository.GetAllByTagPaging(tagId, page, pageSize, out totalRow);
 
         }
 
@@ -181,5 +184,26 @@ namespace CarDealer.Service
             var product = _postRepository.GetSingleById(id);
             return _postRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
+
+        public IEnumerable<Tag> GetListTagByPostId(int id)
+        {
+            return _postTagRepository.GetMulti(x => x.PostID == id, new string[] { "Tag" }).Select(y => y.Tag);
+        }
+
+        public Tag GetTag(string tagId)
+        {
+            return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        public void IncreaseView(int id)
+        {
+            var car = _postRepository.GetSingleById(id);
+            if (car.ViewCount.HasValue)
+                car.ViewCount += 1;
+            else
+                car.ViewCount = 1;
+            _unitOfWork.Commit();
+        }
+
     }
 }

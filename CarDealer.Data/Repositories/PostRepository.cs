@@ -19,17 +19,19 @@ namespace CarDealer.Data.Repositories
         {
         }
 
-        public IEnumerable<Post> GetAllByTagPaging(string tag, int pageIndex, int pageSize, out int totalRow)
+        public IEnumerable<Post> GetAllByTagPaging(string tagId, int pageIndex, int pageSize, out int totalRow)
         {
             var query = from p in DbContext.Posts
                         join pt in DbContext.PostTags
                         on p.ID equals pt.PostID
-                        where pt.TagID == tag && p.Status
+                        where pt.TagID == tagId && p.Status
                         orderby p.CreatedDate descending
                         select p;
 
             totalRow = query.Count();
-            query = query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+            query = query.OrderByDescending(x=>x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
             return query;
         }
     }

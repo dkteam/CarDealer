@@ -99,6 +99,7 @@ namespace CarDealer.Web.Models
         public IEnumerable<TransmissionTypeViewModel> TransmissionTypes { set; get; }
         public IEnumerable<ManufactureYearViewModel> ManufactureYears { set; get; }
         public IEnumerable<StyleViewModel> Styles { set; get; }
+        public IEnumerable<TotalSeatViewModel> TotalSeats { set; get; }
         public PaginationSet<CarViewModel> carPaginationSet { set; get; }
     }
 }

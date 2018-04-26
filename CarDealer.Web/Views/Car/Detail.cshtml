@@ -6,11 +6,17 @@
     var transmissionType = (IEnumerable<CarDealer.Web.Models.TransmissionTypeViewModel>)ViewBag.TransmissionType;
     var style = (IEnumerable<CarDealer.Web.Models.StyleViewModel>)ViewBag.Style;
     var fuel = (IEnumerable<CarDealer.Web.Models.FuelViewModel>)ViewBag.Fuel;
+    var totalSeat = (IEnumerable<CarDealer.Web.Models.TotalSeatViewModel>)ViewBag.TotalSeatView;
 
     var moreImages = (List<string>)ViewBag.MoreImages;
     var relatedCars = (IEnumerable<CarDealer.Web.Models.CarViewModel>)ViewBag.RelatedCars;
     var supportOnline = (CarDealer.Web.Models.SupportOnlineViewModel)ViewBag.SupportOnline;
-    ViewBag.Title = "Chi tiết xe " + Model.Name;
+
+
+    ViewBag.Title = "phamtan-mercedes.com - Chi tiết về xe " + Model.Name;
+    ViewBag.Metakeyword = Model.MetaKeyword;
+    ViewBag.MetaDescription = Model.MetaDescription;
+
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 
@@ -62,6 +68,23 @@
                         </ul>
                     </div>
                 </div>
+
+                <div class="row row-fix">
+                    <div class="col-sm-12 col-md-9  col-md-push-3 column-content">
+                        <div class="footer-menu pull-right">
+                            <ul class="footer-menu-list">
+                                <li><h5>Tags: </h5></li>
+                                @foreach (var tag in (IEnumerable<CarDealer.Web.Models.TagViewModel>)ViewBag.Tags)
+                                {
+                                    <li><a href="/tag-xe/@(tag.ID).html">@tag.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
                 <div class="tabs2-wrapper">
                     <ul class="tabs clearfix" data-tabgroup="second-tab-group">
                         <li class="active"><a href="#tabs3-1">Tổng quan</a></li>
@@ -70,9 +93,7 @@
                 </div>
                 <div id="second-tab-group" class="tabgroup">
                     <div id="tabs3-1">
-                        <div class="title2">Mô tả</div>
                         <p>@Model.Description</p>
-                        <div class="title2">Chi tiết</div>
                         <p>@Html.Raw(Model.Content)</p>
                     </div>
 
@@ -312,65 +333,71 @@
                 foreach (var item in relatedCars)
                 {
                     var urlRelated = "/" + item.Alias + ".c-" + item.ID + ".html";
-            <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
-                <div class="product-minimal">
-                    <div class="thumbnail clearfix">
-                        <figure class="product-minimal-img">
-                            <a href="@urlRelated">
-                                <img src="@item.Image" alt="" class="img-responsive">
-                            </a>
-                        </figure>
-                        <div class="caption">
-                            @foreach (var manu in manufactureYear)
+                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-3">
+                        <div class="product-minimal">
+                            <div class="thumbnail clearfix">
+                                <figure class="product-minimal-img">
+                                    <a href="@urlRelated">
+                                        <img src="@item.Image" alt="" class="img-responsive">
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @foreach (var manu in manufactureYear)
                                     {
                                         if (item.ManufactureYearID == manu.ID)
                                         {
-                                    <p class="small">Model @manu.Name</p>
+                                            <p class="small">Model @manu.Name</p>
                                         }
                                     }
-                            <div class="product-minimal-title"><a href="@urlRelated"> @item.Name</a></div>
-                            <div class="info">
-                                <span class="price">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</span>
-                                <span class="speed">@item.Odo</span>
-                            </div>
-                            <ul class="tag-list">
-                                <li><a href="#">@(item.CarStatus ? "Mới" : "Cũ")</a></li>
-                                @foreach (var manufacture in manufactureYear)
+                                    <div class="product-minimal-title"><a href="@urlRelated"> @item.Name</a></div>
+                                    <div class="info">
+                                        <span class="price">@(item.Price == 0 ? "Liên hệ" : item.Price.Value.ToString("N0"))</span>
+                                        <span class="speed">@item.Odo</span>
+                                    </div>
+                                    <ul class="tag-list">
+                                        <li><a href="#">@(item.CarStatus ? "Mới" : "Cũ")</a></li>
+                                        @*@foreach (var manufacture in manufactureYear)
                                         {
                                             if (item.ManufactureYearID == manufacture.ID)
                                             {
-                                        <li><a>@manufacture.Name</a></li>
+                                                <li><a>@manufacture.Name</a></li>
                                             }
-                                        }
-                                @foreach (var styleType in style)
+                                        }*@
+                                        @foreach (var styleType in style)
                                         {
                                             if (item.StyleID == styleType.ID)
                                             {
-                                        <li><a>@styleType.Name</a></li>
+                                                <li><a>@styleType.Name</a></li>
                                             }
                                         }
-                                @foreach (var transmission in transmissionType)
+                                        @foreach (var transmission in transmissionType)
                                         {
                                             if (item.TransmissionTypeID == transmission.ID)
                                             {
-                                        <li><a>@transmission.Name</a></li>
+                                                <li><a>@transmission.Name</a></li>
                                             }
                                         }
-                                @foreach (var fuelenging in fuel)
+                                        @foreach (var fuelenging in fuel)
                                         {
                                             if (item.FuelID == fuelenging.ID)
                                             {
-                                        <li><a>@fuelenging.Name</a></li>
+                                                <li><a>@fuelenging.Name</a></li>
                                             }
                                         }
-                            </ul>
+                                        @foreach (var ttSeat in totalSeat)
+                                        {
+                                            if (item.TotalSeatId == ttSeat.Id)
+                                            {
+                                                <li><a>@ttSeat.Name</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
                 }
             }
         </div>
     </div>
 </div>
-

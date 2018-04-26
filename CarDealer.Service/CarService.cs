@@ -43,6 +43,14 @@ namespace CarDealer.Service
 
         Car GetById(int id);
 
+        IEnumerable<Tag> GetListTagByCarId(int id);
+
+        void IncreaseView(int id);
+
+        IEnumerable<Car> GetListCarByTag(string tagId, int page, int pageSize, out int totalRow);
+
+        Tag GetTag(string tagId);
+
         void SaveChanges();
     }
 
@@ -85,9 +93,6 @@ namespace CarDealer.Service
 
                         _tagRepository.Add(tag);
                     }
-                    PostTag postTag = new PostTag();
-                    postTag.PostID = car.ID;
-                    postTag.TagID = tagId;
 
                     CarTag carTag = new CarTag();
                     carTag.CarID = car.ID;
@@ -299,6 +304,38 @@ namespace CarDealer.Service
         public IEnumerable<Car> GetUsedCar(int top)
         {
             return _carRepository.GetMulti(x => x.Status && x.CarStatus == false).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Tag> GetListTagByCarId(int id)
+        {
+            return _carTagRepository.GetMulti(x => x.CarID == id, new string[] { "Tag" }).Select(y => y.Tag);
+        }
+
+        public void IncreaseView(int id)
+        {
+            var car = _carRepository.GetSingleById(id);
+            if (car.ViewCount.HasValue)
+                car.ViewCount += 1;
+            else
+                car.ViewCount = 1;
+            _unitOfWork.Commit();
+        }
+
+        public IEnumerable<Car> GetListCarByTag(string tagId, int page, int pageSize, out int totalRow)
+        {
+            //var model = _carRepository.GetMulti(x => x.Status && x.CarTags.Count(y => y.CarID == x.ID) > 0,
+            //    new string[] { "CarCategory", "CarTags" });
+
+            //totalRow = model.Count();
+            //return model.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
+
+            var model = _carRepository.GetListCarByTag(tagId, page, pageSize, out totalRow);
+            return model;
+        }
+
+        public Tag GetTag(string tagId)
+        {
+            return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
         }
     }
 }

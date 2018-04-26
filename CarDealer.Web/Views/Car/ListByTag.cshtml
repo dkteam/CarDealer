@@ -1,18 +1,15 @@
 ﻿@model CarDealer.Web.Models.CarViewModel
 
 @{
-    var category = (CarDealer.Web.Models.CarCategoryViewModel)ViewBag.Category;
+    var tag = (CarDealer.Web.Models.TagViewModel)ViewBag.Tag;
     var pageIndex = Model.carPaginationSet.Page;
-
-    ViewBag.Title = pageIndex == 1 ? "phamtan-mercedes.com - Dòng xe Mercedes " + category.Name : "phamtan-mercedes.com - Dòng xe Mercedes " + category.Name + " - Trang " + pageIndex;
-    ViewBag.Metakeyword = pageIndex == 1 ? category.MetaKeyword : category.MetaKeyword + " - Trang " + pageIndex;
-    ViewBag.MetaDescription = pageIndex == 1 ? category.MetaDescription : category.MetaDescription + " - Trang " + pageIndex;
+    
+    ViewBag.Title = pageIndex == 1 ? "phamtan-mercedes.com - Kết quả tìm kiếm xe theo tag " + tag.Name : "phamtan-mercedes.com - Kết quả tìm kiếm xe theo tag " + tag.Name + " - Trang " + pageIndex;
+    ViewBag.Metakeyword = pageIndex == 1 ? tag.Name : tag.Name + " - Trang " + pageIndex;
+    ViewBag.MetaDescription = pageIndex == 1 ? tag.Name : tag.Name + " - Trang " + pageIndex;
 
     Layout = "~/Views/Shared/Layouts.cshtml";
-}
 
-@section jsFooter{
-<script src="~/Assets/client/js/custome/carSorting.js"></script>
 }
 
 <div class="section">
@@ -28,28 +25,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="sort-wrapper">
-                    <div class="txt">Sắp xếp</div>
-                    <div class="select1_wrapper">
-                        <label>Sắp xếp</label>
-                        <div class="select1_inner">
-                            <select class="select2 select" id="selectSorting" style="width: 100%">          
-                                <option value="0">-- chọn --</option>
-                                <option value="1">Bán chạy</option>
-                                <option value="2">Giá (thấp -> cao)</option>
-                                <option value="3">Giá (cao -> thấp)</option>
-                                <option value="4">Mới nhất</option>
-                            </select>
-                            <input type="hidden" id="forSorting" value="@Model.carPaginationSet.Page"/>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <div class="breadcrumbs1_wrapper novi-background">
         <div class="container">
-            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>@category.Name</div>
+            <div class="breadcrumbs1"><a href="/">Trang chủ</a><span></span>Tag: @tag.Name</div>
         </div>
     </div>
     <div class="content section-md-bottom novi-background bg-cover">
@@ -128,7 +109,7 @@
                                 {
                                     <div class="row">
                                         <div class="clearfix col-xs-12 text-center">
-                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Chưa có sản phẩm nào trong danh mục này</span>
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
                                         </div>
                                     </div>
                                 }
@@ -189,8 +170,8 @@
                                                             </div>
                                                         </div>
                                                         @*<p style="text-align:justify">
-                                                        @item.Description
-                                                    </p>*@
+                                                                @item.Description
+                                                            </p>*@
 
                                                         <ul class="list1">
                                                             @foreach (var manufactureYear in Model.ManufactureYears)
@@ -243,7 +224,7 @@
                                 {
                                     <div class="row">
                                         <div class="clearfix col-xs-12 text-center">
-                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Chưa có sản phẩm nào trong danh mục này</span>
+                                            <span class="alert alert-warning col-xs-6 col-md-offset-3">Không có kết quả nào thỏa mãn điều kiện tìm kiếm</span>
                                         </div>
                                     </div>
                                 }
@@ -285,24 +266,18 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-md-pull-9 column-sidebar">
-                    @{ Html.RenderAction("SendFeedback", "Feedback");}
-                    <div class="row">
-                        @{ Html.RenderAction("CarSearchForPartialView", "Car");}
-                        <div class="col-sm-6 col-md-12">
-                            <div class="banner">
-                                <figure><a href="#"><img src="images/banner.jpg" alt="" class="img-responsive"></a></figure>
-
-                            </div>
-                        </div>
-                    </div>
-     
-                </div>
-                <div class="col-sm-12 col-md-3  column-sidebar">
                     <div class="row">
                         @{ Html.RenderAction("LatestPosts", "Post");}
+
+                        <div class="col-sm-6 col-md-12">
+                            @{ Html.RenderAction("SendFeedback", "Feedback");}
+
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </div>
 
 

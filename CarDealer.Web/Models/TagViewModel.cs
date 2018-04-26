@@ -13,8 +13,8 @@ namespace CarDealer.Web.Models
         
         public string Type { set; get; }
 
-        public virtual IEnumerable<CarTagViewModel> CarTags { set; get; }
+        //public virtual List<CarTagViewModel> CarTags { set; get; }
 
-        public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
+        //public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
     }
 }

@@ -3,7 +3,11 @@
 @{
     var relatedCars = (IEnumerable<CarDealer.Web.Models.PostViewModel>)ViewBag.RelatedPosts;
     var category = (CarDealer.Web.Models.PostCategoryViewModel)ViewBag.Category;
-    ViewBag.Title = "Detail";
+
+    ViewBag.Title = "phamtan-mercedes.com - " + Model.Name;
+    ViewBag.Metakeyword = Model.MetaKeyword;
+    ViewBag.MetaDescription = Model.MetaDescription;
+
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 <div class="section">
@@ -19,40 +23,53 @@
                     <div class="title2" style="text-align:center">@Model.Name</div>
                     <p style="text-align:justify; font-weight: bold; font-style:italic">@Model.Description</p>
                     <p style="text-align:justify">@Html.Raw(Model.Content)</p>
-                    <span class="pull-right">Đăng ngày: @Model.CreatedDate</span>
+                    <span class="pull-left">Đăng ngày: @Model.CreatedDate</span>
+
+                    <div class="row row-fix">
+                        <div class="col-sm-12 col-md-9  col-md-push-3 column-content">
+                            <div class="footer-menu pull-right">
+                                <ul class="footer-menu-list">
+                                    <li><h5>Tags: </h5></li>
+                                    @foreach (var tag in (IEnumerable<CarDealer.Web.Models.TagViewModel>)ViewBag.Tags)
+                                    {
+                                    <li><a href="/tag-bai-viet/@(tag.ID).html">@tag.Name</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-md-3  column-sidebar">
                     <div class="row">
                         @{ Html.RenderAction("CarSearchForPartialView", "Car");}
                         @{ Html.RenderAction("LatestPosts", "Post");}
                         @*<div class="col-sm-6 col-md-12">
-                            <div class="sidebar-form-wrapper">
-                                <div class="sidebar-form">
-                                    @if (relatedCars.Count() > 0)
-                                    {
-                                        foreach (var otherPost in relatedCars)
+                                <div class="sidebar-form-wrapper">
+                                    <div class="sidebar-form">
+                                        @if (relatedCars.Count() > 0)
                                         {
-                                            var url = "/" + otherPost.Alias + ".p-" + otherPost.ID + ".html";
-                                            <div class="footer-product">
-                                                <figure class="footer-product-img">
-                                                    <a href="@url">
-                                                        <img src="@otherPost.Image" alt="@otherPost.Name" class="img-responsive">
-                                                    </a>
+                                            foreach (var otherPost in relatedCars)
+                                            {
+                                                var url = "/" + otherPost.Alias + ".p-" + otherPost.ID + ".html";
+                                                <div class="footer-product">
+                                                    <figure class="footer-product-img">
+                                                        <a href="@url">
+                                                            <img src="@otherPost.Image" alt="@otherPost.Name" class="img-responsive">
+                                                        </a>
 
-                                                </figure>
-                                                <div class="caption">
-                                                    <p class="box-title"><a href="@url">@otherPost.Name</a></p>
-                                                    <div><span>@otherPost.CreatedDate</span></div>
+                                                    </figure>
+                                                    <div class="caption">
+                                                        <p class="box-title"><a href="@url">@otherPost.Name</a></p>
+                                                        <div><span>@otherPost.CreatedDate</span></div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
                                         }
-                                    }
+                                    </div>
                                 </div>
-                            </div>
-                        </div>*@
+                            </div>*@
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
