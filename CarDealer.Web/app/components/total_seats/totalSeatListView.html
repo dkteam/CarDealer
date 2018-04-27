@@ -42,7 +42,7 @@
                             </tr>
                             <tr ng-repeat="item in totalSeats">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="total_seat_edit({id:item.Id})">{{item.Name}}</a></td>
                                 <td>
                                     <button class="btn btn-sm btn-primary" ui-sref="total_seat_edit({id:item.Id})"><i class="fa fa-pencil-square-o"></i></button>
                                     <button class="btn btn-sm btn-danger" ng-click="deleteTotalSeat(item.Id)"><i class="fa fa-trash-o"></i></button>

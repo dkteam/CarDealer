@@ -44,7 +44,7 @@
                             </tr>
                             <tr ng-repeat="item in pages">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="page_edit({id:item.ID})">{{item.Name}}</a></td>
                                 <td>{{item.Alias}}</td>
                                 <td>
                                     <span ng-class="{'badge bg-red':item.Status==false, 'badge bg-green':item.Status==true}">

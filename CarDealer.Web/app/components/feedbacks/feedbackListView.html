@@ -46,7 +46,7 @@
                             </tr>
                             <tr ng-repeat="item in feedbacks">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="feedback_edit({id:item.ID})">{{item.Name}}</a></td>
                                 <td>{{item.Mobile}}</td>
                                 <td>{{item.Email}}</td>
                                 <td>{{item.Message}}</td>

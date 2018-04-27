@@ -66,13 +66,13 @@
                         </div>
                     </div>
                     @*<div class="slider-range-wrapper">
-                        <div class="txt">Khoảng giá cần tìm</div>
-                        <div class="slider-range"></div>
-                        <div class="clearfix">
-                            <input type="text" class="amount" readonly="">
-                            <input type="text" class="amount2" readonly="">
-                        </div>
-                    </div>*@
+                            <div class="txt">Khoảng giá cần tìm</div>
+                            <div class="slider-range"></div>
+                            <div class="clearfix">
+                                <input type="text" class="amount" readonly="">
+                                <input type="text" class="amount2" readonly="">
+                            </div>
+                        </div>*@
                     <button type="button" id="btnSearch" class="btn-default btn-form2-submit">Tìm xe</button>
                 </form>
             </div>
@@ -103,6 +103,7 @@
                                     }
                                 </select>
                             </div>
+                        </div>
                         <div class="select1_wrapper">
                             <label>Chọn kiểu dáng</label>
                             <div class="select1_inner">
@@ -292,62 +293,62 @@
                                 @foreach (var item in Model.HotCars)
                                 {
                                     var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
-                                        <div class="product-minimal">
-                                            <div class="thumbnail clearfix">
-                                                <figure class="product-minimal-img">
-                                                    <a href="@url">
-                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
-                                                    </a>
-                                                </figure>
-                                                <div class="caption">
-                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                    <div class="product-minimal">
+                                        <div class="thumbnail clearfix">
+                                            <figure class="product-minimal-img">
+                                                <a href="@url">
+                                                    <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                </a>
+                                            </figure>
+                                            <div class="caption">
+                                                @foreach (var manufactureYear in Model.ManufactureYears)
                                                     {
                                                         if (item.ManufactureYearID == manufactureYear.ID)
                                                         {
-                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                    <p class="small">Model @manufactureYear.Name</p>
                                                         }
                                                     }
-                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
-                                                    <div class="info">
-                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
-                                                        <span class="speed">@item.Odo km</span>
-                                                    </div>
-                                                    <ul class="tag-list">
-                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
-                                                        @foreach (var style in Model.Styles)
+                                                <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                <div class="info">
+                                                    <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                    <span class="speed">@item.Odo km</span>
+                                                </div>
+                                                <ul class="tag-list">
+                                                    <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
+                                                    @foreach (var style in Model.Styles)
                                                         {
                                                             if (item.StyleID == style.ID)
                                                             {
-                                                                <li><a href="#">@style.Name</a></li>
+                                                        <li><a href="#">@style.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                    @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
                                                             {
-                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                        <li><a href="#">@transmissionType.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var fuel in Model.Fuels)
+                                                    @foreach (var fuel in Model.Fuels)
                                                         {
                                                             if (item.FuelID == fuel.ID)
                                                             {
-                                                                <li><a href="#">@fuel.Name</a></li>
+                                                        <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                    @foreach (var totalSeat in Model.TotalSeats)
                                                         {
                                                             if (item.TotalSeatId == totalSeat.Id)
                                                             {
-                                                                <li><a>@totalSeat.Name</a></li>
+                                                        <li><a>@totalSeat.Name</a></li>
                                                             }
                                                         }
-                                                    </ul>
-                                                </div>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div>
@@ -362,62 +363,62 @@
                                 @foreach (var item in Model.BestSellerCars)
                                 {
                                     var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
-                                        <div class="product-minimal">
-                                            <div class="thumbnail clearfix">
-                                                <figure class="product-minimal-img">
-                                                    <a href="@url">
-                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
-                                                    </a>
-                                                </figure>
-                                                <div class="caption">
-                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                    <div class="product-minimal">
+                                        <div class="thumbnail clearfix">
+                                            <figure class="product-minimal-img">
+                                                <a href="@url">
+                                                    <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                </a>
+                                            </figure>
+                                            <div class="caption">
+                                                @foreach (var manufactureYear in Model.ManufactureYears)
                                                     {
                                                         if (item.ManufactureYearID == manufactureYear.ID)
                                                         {
-                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                    <p class="small">Model @manufactureYear.Name</p>
                                                         }
                                                     }
-                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
-                                                    <div class="info">
-                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
-                                                        <span class="speed">@item.Odo km</span>
-                                                    </div>
-                                                    <ul class="tag-list">
-                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
-                                                        @foreach (var style in Model.Styles)
+                                                <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                <div class="info">
+                                                    <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                    <span class="speed">@item.Odo km</span>
+                                                </div>
+                                                <ul class="tag-list">
+                                                    <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
+                                                    @foreach (var style in Model.Styles)
                                                         {
                                                             if (item.StyleID == style.ID)
                                                             {
-                                                                <li><a href="#">@style.Name</a></li>
+                                                        <li><a href="#">@style.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                    @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
                                                             {
-                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                        <li><a href="#">@transmissionType.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var fuel in Model.Fuels)
+                                                    @foreach (var fuel in Model.Fuels)
                                                         {
                                                             if (item.FuelID == fuel.ID)
                                                             {
-                                                                <li><a href="#">@fuel.Name</a></li>
+                                                        <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                    @foreach (var totalSeat in Model.TotalSeats)
                                                         {
                                                             if (item.TotalSeatId == totalSeat.Id)
                                                             {
-                                                                <li><a>@totalSeat.Name</a></li>
+                                                        <li><a>@totalSeat.Name</a></li>
                                                             }
                                                         }
-                                                    </ul>
-                                                </div>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div>
@@ -432,62 +433,62 @@
                                 @foreach (var item in Model.UsedCars)
                                 {
                                     var url = "/" + item.Alias + ".c-" + item.ID + ".html";
-                                    <div class="col-xxs-12 col-xs-6 col-sm-4">
-                                        <div class="product-minimal">
-                                            <div class="thumbnail clearfix">
-                                                <figure class="product-minimal-img">
-                                                    <a href="@url">
-                                                        <img src="@item.Image" alt="@item.Name" class="img-responsive">
-                                                    </a>
-                                                </figure>
-                                                <div class="caption">
-                                                    @foreach (var manufactureYear in Model.ManufactureYears)
+                                <div class="col-xxs-12 col-xs-6 col-sm-4">
+                                    <div class="product-minimal">
+                                        <div class="thumbnail clearfix">
+                                            <figure class="product-minimal-img">
+                                                <a href="@url">
+                                                    <img src="@item.Image" alt="@item.Name" class="img-responsive">
+                                                </a>
+                                            </figure>
+                                            <div class="caption">
+                                                @foreach (var manufactureYear in Model.ManufactureYears)
                                                     {
                                                         if (item.ManufactureYearID == manufactureYear.ID)
                                                         {
-                                                            <p class="small">Model @manufactureYear.Name</p>
+                                                    <p class="small">Model @manufactureYear.Name</p>
                                                         }
                                                     }
-                                                    <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
-                                                    <div class="info">
-                                                        <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
-                                                        <span class="speed">@item.Odo km</span>
-                                                    </div>
-                                                    <ul class="tag-list">
-                                                        <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
-                                                        @foreach (var style in Model.Styles)
+                                                <div class="product-minimal-title"><a href="details-left.html"> @item.Name</a></div>
+                                                <div class="info">
+                                                    <span class="price">@item.Price.Value.ToString("N0")<span style="color:red; text-transform:lowercase">&#8363</span></span>
+                                                    <span class="speed">@item.Odo km</span>
+                                                </div>
+                                                <ul class="tag-list">
+                                                    <li><a href="#">@(item.CarStatus ? "Xe mới" : "Cũ" )</a></li>
+                                                    @foreach (var style in Model.Styles)
                                                         {
                                                             if (item.StyleID == style.ID)
                                                             {
-                                                                <li><a href="#">@style.Name</a></li>
+                                                        <li><a href="#">@style.Name</a></li>
                                                             }
-                                                        }                                        
-                                                        @foreach (var transmissionType in Model.TransmissionTypes)
+                                                        }
+                                                    @foreach (var transmissionType in Model.TransmissionTypes)
                                                         {
                                                             if (item.TransmissionTypeID == transmissionType.ID)
                                                             {
-                                                                <li><a href="#">@transmissionType.Name</a></li>
+                                                        <li><a href="#">@transmissionType.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var fuel in Model.Fuels)
+                                                    @foreach (var fuel in Model.Fuels)
                                                         {
                                                             if (item.FuelID == fuel.ID)
                                                             {
-                                                                <li><a href="#">@fuel.Name</a></li>
+                                                        <li><a href="#">@fuel.Name</a></li>
                                                             }
                                                         }
-                                                        @foreach (var totalSeat in Model.TotalSeats)
+                                                    @foreach (var totalSeat in Model.TotalSeats)
                                                         {
                                                             if (item.TotalSeatId == totalSeat.Id)
                                                             {
-                                                                <li><a>@totalSeat.Name</a></li>
+                                                        <li><a>@totalSeat.Name</a></li>
                                                             }
                                                         }
-                                                    </ul>
-                                                </div>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div>

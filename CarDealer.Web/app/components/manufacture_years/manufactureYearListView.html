@@ -47,7 +47,7 @@
                             </tr>
                             <tr ng-repeat="item in manufactureYear">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="manufacture_year_edit({id:item.ID})">{{item.Name}}</a></td>
                                 <td>{{item.Description}}</td>
                                 <td>{{item.CreatedBy}}</td>
                                 <td>{{item.CreatedDate|date:'dd/MM/yyyy hh:mm:ss'}}</td>

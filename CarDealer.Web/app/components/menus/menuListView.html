@@ -48,7 +48,7 @@
                             </tr>
                             <tr ng-repeat="item in menus">
                                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="menu_edit({id:item.ID})">{{item.Name}}</a></td>
                                 <td>{{item.URL}}</td>
                                 <td>{{item.DisplayOrder}}</td>
                                 <!--<td ng-repeat="group in menusGroup" ng-if="item.GroupID==group.ID">{{group.Name}}</td>-->

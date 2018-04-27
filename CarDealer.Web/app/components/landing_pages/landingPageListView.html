@@ -24,8 +24,8 @@
                                 <th style="width: 10%">Thao tác</th>
                             </tr>
                             <tr ng-repeat="item in landingPages">
-                                <td><img src="{{item.Image}}" style="width:100%" /></td>
-                                <td>{{item.Name}}</td>
+                                <td><a ui-sref="landing_page_edit({id:item.ID})"><img src="{{item.Image}}" style="width:100%" /></a></td>
+                                <td><a ui-sref="landing_page_edit({id:item.ID})">{{item.Name}}</a></td>
                                 <td>{{item.Content}}</td>
                                 <td>
                                     <button class="btn btn-sm btn-primary" ui-sref="landing_page_edit({id:item.ID})"><i class="fa fa-pencil-square-o"></i></button>
